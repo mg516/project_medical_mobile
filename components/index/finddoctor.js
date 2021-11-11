@@ -1,6 +1,6 @@
 Vue.component('finddoctor', {
 	template:
-	`<div class="findDoctorBody">
+	`<div class="findDoctorBody" v-loading="loading">
 		<div class="modelLabelBox">
 			<div class="modelLabel">按科室找医生：</div>
 			<div class="doctorTypeBox">
@@ -14,7 +14,7 @@ Vue.component('finddoctor', {
 			</div>
 		</div>
 		<div class="finddoctorTitleLine"></div>
-		<div class="findDoctorBox">
+		<div class="findDoctorBox" v-if="findDoctorList.length>0 && !loading">
 			<div class="findDoctorItem" v-for="(item,index) in findDoctorList" :key="index" @click="toDoctorDetail(item)">
 				<div class="findDoctorImg"><img :src="item.pictureStr | httpStr" /></div>
 				<div class="findDoctorName">{{item.doctorName}}</div>
@@ -27,6 +27,7 @@ Vue.component('finddoctor', {
 				</div>
 			</div>
 		</div>
+		<div class="noData" v-else>暂无数据</div>
 	</div>`,
 	props: {
 		// showUnit: Boolean,
@@ -52,7 +53,8 @@ Vue.component('finddoctor', {
 				// {name:'Susan Johnson',type:'主治医生',hospital:'上海市华山医院',department:'神经内科',score:'8.0',img:'../img/index/d1.png',remark:'擅长：布洛芬和对乙酰氨基酚是目前应用最普遍的退热药，但二者在同'},
 				// {name:'Susan Johnson',type:'主治医生',hospital:'上海市华山医院',department:'神经内科',score:'8.0',img:'../img/index/d2.png',remark:'擅长：布洛芬和对乙酰氨基酚是目前应用最普遍的退热药，但二者在同'},
 				// {name:'Susan Johnson',type:'主治医生',hospital:'上海市华山医院',department:'神经内科',score:'8.0',img:'../img/index/d3.png',remark:'擅长：布洛芬和对乙酰氨基酚是目前应用最普遍的退热药，但二者在同'},
-			]
+			],
+			loading: false
 		};
 	},
 	filters: {
@@ -78,15 +80,21 @@ Vue.component('finddoctor', {
 			})
 		},
 		getDoctorList(){
+			this.loading = true
+			this.findDoctorList = []
 			const param = {
 				beginNo:1,
-				endNo:20
+				endNo:20,
+				isRecommend: 0
 			}
 			if(this.activeIndex>-1){
 				param.officeStr = this.doctorType[this.activeIndex].name
 			}
 			postSearchDoctor(param).then(res => {
 				this.findDoctorList = res.data.data.success
+				this.loading = false
+			}).catch(() => {
+				this.loading = false
 			})
 		}
 	},

@@ -1,24 +1,26 @@
 Vue.component('recomproduct', {
 	template:
 	`<div class="recomProductBody">
-		<div class="modelLabelBox">
+		<div class="sideModelLabelBox">
 			<div class="modelLabel">产品推荐</div>
-			<div class="modelMore">查看全部</div>
 		</div>
 		<div class="recomProductBox">
 			<div class="recomProductItem" v-for="(item,index) in recomProductList" :key="index" @click="toProduceDetail(item)">
-				<div class="recomProductHead"><img :src="item.pictureStr | httpStr" /></div>
+				<div class="recomProductHead">
+					<img :src="item.pictureStr | httpStr" />
+				</div>
 				<div class="recomProductInfo">
 					<div class="recomProductName" :title="item.productName">{{item.productName}}</div>
+					<div class="recomProductRemark" :title="item.catalogName">{{item.catalogName}}</div>
 				</div>
 			</div>
 		</div>
+		<div class="readMore" @click="toMore">查看更多</div>
 	</div>`,
 	props: {
-		data: {
-			type: Array,
-			default: () => []
-		}
+		// activeName: String,
+		// showUnit: Boolean,
+		// userStationNum: String
 	},
 	filters: {
 		httpStr(link) {
@@ -40,9 +42,9 @@ Vue.component('recomproduct', {
 		// 获取产品列表
 		getProduceList(){
 			const param = {
-				isRecommend: '1',
+				isRecommend: '0',
 				beginNo:1,
-				endNo: 500
+				endNo: 10
 			}
 			postProductList(param).then(res => {
 				this.recomProductList = res.data.data.success
@@ -56,10 +58,6 @@ Vue.component('recomproduct', {
 		}
 	},
     mounted() {
-		if(this.data.length>0){
-			this.recomProductList = this.data
-		}else{
-			this.getProduceList()
-		}
+		this.getProduceList()
 	}
 });

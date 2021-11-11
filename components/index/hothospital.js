@@ -57,12 +57,12 @@ Vue.component('hothospital', {
 			this.getCityList()
 		},
 		getCityList(){
-			postProvinceList().then(res => {
+			postDictByType('yiliao_hot_hospital_province').then(res => {
 				this.hotAddressList = res.data.data.map(item => {
 					return {
-						address: item.provinceName
+						address: item.dictValue
 					}
-				}).slice(0,5)
+				})
 				this.getHospitalList()
 			})
 		},

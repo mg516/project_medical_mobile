@@ -3,15 +3,20 @@ Vue.component('newessay', {
 	`<div class="newessayBody">
 		<div class="modelLabelBox">
 			<div class="modelLabel">最新学术文章</div>
-			<div class="modelMore">查看全部</div>
+			<div class="modelMore" @click="readAll">查看全部</div>
 		</div>
 		<div class="essayBox">
-			<div class="essayItem" v-for="(item,index) in essayList1" :key="index">
+			<div class="essayItem" v-for="(item,index) in essayList1" :key="index" @click="toEssayDetail(item)">
+				<div class="essayImg"><img :src="item.contextImg | imgStr" /></div>
 				<div class="essayInfo">
 					<div class="essayTitle">{{item.titileStr}}</div>
-					<div class="essayRemark">{{item.createTime}}</div>
+					<div class="essayRemark">{{item.remark}}</div>
 				</div>
-				<div class="essayImg"><img :src="item.contextImg | imgStr" /></div>
+			</div>
+		</div>
+		<div class="essayMsgBox" v-show="false">
+			<div class="essayMsgItem" v-for="(item,index) in essayList2" :key="index">
+				<div class="essayMsg">{{item.titileStr}}</div>
 			</div>
 		</div>
 	</div>`,
@@ -40,6 +45,9 @@ Vue.component('newessay', {
 	computed:{
 		essayList1:function(){
 			return this.data
+		},
+		essayList2:function(){
+			return this.data
 		}
 	},
 	filters: {
@@ -48,11 +56,18 @@ Vue.component('newessay', {
 		}
 	},
 	methods: {
+		readAll(){
+			location.href = './essayList.html?catalogId=all&catalogName=全部'
+		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
+		},
+		toEssayDetail(data){
+			const titleId = data.titleId
+			location.href =  `./essayDetail.html?titleId=${titleId}`
 		}
 	},
     mounted() {
-
+		
 	}
 });

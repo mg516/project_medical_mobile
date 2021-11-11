@@ -12,7 +12,7 @@ Vue.component('companytroduce', {
 			</div>
 		</div>
 		<div class="companytroduceContent">
-			<div class="companyAddress">
+			<div class="companyAddress" v-show="false">
 				<div class="companyAddressItem" v-for="(aItem,aIndex) in drugdata.addressList" :key="aIndex">
 					<div class="companyAddressItemText">{{aItem}}</div>
 					<div class="companyAddressItemLine" v-if="drugdata.addressList.length - 1 > aIndex">|</div>
@@ -21,7 +21,7 @@ Vue.component('companytroduce', {
 			</div>
 			<template v-if="drugdata.companyList && drugdata.companyList.length>0">
 				<div class="companyData">
-					<div class="companyDataItem" v-for="(dnItem,dnIndex) in drugdata.companyList" :key="dnIndex">
+					<div class="companyDataItem" v-for="(dnItem,dnIndex) in drugdata.companyList" :key="dnIndex" @click="tocompanyDetail(dnItem)">
 						<span class="companyDataName">{{dnItem.enterpriseName}}</span>
 						<span class="companyDataContent" v-if="false">主要产品：{{dnItem.catalogName}}</span>
 					</div>
@@ -51,6 +51,9 @@ Vue.component('companytroduce', {
 	methods: {
 		toCompanyTypeDetail(name){
 			location.href = `./companyTypeDetail.html?catalogName=${name}`
+		},
+		tocompanyDetail(data){
+			location.href = `./companyDetail.html?id=${data.enterpriseId}&name=${data.enterpriseName}&catalogName=${this.drugdata.name}`
 		}
 	},
     mounted() {

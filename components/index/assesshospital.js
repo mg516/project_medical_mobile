@@ -63,6 +63,15 @@ Vue.component('assesshospital', {
 		toAssessHospital(){
 			location.href = './assessHospitalIndex.html'
 		},
+		async getHospitalType(){
+			const res = await postDictByType('yiliao_grade')
+			this.hospitalTypes = res.data.data.map(item => {
+				return {
+					name: item.dictLabel,
+					id: item.dictValue
+				}
+			}).slice(0,6)
+		},
 		getHospitalList(){
 			const param = {
 				beginNo:1,
@@ -77,7 +86,8 @@ Vue.component('assesshospital', {
 			location.href = `./hospitalHouseDetail.html?hospitalId=${data.hospitalId}`
 		}
 	},
-	mounted(){
+	async mounted(){
+		await this.getHospitalType()
 		this.getHospitalList()
 	}
 });

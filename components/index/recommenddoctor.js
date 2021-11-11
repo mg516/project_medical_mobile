@@ -6,7 +6,7 @@ Vue.component('recommenddoctor', {
 			<div class="readMoreText">查看更多</div>
 		</div>
 		<div class="recommendDoctorBox">
-			<div class="recommendDoctorItem" v-for="(item,index) in data" :key="index">
+			<div class="recommendDoctorItem" v-for="(item,index) in data" :key="index" @click="toDoctorDetail(item)">
 				<div class="recommendDoctorImg"><img :src="item.pictureStr | imgStr" /></div>
 				<div class="recommendDoctorName">{{item.doctorName}}</div>
 				<div class="recommendDoctorType">{{item.positionStr}}</div>
@@ -46,7 +46,10 @@ Vue.component('recommenddoctor', {
 	methods: {
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
-		}
+		},
+		toDoctorDetail(item){
+			location.href = `./assessDoctorDetail.html?doctorId=${item.doctorId}`
+		},
 	},
     mounted() {
 

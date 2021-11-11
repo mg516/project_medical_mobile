@@ -2,19 +2,18 @@ Vue.component('gooddoctor', {
 	template:
 	`<div class="doctorBody">
 		<div class="modelLabelBox">
-			<div class="modelLabel">好医生</div>
-			<div class="modelMore">查看全部</div>
+			<div class="modelLabel">专家课堂</div>
+			<div class="modelMore" @click="readAll">查看全部</div>
 		</div>
 		<div class="doctorBox">
-			<div class="doctorItem" v-for="(item,index) in doctorList" :key="index">
+			<div class="doctorItem" v-for="(item,index) in doctorList" :key="index" @click="toDetail(item)">
 				<div class="doctorImg"><img :src="item.pictureStr | imgStr" /></div>
-				<div class="doctorInfo">
-					<div class="doctorName">
-						{{item.doctorName}}
-						<span class="doctorType">{{item.positionStr}}</span>
-					</div>
-					<div class="doctorDept">{{item.hospitalName}} {{item.officeStr}}</div>
-					<div class="doctorSC">{{item.goodStr}}</div>
+				<div class="doctorName">{{item.doctorName}}</div>
+				<div class="doctorType">{{item.positionStr}}</div>
+				<div class="doctorDept">{{item.sexStr}} {{item.department}}</div>
+				<div class="doctorContact">
+					<div class="doctorScore">推荐度：{{item.gradeNumber || 0}}</div>
+					<div class="doctorContactBar">咨询</div>
 				</div>
 			</div>
 		</div>
@@ -49,8 +48,14 @@ Vue.component('gooddoctor', {
 		}
 	},
 	methods: {
+		readAll(){
+			location.href = './doctorHouse.html'
+		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
+		},
+		toDetail(data){
+			location.href = `./doctorHouseDetail.html?id=${data.doctorId}&name=${data.doctorName}&enter=index`
 		}
 	},
     mounted() {

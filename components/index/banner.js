@@ -1,12 +1,11 @@
 Vue.component('banner', {
 	template:
 	`<div class="bannerBody">
-		<van-swipe class="my-swipe" :autoplay="5000" indicator-color="white">
-			<van-swipe-item v-for="(item,index) in bannerList" :key="index">
-				<img :src="item.imgUrl" />
-				<div class="bannerTitle">{{item.advertisementName}}</div>
-			</van-swipe-item>
-		</van-swipe>
+		<el-carousel :interval="5000" trigger="click">
+			<el-carousel-item v-for="(item,index) in bannerList" :key="index">
+				<img :src="item.imgUrl" @click="toDetail(item)" />
+			</el-carousel-item>
+		</el-carousel>
 	</div>`,
 	props: {
 		// activeName: String,
@@ -19,6 +18,9 @@ Vue.component('banner', {
 		};
 	},
 	methods: {
+		toDetail(data){
+			window.open(data.httpStr)
+		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
 		},

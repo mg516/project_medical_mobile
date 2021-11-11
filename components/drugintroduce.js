@@ -13,6 +13,24 @@ Vue.component('drugintroduce', {
 		</div>
 		<div class="drugIntroduceContent">
 			<div class="drugICLeft">
+				<div class="drugICLHospital" @click="toCompanyDetail(drugdata.company)">
+					<div class="drugICLHospitalImg">
+						<img v-if="drugdata.company" :src="drugdata.company.pictureStr|httpStr" alt="">
+					</div>
+					<div class="drugICLHospitalInfo" v-if="drugdata.company">
+						<div class="drugICLHospitalName">{{drugdata.company.enterpriseName}}</div>
+						<div class="drugICLHospitalText">{{drugdata.company.addressStr}}</div>
+						<div class="drugICLHospitalText">{{drugdata.company.remark}}</div>
+					</div>
+				</div>
+				<div class="drugICLDrug" v-if="drugdata.company && drugdata.company.drugList">
+					<div class="drugICLDrugItem" v-for="(dItem,dIndex) in drugdata.company.drugList" :key="dIndex" @click="toDrugDetail(dItem)">
+						<div class="drugICLDrugName">{{dItem.productName}}</div>
+						<div class="drugICLDrugAsk">询问</div>
+					</div>
+				</div>
+			</div>
+			<div class="drugICLeft" v-show="false">
 				<div class="drugICLHospital">
 					<div class="drugICLHospitalImg">
 						<img v-if="drugdata.hospital" :src="drugdata.hospital.pictureStr|httpStr" alt="">
@@ -31,7 +49,7 @@ Vue.component('drugintroduce', {
 				</div>
 			</div>
 			<div class="drugICRight">
-				<div class="drugICRAddress">
+				<div class="drugICRAddress" v-show="false">
 					<div class="drugICRAddressItem" v-for="(aItem,aIndex) in drugdata.addressList" :key="aIndex">
 						<div class="drugICRAddressItemText">{{aItem}}</div>
 						<div class="drugICRAddressItemLine" v-if="drugdata.addressList.length - 1 > aIndex">|</div>
@@ -46,7 +64,7 @@ Vue.component('drugintroduce', {
 						<div class="drugICRShowDrugName">{{sdItem.productName}}</div>
 					</div>
 				</div>
-				<div class="drugICRDrugData" v-if="drugdata.drugList">
+				<div class="drugICRDrugData" v-if="drugdata.drugList" v-show="false">
 					<div class="drugICRDrugDataItem" v-for="(dnItem,dnIndex) in drugdata.drugList" :key="dnIndex">
 						<span class="drugICRDrugDataName">{{dnItem.productName}}</span>
 						<span class="drugICRDrugDataNum">（{{dnItem.num}}）</span>
@@ -87,6 +105,12 @@ Vue.component('drugintroduce', {
 		}
 	},
 	methods: {
+		toCompanyDetail(data) {
+			location.href = `./companyDetailEasy.html?id=${data.enterpriseId}&name=${data.enterpriseName}&enter=index`
+		},
+		toDrugDetail(data){
+			location.href = `./medicineDetail.html?id=${data.productId}&name=${data.productName}&catalogName=${this.drugdata.name}`
+		},
 		toMedicineCompany(type,data){
 			if(type === 'drugType'){
 				location.href = `./medicineCompany.html?drugTypeName=${data}`

@@ -2,17 +2,22 @@ Vue.component('newdrugs2', {
 	template:
 	`<div class="newessayBody">
 		<div class="essayBox">
-			<div class="essayItem2" v-for="(item,index) in list" :key="index">
-				<div class="essayImg"><img :src="item.contextImg|httpStr" /></div>
-				<div class="essayInfo">
-					<div class="essayTitle">{{item.titileStr}}</div>
-					<div class="essayRemark">{{item.remark}}</div>
-					<div class="essayAuthor">
-						<div>{{item.updateTime}}</div>
-						<div>{{item.author}}</div>
+			<template v-if="list.length>0">
+				<div class="essayItem2" v-for="(item,index) in list" :key="index" @click="toDetail(item)">
+					<div class="essayImg"><img :src="item.contextImg|httpStr" /></div>
+					<div class="essayInfo">
+						<div class="essayTitle">{{item.titileStr}}</div>
+						<div class="essayRemark">{{item.remark}}</div>
+						<div class="essayAuthor">
+							<div>{{item.updateTime}}</div>
+							<div>{{item.author}}</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			</template>
+			<template v-else>
+				<div class="noData">暂无数据</div>
+			</template>
 		</div>
 	</div>`,
 	props: {
@@ -41,6 +46,9 @@ Vue.component('newdrugs2', {
 	methods: {
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
+		},
+		toDetail(data){
+			location.href = `./newMedicineHouseDetail.html?titleId=${data.titleId}`
 		}
 	},
     mounted() {

@@ -43,9 +43,9 @@ Vue.component('recomdoctor', {
 		},
 		getDoctorList(){
 			const param = {
-				isRecommend: '1',
+				isRecommend: '0',
 				beginNo:1,
-				endNo:5
+				endNo:10
 			}
 			postSearchDoctor(param).then(res => {
 				this.recomDoctorList = res.data.data.success

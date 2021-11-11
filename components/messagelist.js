@@ -6,7 +6,7 @@ Vue.component('messagelist', {
 			<div class="messageMore" @click="toMessageType(messagedata)">更多</div>
 		</div>
 		<div class="messageBox" v-if="messagedata.message.length>0">
-			<div class="messageItem" v-for="(mItem,mIndex) in messagedata.message" :key="mIndex">
+			<div class="messageItem" v-for="(mItem,mIndex) in messagedata.message" :key="mIndex" @click="toMessageDetail(mItem)">
 				<div class="messageTitle">{{mItem.titileStr}}</div>
 				<div class="messageTime">{{mItem.updateTime}}</div>
 			</div>
@@ -31,6 +31,9 @@ Vue.component('messagelist', {
 		};
 	},
 	methods: {
+		toMessageDetail(data){
+			location.href = `./newsMessageDetail.html?titleId=${data.titleId}`
+		},
 		toMessageType(data){
 			location.href = `${data.link}?label=${data.label}&id=${data.id}`
 		}

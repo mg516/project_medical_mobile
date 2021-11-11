@@ -3,10 +3,10 @@ Vue.component('business', {
 	`<div class="businessBody">
 		<div class="modelLabelBox">
 			<div class="modelLabel">企业推荐</div>
-			<div class="modelMore">查看全部</div>
+			<div class="modelMore" @click="readAll">查看全部</div>
 		</div>
 		<div class="businessBox">
-			<div class="businessItem" v-for="(item,index) in businessList" :key="index">
+			<div class="businessItem" v-for="(item,index) in businessList" :key="index" @click="toDetail(item)">
 				<div class="businessImg"><img :src="item.pictureStr | httpStr" /></div>
 				<div class="businessInfo">
 					<div class="businessTitle">{{item.enterpriseName}}</div>
@@ -42,8 +42,14 @@ Vue.component('business', {
 		}
 	},
 	methods: {
+		readAll(){
+			location.href = './companyHouse.html'
+		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
+		},
+		toDetail(data){
+			location.href = `./companyDetail.html?id=${data.enterpriseId}&name=${data.enterpriseName}&enter=index`
 		}
 	},
     mounted() {

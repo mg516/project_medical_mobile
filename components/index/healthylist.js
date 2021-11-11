@@ -2,7 +2,7 @@ Vue.component('healthylist', {
 	template:
 	`<div class="newessayBody">
 		<div class="essayBox" v-if="list.length>0">
-			<div class="essayItem2" v-for="(item,index) in list" :key="index">
+			<div class="essayItem2" v-for="(item,index) in list" :key="index" @click="toMessageDetail(item)">
 				<div class="essayImg"><img :src="item.contextImg|imgStr" /></div>
 				<div class="essayInfo">
 					<div class="essayTitle">{{item.titileStr}}</div>
@@ -42,6 +42,9 @@ Vue.component('healthylist', {
 		};
 	},
 	methods: {
+		toMessageDetail(data){
+			location.href = `./newsMessageDetail.html?titleId=${data.titleId}`
+		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
 		}

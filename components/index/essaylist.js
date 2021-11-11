@@ -5,10 +5,10 @@ Vue.component('essaylist', {
 			<div class="modelLabel">{{name}} 所有学术文章：</div>
 		</div>
 		<div class="essayItemBox" v-if="essayList.length>0">
-			<div class="essayItem" v-for="(item,index) in essayList" :key="index">
+			<div class="essayItem" v-for="(item,index) in essayList" :key="index" @click="toEssayDetail(item)">
 				<div class="essayItemImg" v-if="item.contextImg"><img :src="item.contextImg | imgStr" /></div>
 				<div class="essayItemInfo">
-					<div class="essayItemTitle" @click="toEssayDetail(item)">{{item.titileStr}}</div>
+					<div class="essayItemTitle">{{item.titileStr}}</div>
 					<div class="essayItemRemark">{{item.remark}}</div>
 					<div class="essayItemBottom">
 						<div class="essayItemTime">{{item.createTime}}</div>
@@ -60,18 +60,20 @@ Vue.component('essaylist', {
 			console.log(key, keyPath);
 		},
 		toEssayDetail(data){
-			if(data.type === 'video'){
-				location.href = './essayDetailVideo.html'
-			}else if(data.type === 'artical'){
-				location.href = './essayDetail.html'
-			}
+			const catalogName = data.catalogName
+			const catalogId = data.catalogId
+			const titleId = data.titleId
+			location.href =  `./essayDetail.html?catalogId=${catalogId}&catalogName=${catalogName}&titleId=${titleId}`
 		},
 		getEssayList(){
-			const param = {
+			let param = {
 				catalogId: getUrlParam('catalogId'),
 				catalogName: decodeURI(getUrlParam('catalogName'))
 			}
-			postDetailListById(param).then(res => {
+			if(param.catalogId === 'all'){
+				param = ''
+			}
+			postTitleListByCatalogId(param).then(res => {
 				if(res.data && res.data.msg === "success"){
 					this.essayList = res.data.data
 				}

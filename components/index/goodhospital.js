@@ -2,16 +2,17 @@ Vue.component('goodhospital', {
 	template:
 	`<div class="hospitalBody">
 		<div class="modelLabelBox">
-			<div class="modelLabel">医院评分</div>
-			<div class="modelMore">查看全部</div>
+			<div class="modelLabel">推荐的医院</div>
+			<div class="modelMore" @click="readAll">查看全部</div>
 		</div>
 		<div class="hospitalBox">
-			<div class="hospitalItem" v-for="(item,index) in hospitalList" :key="index">
+			<div class="hospitalItem" v-for="(item,index) in hospitalList" :key="index" @click="toDetail(item)">
 				<div class="hospitalImg"><img :src="item.administrativeStr | httpStr" /></div>
-				<div class="hospitalInfo">
-					<div class="hospitalName" :title="item.hospitalName">{{item.hospitalName}}</div>
-					<div class="hospitalAddress" :title="item.addressStr">地址：{{item.addressStr}}</div>
-					<div class="hospitalContact">综合评分：{{item.gradeNumber || 0}}</div>
+				<div class="hospitalName" :title="item.hospitalName">{{item.hospitalName}}</div>
+				<div class="hospitalAddress" :title="item.addressStr">地址：{{item.addressStr}}</div>
+				<div class="hospitalContact">
+					<div class="hospitalScore">推荐度：{{item.gradeNumber || 0}}</div>
+					<div class="hospitalContactBar">咨询</div>
 				</div>
 			</div>
 		</div>
@@ -35,8 +36,14 @@ Vue.component('goodhospital', {
 		};
 	},
 	methods: {
+		readAll(){
+			location.href = './hospitalHouse.html'
+		},
 		handleSelect(key, keyPath) {
 			console.log(key, keyPath);
+		},
+		toDetail(data){
+			location.href = `./hospitalHouseDetail.html?hospitalId=${data.hospitalId}&name=${data.hospitalName}&enter=index`
 		}
 	},
 	computed:{

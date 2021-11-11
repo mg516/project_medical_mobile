@@ -10,52 +10,163 @@
 .fontBold{
     font-weight: bold;
 }
+.el-form-item{
+    .el-form-item__content{
+        z-index: 1;
+    }
+}
 .main{
     width: 100%;
-    height: 100%;
-}
-
-.navbarBody{
-    width: 100%;
     overflow: hidden;
-    .van-nav-bar__content{
-        height: 4.8rem;
+    .pageBreadcrumbBox{
+        margin: 6rem auto 0;
+        width: 114rem;
+        .breadcrumbBody{
+            margin: 0;
+        }
+    }
+    .newsBox{
+        .newsTitle{
+            font-size: 2.4rem;
+            color: #000000;
+            line-height: 3.2rem;
+        }
+        .newsInfo{
+            display: flex;
+            font-size: 1.3rem;
+            color: #747474;
+            margin-top: 2rem;
+            .newsTime{
+                margin-right: 2.4rem;
+            }
+        }
+        .newsImg{
+            margin-top: 4rem;
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+        .newsvideoContent{
+            margin-top: 4rem;
+            video{
+                width: 100%;
+                max-height: 49.5rem;
+
+                outline:none;
+                border:0;
+            }
+        }
+        .newsContent{
+            margin-top: 2rem;
+            line-height: 2rem;
+            font-size: 1.5rem;
+            background-color: rgb(247, 247, 247);
+            padding: 10px;
+        }
+        .newsLabel{
+            display: flex;
+            margin-top: 5.5rem;
+            .newsLabelItem{
+                margin-right: 1rem;
+                box-sizing: border-box;
+                height: 3rem;
+                padding: .5rem .8rem;
+                line-height: 2rem;
+                font-size: 1.4rem;
+                background-color: #F2F2F2;
+                color: #747474;
+            }
+        }
+    }
+}
+.navmenuBody{
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    background-color: #fff;
+    .navLine{
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: #e6e6e6;
+        bottom: 0;
     }
     .navLogo{
-        width: 4.8rem;
-        height: 4.8rem;
+        // width: 6rem;
+        // height: 6rem;
+        width: 13rem;
+        height: 5rem;
+        font-size: 1rem;
         cursor: pointer;
-        background-image: url('../img/index/logo.png');
+        // background-image: url('../img/index/logo.png');
+        background-image: url('../img/index/logo_footer_bg.png');
         background-size: 100% 100%;
     }
-}
-.bannerBody{
-    padding: 1.6rem 0;
-    width: 100%;
-    height: 15.2rem;
-    margin: 0 auto;
-    .van-swipe{
-        border-radius: .4rem;
-        overflow: hidden;
-        margin: 0 auto;
-        width: 32.7rem;
-        height: 12rem;
-        .van-swipe-item{
+    .menuBody{
+        .el-menu{
+            &.el-menu--horizontal{
+                border-bottom: 0;
+            }
+            .el-submenu__title,.el-menu-item{
+                height: 8rem;
+                line-height: 8rem;
+            }
+        }
+    }
+    .searchBody{
+        width: 28rem;
+    }
+    .postIcon{
+        width: 2.4rem;
+        height: 2.4rem;
+        cursor: pointer;
+        img{
             width: 100%;
             height: 100%;
-            position: relative;
+        }
+    }
+    .loginBody{
+        .loginBox{
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            // border: 1px solid #ccc;
+            overflow: hidden;
             img{
+                cursor: pointer;
                 width: 100%;
                 height: 100%;
             }
-            .bannerTitle{
-                position: absolute;
-                bottom: 2rem;
-                left: 2rem;
-                font-size: 1.6rem;
-                color: #fff;
-                font-weight: bold;
+        }
+        .noLogin{
+            font-size: 14px;
+            color: #999;
+            .loginBar{
+                cursor: pointer;
             }
+        }
+    }
+}
+.bannerBody{
+    width: 114rem;
+    height: 31.4rem;
+    margin: 0 auto;
+    .el-carousel{
+        width: 100%;
+        height: 100%;
+        .el-carousel__container{
+            width: 100%;
+            height: 100%;
+        }
+        img{
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
         }
     }
 }
@@ -63,9 +174,19 @@
     width: 114rem;
     height: 5rem;
     background-color: #198CFF;
+    margin: 4rem auto 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    position: relative;
+    .readAll{
+        position: absolute;
+        top: -2rem;
+        right: 0;
+        font-size: 1.4rem;
+        color: #198CFF;
+        cursor: pointer;
+    }
     .tagbarItem{
         font-size: 1.4rem;
         color: #fff;
@@ -85,27 +206,24 @@
     }
 }
 .modelLabelBox{
-    padding: 2.4rem;
     width: 100%;
     min-height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
     position: relative;
     flex-wrap: wrap;
     .modelLabel{
-        font-size: 1.8rem;
+        font-size: 2rem;
         font-weight: bold;
         color: #000000;
-    }
-    .modelMore{
-        font-size: 1.2rem;
-        color: #198CFF;
     }
 }
 .sideModelLabelBox{
     padding: 1rem 0;
     .modelLabel{
+        line-height: 3rem;
         font-size: 1.8rem;
         font-weight: bold;
         color: #000000;
@@ -124,20 +242,23 @@
     }
 }
 .newessayBody{
+    margin-bottom: 2rem;
+    .modelMore{
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
     .essayBox{
-        padding: 0 2.4rem 2.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         width: 100%;
         .essayItem{
-            width: 100%;
-            height: 6.4rem;
+            width: 39rem;
+            height: 11rem;
             display: flex;
-            margin-bottom: 3rem;
             .essayImg{
-                margin-left: 1.6rem;
-                width: 8.8rem;
-                height: 6.4rem;
-                border-radius: .2rem;
-                overflow: hidden;
+                width: 12.8rem;
+                height: 8.4rem;
                 img{
                     width: 100%;
                     height: 100%;
@@ -146,6 +267,7 @@
             .essayInfo{
                 height: 100%;
                 flex: 1;
+                margin-left: .4rem;
                 .essayTitle{
                     font-size: 1.6rem;
                     color: #212429;
@@ -158,11 +280,11 @@
                     overflow: hidden;
                 }
                 .essayRemark{
-                    font-size: 1rem;
+                    font-size: 1.4rem;
                     color: #8C8E90;
-                    line-height: 1.4rem;
-                    height: 1.4rem;
-                    margin-top: .5rem;
+                    line-height: 2rem;
+                    height: 2rem;
+                    margin-top: 2rem;
     
                     overflow: hidden;
                     text-overflow:ellipsis;
@@ -176,6 +298,7 @@
             margin-bottom: 5rem;
             display: flex;
             justify-content: space-between;
+            cursor: pointer;
             .essayImg{
                 width: 25rem;
                 height: 16rem;
@@ -230,7 +353,6 @@
         }
     }
     .essayMsgBox{
-        padding: 2.4rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -264,20 +386,18 @@
     }
 }
 .businessBody{
+    margin-bottom: 2rem;
     .businessBox{
-        padding: 0 2.4rem 2.4rem;
-        white-space: nowrap;
-        overflow: auto;
+        width: 100%;
+        display: flex;
+        // justify-content: space-between;
         .businessItem{
-            vertical-align: top;
-            display: inline-block;
-            width: 10rem;
+            width: 13.6rem;
             cursor: pointer;
             margin-right: 2rem;
             .businessImg{
-                margin: 0 auto;
-                width: 7rem;
-                height: 7rem;
+                width: 13.6rem;
+                height: 13.6rem;
                 img{
                     width: 100%;
                     height: 100%;
@@ -289,94 +409,78 @@
                 color: #212429;
                 margin-top: 1rem;
                 line-height: 2rem;
-                .businessTitle{
-                    white-space: initial;
-                }
-            }
-        }
-    }
-}
-.recomProductBody,.newdrugsideBody{
-    .recomProductBox{
-        padding: 0 2.4rem 2.4rem;
-        white-space: nowrap;
-        overflow: auto;
-        .recomProductItem{
-            vertical-align: top;
-            display: inline-block;
-            width: 10rem;
-            cursor: pointer;
-            margin-right: 2rem;
-            .recomProductHead{
-                margin: 0 auto;
-                width: 7rem;
-                height: 7rem;
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            .recomProductInfo{
-                text-align: center;
-                font-size: 1.4rem;
-                color: #212429;
-                margin-top: 1rem;
-                line-height: 2rem;
-                .recomProductName{
-                    white-space: initial;
-                }
             }
         }
     }
 }
 .doctorBody{
+    margin-bottom: 2rem;
     .doctorBox{
-        padding: 0 2.4rem 2.4rem;
+        display: flex;
+        flex-wrap: wrap;
         .doctorItem{
-            display: flex;
+            width: 19.4rem;
+            height: 27.3rem;
+            background-color: #F9F9FA;
             margin-right: 1.4rem;
             margin-bottom: 1.5rem;
-            text-align: left;
+            text-align: center;
             position: relative;
             &:nth-of-type(4n){
                 margin-right: 0;
             }
             .doctorImg{
-                width: 5rem;
-                height: 5rem;
+                width: 8rem;
+                height: 8rem;
+                margin: 2.5rem auto 0;
                 border-radius: 50%;
                 overflow: hidden;
-                flex-shrink: 0;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
-            .doctorInfo{
-                margin-left: 2.2rem;
-                .doctorName{
-                    line-height: 2.5rem;
-                    color: #198CFF;
-                    font-size: 1.8rem;
-                    font-weight: bold;
-                }
-                .doctorType{
-                    margin-left: 2rem;
-                    font-size: 1.2rem;
-                    color: #8C8E90;
-                    font-weight: lighter;
-                }
-                .doctorDept{
+            .doctorName{
+                color: #198CFF;
+                font-size: 1.6rem;
+                font-weight: 500;
+                margin-top: 2rem;
+            }
+            .doctorType{
+                font-size: 1.3rem;
+                color: #8C8E90;
+                margin-top: 1rem;
+            }
+            .doctorDept{
+                font-size: 1.3rem;
+                font-weight: 400;
+                color: #212429;
+                margin-top: 1.5rem;
+            }
+            .doctorContact{
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 5.6rem;
+                background: #F0F0F0;
+                padding: 0 2rem;
+                box-sizing: border-box;
+                .doctorScore{
                     font-size: 1.3rem;
-                    font-weight: 400;
                     color: #212429;
-                    margin-top: .5rem;
                 }
-                .doctorSC{
-                    font-size: 1.2rem;
-                    color: #616367;
-                    margin-top: 1rem;
-                    line-height: 1.7rem;
+                .doctorContactBar{
+                    width: 6.4rem;
+                    height: 3.2rem;
+                    background: #198CFF;
+                    border-radius: 1.6rem;
+                    line-height: 3.2rem;
+                    color: #fff;
+                    font-size: 1.3rem;
+                    cursor: pointer;
                 }
             }
         }
@@ -388,6 +492,7 @@
         display: flex;
         flex-wrap: wrap;
         .recommendDoctorItem{
+            cursor: pointer;
             width: 26.2rem;
             // height: 36rem;
             background-color: #F9F9FA;
@@ -468,12 +573,15 @@
     }
 }
 .hospitalBody{
+    margin-bottom: 2rem;
     .hospitalBox{
-        padding: 0 2.4rem 2.4rem;
         display: flex;
         flex-wrap: wrap;
         .hospitalItem{
-            display: flex;
+            width: 26.4rem;
+            height: 32.9rem;
+            background-color: #F9F9FA;
+            margin-right: 1.4rem;
             margin-bottom: 1.5rem;
             text-align: center;
             position: relative;
@@ -481,44 +589,63 @@
                 margin-right: 0;
             }
             .hospitalImg{
-                width: 7rem;
-                height: 7rem;
-                flex-shrink: 0;
+                width: 26.4rem;
+                height: 15.5rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
-            .hospitalInfo{
-                margin-left: 1.6rem;
+            .hospitalName{
+                color: #198CFF;
+                font-size: 1.8rem;
+                font-weight: 500;
+                margin: 2rem auto 0;
+                width: calc(100% - 4rem);
                 text-align: left;
-                .hospitalName{
-                    color: #198CFF;
-                    font-size: 1.5rem;
-                    line-height: 2.1rem;
-                    font-weight: bold;
-    
-                    overflow: hidden;
-                    text-overflow:ellipsis;
-                    white-space: nowrap;
-                }
-                .hospitalAddress{
+
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+            .hospitalAddress{
+                font-size: 1.3rem;
+                font-weight: 400;
+                color: #212429;
+                margin: 2rem auto 0;
+                width: calc(100% - 4rem);
+                text-align: left;
+                line-height: 2rem;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+            .hospitalContact{
+                position: absolute;
+                bottom: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 5.6rem;
+                background: #F0F0F0;
+                padding: 0 2rem;
+                box-sizing: border-box;
+                .hospitalScore{
                     font-size: 1.3rem;
-                    font-weight: 400;
                     color: #212429;
-                    margin-top: .4rem;
-                    line-height: 1.7rem;
-    
-                    display: -webkit-box;
-                    -webkit-box-orient: vertical;
-                    -webkit-line-clamp: 2;
-                    overflow: hidden;
                 }
-                .hospitalContact{
-                    margin-top: .5rem;
-                    box-sizing: border-box;
-                    font-size: 1.2rem;
-                    color: #198CFF;
+                .hospitalContactBar{
+                    width: 6.4rem;
+                    height: 3.2rem;
+                    background: #198CFF;
+                    border-radius: 1.6rem;
+                    line-height: 3.2rem;
+                    color: #fff;
+                    font-size: 1.3rem;
+                    cursor: pointer;
                 }
             }
         }
@@ -620,9 +747,10 @@
                 .footerLogo{
                     width: 17.5rem;
                     height: 7rem;
-                    background-color: #525252;
+                    // background-color: #525252;
                     margin-top: 7rem;
                     background-image: url('../img/index/logo_footer_bg.png');
+                    background-size: 100% 100%;
                 }
             }
             .footerTopR{
@@ -684,14 +812,13 @@
         display: flex;
         margin-top: 2rem;
         font-size: 1.6rem;
+        flex-wrap: wrap;
         .hotAddressItem{
-            margin-left: 1.5rem;
+            margin-right: 1.5rem;
             color: #616367;
             cursor: pointer;
             padding: 3px 0;
-            &:nth-of-type(1){
-                margin-left: 0;
-            }
+            margin-bottom: 4px;
             &.active{
                 padding: 3px 5px;
                 border-radius: 4px;
@@ -777,7 +904,7 @@
         margin-bottom: 2rem;
         .hospitalItem{
             display: flex;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             cursor: pointer;
             .hospitalImg{
                 width: 6.8rem;
@@ -881,6 +1008,47 @@
         }
     }
 }
+.recomProductBody,.newdrugsideBody{
+    .recomProductBox{
+        padding-bottom: 2rem;
+        .recomProductItem{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            cursor: pointer;
+            .recomProductHead{
+                width: 7rem;
+                height: 7rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .recomProductInfo{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: calc(100% - 8rem);
+                .recomProductName{
+                    color: #2170BF;
+                    font-size: 1.6rem;
+
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                .recomProductRemark{
+                    color: #8C8E90;
+                    font-size: 1.3rem;
+
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
 .disclaimersBody{
     .disclaimersBox{
         width: 26rem;
@@ -977,6 +1145,10 @@
             width: 22.6rem;
             height: 15.6rem;
             background-color: #999;
+            img{
+                width: 100%;
+                max-height: 100%;
+            }
         }
         .centerHospitalHeaderName{
             position: absolute;
@@ -1021,6 +1193,10 @@
             height: 10rem;
             border-radius: 50%;
             background-color: #999;
+            img{
+                width: 100%;
+                border-radius: 50%;
+            }
         }
         .centerPersonHeaderName{
             position: absolute;
@@ -1239,10 +1415,18 @@
     }
     .dynamicListBody{
         margin-top: 3rem;
+        .noData {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.4rem;
+            color: #999;
+        }
         .dynamicItem{
             display: flex;
             justify-content: space-between;
             margin-bottom: 5rem;
+            position: relative;
             .dynamicImg{
                 width: 13.3rem;
                 height: 7.5rem;
@@ -1253,8 +1437,17 @@
                     height: 100%;
                 }
             }
+            .dynamicEdit{
+                position: absolute;
+                top: .5rem;
+                right: 1rem;
+                font-size: 1.6rem;
+                color: #333;
+                cursor: pointer;
+            }
             .dynamicInfo{
                 flex: 1;
+                cursor: pointer;
                 .dynamicTitle{
                     font-size: 1.8rem;
                     line-height: 2.5rem;
@@ -1575,16 +1768,18 @@
     .loginNavBody{
         width: 114rem;
         height: 8rem;
-        margin: 12rem 0 8rem;
+        margin: 4rem 0 6rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         .loginNavLogo{
-            width: 22rem;
-            height: 8rem;
-            background: darkgrey;
+            width: 17.5rem;
+            height: 7rem;
+            font-size: 1rem;
             cursor: pointer;
+            background-image: url(../img/index/logo_footer.png);
+            background-size: 100% 100%;
         }
         .loginNavBox{
             display: flex;
@@ -1650,7 +1845,7 @@
         width: calc(100% - 30rem);
         max-width: 114rem;
         height: 8rem;
-        margin: 12rem auto 8rem;
+        margin: 4rem auto 6rem;
         display: flex;
         justify-content: space-between;
         .loginNavLogo{
@@ -1658,6 +1853,8 @@
             height: 8rem;
             background-color: darkgrey;
             cursor: pointer;
+            background-image: url(../img/index/logo_footer.png);
+            background-size: 100% 100%;
         }
         .toLogin{
             font-size: 1.7rem;
@@ -1667,7 +1864,7 @@
         }
     }
     .registerBox{
-        width: 80rem;
+        width: 90rem;
         margin: 0 auto;
         background-color: #fff;
         padding: 5rem;
@@ -1809,6 +2006,7 @@
 }
 .essaydetailBody{
     position: relative;
+    overflow: hidden;
     .essayTitle{
         font-size: 2.4rem;
         line-height: 3.2rem;
@@ -1827,6 +2025,16 @@
         margin-top: 2rem;
         .essayAuthor{
             margin-left: 2.4rem;
+        }
+    }
+    .essayvideoContent{
+        margin-top: 4rem;
+        video{
+            width: 100%;
+            max-height: 49.5rem;
+
+            outline:none;
+            border:0;
         }
     }
     .essayContent{
@@ -1917,13 +2125,15 @@
                 }
             }
             .essayRelatedInfo{
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
                 width: calc(100% - 11rem);
                 font-size: 1.4rem;
                 line-height: 2rem;
                 color: #212429;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
             }
         }
     }
@@ -1948,6 +2158,9 @@
         .essayvideoAuthor{
             margin-left: 2.4rem;
         }
+    }
+    .essayvideoImg{
+        margin-top: 10px;
     }
     .essayvideoContent{
         margin-top: 4rem;
@@ -2111,6 +2324,7 @@
     width: 100%;
     background-color: #F9F9FA;
     padding: 4rem 7rem 4rem 5rem;
+    box-sizing: border-box;
     .newsdrugwarnLabelBox{
         position: relative;
         width: 100%;
@@ -2148,6 +2362,7 @@
 // 按科室找医生
 .findDoctorBody{
     margin-bottom: 2rem;
+    min-height: 400px;
     .doctorTypeBox{
         margin-top: 1.5rem;
         width: 100%;
@@ -2253,6 +2468,13 @@
                 }
             }
         }
+    }
+    .noData{
+        width: 100%;
+        text-align: center;
+        padding: 4rem 0;
+        font-size: 1.4rem;
+        color: #999;
     }
 }
 // 模态窗样式
@@ -3123,6 +3345,7 @@
             }
             .companylicenseEIImg{
                 width: 76rem;
+                margin-top: 1rem;
                 img{
                     max-width: 100%;
                 }
@@ -3132,13 +3355,14 @@
 }
 .pageTabsBody{
     width: 100%;
-    height: 5rem;
+    min-height: 5rem;
     background-color: #198CFF;
     .pageTabsBox{
         height: 100%;
         width: 114rem;
         margin: 3rem auto 0;
         display: flex;
+        flex-wrap: wrap;
         .pageTabsItem{
             cursor: pointer;
             line-height: 5rem;
@@ -3208,6 +3432,7 @@
     margin: 6rem auto 0;
     background-color: #F9F9FA;
     padding: 2rem;
+    box-sizing: border-box;
     .pageTypeBox{
         display: flex;
         margin-bottom: 1.5rem;
@@ -3931,6 +4156,13 @@
 }
 .replyBody{
     margin-top: 10rem;
+    .replyHandleBtn{
+        margin-bottom: 2rem;
+        cursor: pointer;
+        color: #8C8E90;
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
     .replyInputBox{
         display: flex;
         align-items: center;

@@ -19,9 +19,10 @@ Vue.component('doctorlist', {
 					</div>
 				</div>
 			</template>
-			<template>
+			<template v-else>
 				<div class="noData">暂无数据</div>
 			</template>
+			<div class="readMore" v-if="list.count>doctorlist.length && false">查看更多</div>
 		</div>
 	</div>`,
 	props: {
