@@ -35,7 +35,7 @@
                         <img :src="doctorData.pictureStr|httpStr" alt="">
                     </div>
                     <div class="doctorInfo">擅长：{{doctorData.goodStr}}</div>
-                    <!-- <div class="doctorBar" @click="showAsk">咨询</div> -->
+                    <div class="doctorBar" @click="showAsk" v-if="false">咨询</div>
                 </div>
                 <div class="doctorIntroBox">
                     <div class="doctorIntroLabel">简介</div>

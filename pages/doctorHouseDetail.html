@@ -35,14 +35,14 @@
                         <img :src="doctorMsg.pictureStr|httpStr" alt="">
                     </div>
                     <div class="doctorInfo">擅长：{{doctorMsg.goodStr}}</div>
-                    <!-- <div class="doctorBar" @click="showAsk">咨询</div> -->
+                    <div class="doctorBar" @click="showAsk" v-if="false">咨询</div>
                 </div>
                 <div class="doctorIntroBox">
                     <div class="doctorIntroLabel">简介</div>
                     <div class="doctorIntroCont" v-html="doctorMsg.infosStr"></div>
                 </div>
                 <doctorarticle :doctormsg="doctorMsg"></doctorarticle>
-                <div class="contactinfoBar" @click="toConsultation">咨询</div>
+                <div class="contactinfoBar" @click="toConsultation" v-if="false">咨询</div>
             </div>
             <recomdoctor></recomdoctor>
         </div>
