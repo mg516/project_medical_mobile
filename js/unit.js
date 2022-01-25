@@ -1,3 +1,30 @@
+window.system = {
+    userAgent:navigator.userAgent.toLowerCase(),
+    name:function() {
+        var bIsIpad = this.userAgent.match(/ipad/i) == "ipad";
+        var bIsIphoneOs = this.userAgent.match(/iphone os/i) == "iphone os";
+        var bIsMidp = this.userAgent.match(/midp/i) == "midp";
+        var bIsUc7 = this.userAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+        var bIsUc = this.userAgent.match(/ucweb/i) == "ucweb";
+        var bIsAndroid = this.userAgent.match(/android/i) == "android";
+        var bIsCE = this.userAgent.match(/windows ce/i) == "windows ce";
+        var bIsWM = this.userAgent.match(/windows mobile/i) == "windows mobile";
+        var bIsPlayBook = this.userAgent.match(/playbook/i) == "playbook";
+        var bIsBlackBerry = this.userAgent.match(/bb10/i) == "bb10";
+        if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM|| bIsPlayBook|| bIsBlackBerry) {
+            return "phone";
+        } else {
+            return "pc";
+        }
+    }
+};
+const checkPageVersions = () => {
+    if(system.name() === 'pc'){
+        location.href = location.href.replace('/project_medical_mobile/','/project_medical/')
+    }
+}
+checkPageVersions()
+
 const getUrlParam = (key) => {
     const param = window.location.search.substring(1)
     const paramArr = param.split('&')
