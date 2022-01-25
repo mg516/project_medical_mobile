@@ -5,7 +5,7 @@ Vue.component('doctorarticle', {
 		<div class="doctorEssayList">
 			<div class="doctorEssayItem" @click="toArticleDetail(item)" v-for="(item,index) in doctorEssayList" :key="index">
 				<div class="doctorEssayName">{{item.titileStr}}</div>
-				<div class="doctorEssayTime">{{item.updateTime}}</div>
+				<div class="doctorEssayTime" v-if="false">{{item.updateTime}}</div>
 			</div>
 		</div>
 	</div>`,

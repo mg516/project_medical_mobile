@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>前沿医学</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -13,55 +14,54 @@
 </head>
 <body>
     <div id="myApp" class="main" v-cloak>
-        <navmenu></navmenu>
-        <div class="pageBreadcrumbBox">
-            <breadcrumb :breadcrumblist="breadcrumblist"></breadcrumb>
-        </div>
+        <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup>
         <div class="contentBody">
-            <div class="contentLeft doctorInfoBox">
+            <div class="doctorInfoBox">
                 <div class="doctorMsgBox">
-                    <div class="doctorImg">
-                        <img :src="doctorMsg.pictureStr|httpStr" alt="">
-                    </div>
                     <div class="doctorMsg">
                         <div class="doctorName">
                             <div class="doctorNameText">{{doctorMsg.doctorName}}</div>
-                            <div class="doctorLevel">{{doctorMsg.positionStr}}</div>
                         </div>
+                        <div class="doctorLevel">{{doctorMsg.positionStr}}</div>
                         <div class="doctorHospital">
                             <div class="doctorHospitalName">{{doctorMsg.hospitalName}}</div>
                             <div class="doctorDept">{{doctorMsg.officeStr}}</div>
                         </div>
-                        <div class="doctorInfo">擅长：{{doctorMsg.goodStr}}</div>
-                        <div class="doctorBar" @click="showAsk">咨询</div>
                     </div>
+                    <div class="doctorImg">
+                        <img :src="doctorMsg.pictureStr|httpStr" alt="">
+                    </div>
+                    <div class="doctorInfo">擅长：{{doctorMsg.goodStr}}</div>
+                    <!-- <div class="doctorBar" @click="showAsk">咨询</div> -->
                 </div>
                 <div class="doctorIntroBox">
                     <div class="doctorIntroLabel">简介</div>
                     <div class="doctorIntroCont" v-html="doctorMsg.infosStr"></div>
                 </div>
                 <doctorarticle :doctormsg="doctorMsg"></doctorarticle>
+                <div class="contactinfoBar" @click="toConsultation">咨询</div>
             </div>
-            <div class="contentRight">
-                <recomdoctor ></recomdoctor>
-            </div>
+            <recomdoctor></recomdoctor>
         </div>
-        <pagefooter></pagefooter>
         <doctorask ref="doctorask"></doctorask>
         <doctormark ref="doctormark"></doctormark>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
+<script src="../js/vant@2.12.min.js"></script>
 <script src="../element/element-ui-2.14.1.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
 <script src="../js/request.js"></script>
 <script src="../js/unit.js"></script>
 <script src="../js/businessHandle.js"></script>
-<script src="../components/navmenu.js"></script>
-<script src="../components/breadcrumb.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../components/index/recomdoctor.js"></script>
 <script src="../components/doctorask.js"></script>
 <script src="../components/doctormark.js"></script>
@@ -71,15 +71,11 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 userInfo: UserInfo,
                 userDetailInfo: UserDetailInfo,
                 score: 4.6,
                 colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
-                breadcrumblist:[
-                    {name:'医院',link:'./doctorHouse.html'},
-                    {name:'医生库',link:'./doctorHouse.html'},
-                    {name:'医生详情页'},
-                ],
                 doctorMsg: {},
                 doctorEssayList: [
                     {name:'Neurology：阿司匹林对卒中和小动脉瘤破裂患者的安全性分析',time:'2020-09-12'},
@@ -90,7 +86,8 @@
                     {name:'Cell Death Dis：高表达水平DHODH介导β-catenin的稳定促进食管鳞状细胞癌的发生发展',time:'2020-09-12'},
                     {name:'Neurology：阿司匹林对卒中和小动脉瘤破裂患者的安全性分析',time:'2020-09-12'},
                     {name:'Cell Death Dis：高表达水平DHODH介导β-catenin的稳定促进食管鳞状细胞癌的发生发展catenin的稳定促进食管鳞状细胞癌的发生发展',time:'2020-09-12'},
-                ]
+                ],
+                showLeft: false
             }
         },
         filters: {
@@ -99,6 +96,9 @@
             }
         },
         methods:{
+            toConsultation(){
+                location.href = `./consultation.html?id=${this.doctorMsg.doctorId}&type=医生`
+            },
             checkType(index){
                 this.activeIndex = index
             },
@@ -119,12 +119,6 @@
             }
         },
         mounted(){
-            if(getUrlParam('enter') === 'index'){
-                this.breadcrumblist = [
-                    {name:'首页',link:'./index.html'},
-                    {name:decodeURI(getUrlParam('name'))},
-                ]
-            }
             this.getDoctorDetail()
         }
     })

@@ -1,21 +1,22 @@
 Vue.component('companymedicinelist', {
 	template:
 	`<div class="companymedicinelistBody">
+		<div class="companymedicinelistTital">产品列表</div>
 		<div class="companymedicinelistBox">
-			<div class="companymeItem" v-for="(item,index) in medicinelist" :key="index">
+			<div class="companymeItem" v-for="(item,index) in medicinelist" :key="index" @click="toMedicineDetail(item)">
 				<div class="companymeImg">
 					<img :src="item.pictureStr|httpStr" />
 				</div>
 				<div class="companymeInfo">
 					<div class="companymeName" :title="item.name">
-						<div class="companymeNameText" :title="item.productName" @click="toMedicineDetail(item)">{{item.productName}}</div>
-						<div class="companymeAskBar">询问</div>
+						<div class="companymeNameText" :title="item.productName">{{item.productName}}</div>
+						<div class="companymeAskBar" v-show="false">询问</div>
 					</div>
 					<div class="companymeMsg">
 						<div class="companymemItem">批准文号：{{item.docNo}}</div>
-						<div class="companymemItem">主要规格：{{item.type}}</div>
+						<div class="companymemItem" v-show="false">主要规格：{{item.type}}</div>
 					</div>
-					<div class="companymeCompany">
+					<div class="companymeCompany" v-show="false">
 						<div class="companymeCompanyName">产品相关：</div>
 						<div class="companymeLabelItem" v-for="(labelItem,labelIndex) in item.labels" :key="labelIndex">{{labelItem}}</div>
 					</div>
@@ -51,7 +52,7 @@ Vue.component('companymedicinelist', {
 			this.activeIndex = index
 		},
 		toMedicineDetail(data){
-			location.href = './medicineDetail.html'
+			location.href = `./medicineDetail.html?id=${data.productId}&name=${data.productName}`
 		},
 		getList(){
 			const param = {

@@ -2,16 +2,30 @@ Vue.component('assesshospital', {
 	template:
 	`<div class="assesshospitalBody">
 		<div class="assesshospitalTabs">
-			<div
-				class="ahTabItem"
-				:class="{'active':activeIndex === index}"
-				v-for="(item,index) in hospitalTypes"
-				:key="index"
-				@click="checkType(index)">
-				{{item.name}}
+			<div class="ahTabList">
+				<div
+					class="ahTabItem"
+					:class="{'active':activeIndex === index}"
+					v-for="(item,index) in hospitalTypes"
+					:key="index"
+					@click="checkType(index)">
+					{{item.name}}
+				</div>
 			</div>
-			<div class="readMoreText" @click="toAssessHospital">查看更多</div>
+			<div class="menuIcon light">
+				<van-icon name="wap-nav" @click="openAllType" />
+			</div>
+			<van-popup v-model="showAllType" position="right" :style="{ width: '90%' }">
+				<div class="allTypePopup">
+					<div class="allTypeLabel">全部类型：</div>
+					<div class="typeList">
+						<div @click="checkType(index)" class="typeItem" v-for="(item,index) in hospitalTypes" :key="index">{{item.name}}</div>
+					</div>
+				</div>
+			</van-popup>
+			<div class="readMoreText" @click="toAssessHospital" v-if="false">查看更多</div>
 		</div>
+		<tagbarLightColor :tagList="hospitalTypes"></tagbarLightColor>
 		<div class="assesshospitalBox">
 			<div class="assesshospitalItem" v-for="(item,index) in assesshospitalList" :key="index" @click="toHospitalDetail(item)">
 				<div class="assesshospitalImg"><img :src="item.pictureStr | httpStr" /></div>
@@ -47,7 +61,8 @@ Vue.component('assesshospital', {
 				// {level:'三甲医院',name:'八一儿童医院',address:'北京市东城区朝内北小街2号',remark:'北京协和医院是集医疗、教学、科研于一体的大型三级甲等综合医院，是北京协和医学院的临床学院、是北京协和医学院的临床学院、中国医学科学院的临床医学研究所，是卫生部指定的全国疑难重症诊治指导中心之一，也是最早承担干部保健和外宾医疗的医院之一。',img:'../img/index/hh1.png'},
 				// {level:'三甲医院',name:'八一儿童医院',address:'北京市东城区朝内北小街2号',remark:'北京协和医院是集医疗、教学、科研于一体的大型三级甲等综合医院，是北京协和医学院的临床学院、中国医学科学院的临床医学研究所，是卫生部指定的全国疑难重症诊治指导中心之一，也是最早承担干部保健和外宾医疗的医院之一。',img:'../img/index/hh2.png'},
 				// {level:'三甲医院',name:'八一儿童医院',address:'北京市东城区朝内北小街2号',remark:'北京协和医院是集医疗、教学、科研于一体的大型三级甲等综合医院，是北京协和医学院的临床学院、中国医学科学院的临床医学研究所，是卫生部指定的全国疑难重症诊治指导中心之一，也是最早承担干部保健和外宾医疗的医院之一。',img:'../img/index/hh3.png'},
-			]
+			],
+			showAllType: false
 		};
 	},
 	filters: {
@@ -56,7 +71,11 @@ Vue.component('assesshospital', {
 		}
 	},
 	methods: {
+		openAllType(){
+			this.showAllType = true
+		},
 		checkType(index) {
+			this.showAllType = false
 			this.activeIndex = index
 			this.getHospitalList()
 		},
@@ -70,7 +89,7 @@ Vue.component('assesshospital', {
 					name: item.dictLabel,
 					id: item.dictValue
 				}
-			}).slice(0,6)
+			})
 		},
 		getHospitalList(){
 			const param = {

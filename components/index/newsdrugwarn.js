@@ -8,7 +8,7 @@ Vue.component('newsdrugwarn', {
 		<div class="newsdrugwarnBox">
 			<div class="newsdrugwarnItem" v-for="(item,index) in list" :key="index" @click="toDetail(item)">
 				<div class="newsdrugwarnTitle" :title="item.titileStr">{{item.titileStr}}</div>
-				<div class="newsdrugwarnTime">{{item.createTime}}</div>
+				<div class="newsdrugwarnTime" v-if="false">{{item.createTime}}</div>
 			</div>
 		</div>
 	</div>`,

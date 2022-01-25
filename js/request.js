@@ -485,6 +485,38 @@ const postBannerList = () => {
     )
 }
 
+// 搜索医生
+const postSearchRDoctor = (doctorName) => {
+    return postHttp(
+        `/api/EsSearchDoctor`,
+        null,
+        {doctorName}
+    )
+}
+// 搜索医院
+const postSearchRHospital = (hospitalName) => {
+    return postHttp(
+        `/api/EsSearchHospital`,
+        null,
+        {hospitalName}
+    )
+}
+// 搜索产品
+const postSearchRProduct = (productName) => {
+    return postHttp(
+        `/api/EsSearchProduct`,
+        null,
+        {productName}
+    )
+}
+// 搜索文章
+const postSearchRTitle = (titleStr) => {
+    return postHttp(
+        `/api/EsSearchTitle`,
+        null,
+        {titleStr}
+    )
+}
 // http://115.159.53.197:8080/yiliao/comments/get
 // http://115.159.53.197:8080/api/comments/get
 // http://localhost:8080/yiliao/comments/get/{ownerId}(根据 ownerId 查询评论)

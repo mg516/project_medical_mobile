@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>企业注册</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -14,26 +15,25 @@
     <div id="myApp" class="main" v-cloak>
         <div class="registerBody">
             <div class="registerHeader">
-                <div class="loginNavLogo" @click="toLogin"></div>
                 <div class="toLogin" @click="toLogin">返回登录</div>
             </div>
             <div class="registerBox">
-                <el-form label-position="left" label-width="12rem" :model="ruleForm" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
+                <el-form label-position="left" label-width="" :model="ruleForm" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
                     <div class="groupTitle">创建您企业账户</div>
-                    <el-form-item label="企业名称" prop="enterpriseName">
-                        <el-input v-model="ruleForm.enterpriseName"></el-input>
+                    <el-form-item label="" prop="enterpriseName">
+                        <el-input v-model="ruleForm.enterpriseName" placeholder="请输入企业名称"></el-input>
                     </el-form-item>
-                    <el-form-item label="帐号手机" prop="mobileStr">
-                        <el-input v-model="ruleForm.mobileStr"></el-input>
+                    <el-form-item label="" prop="mobileStr">
+                        <el-input v-model="ruleForm.mobileStr" placeholder="请输入帐号手机"></el-input>
                     </el-form-item>
-                    <el-form-item label="验证码">
+                    <el-form-item label="">
                         <div style="display: flex;height: 40px;margin-bottom: 40px;">
                             <el-input placeholder="请输入验证码" v-model="ruleForm.code"></el-input>
                             <el-button style="margin-left: 10px;" :disabled="secondNum>0" @click="getCode">{{secondNum>0?`${secondNum}后重试`:'获取验证码'}}</el-button>
                         </div>
                     </el-form-item>
                     <div class="groupTitle">详细企业信息</div>
-                    <el-form-item label="企业图片" prop="mobileStr">
+                    <el-form-item label="" prop="mobileStr">
                         <el-upload
                             class="avatar-uploader"
                             action="http://115.159.53.197:8080/api/upload"
@@ -44,29 +44,29 @@
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
-                    <el-form-item label="联系人姓名" prop="contractStr">
-                        <el-input v-model="ruleForm.contractStr"></el-input>
+                    <el-form-item label="" prop="contractStr">
+                        <el-input v-model="ruleForm.contractStr" placeholder="请输入联系人姓名"></el-input>
                     </el-form-item>
-                    <el-form-item label="联系人手机" prop="contractmobileStr">
-                        <el-input v-model="ruleForm.contractmobileStr"></el-input>
+                    <el-form-item label="" prop="contractmobileStr">
+                        <el-input v-model="ruleForm.contractmobileStr" placeholder="请输入联系人手机"></el-input>
                     </el-form-item>
-                    <el-form-item label="所在地区">
+                    <el-form-item label="">
                         <selectaddress v-model="addressObj" :option="{level:2}"></selectaddress>
                     </el-form-item>
-                    <el-form-item label="详细地址">
-                        <el-input v-model="ruleForm.addressStr"></el-input>
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.addressStr" placeholder="请输入详细地址"></el-input>
                     </el-form-item>
-                    <el-form-item label="职位" prop="positionStr">
-                        <el-input v-model="ruleForm.positionStr"></el-input>
+                    <el-form-item label="" prop="positionStr">
+                        <el-input v-model="ruleForm.positionStr" placeholder="请输入职位"></el-input>
                     </el-form-item>
-                    <el-form-item label="电子邮箱" prop="emailStr">
-                        <el-input v-model="ruleForm.emailStr"></el-input>
+                    <el-form-item label="" prop="emailStr">
+                        <el-input v-model="ruleForm.emailStr" placeholder="请输入电子邮箱"></el-input>
                     </el-form-item>
-                    <el-form-item label="联系电话" prop="telStr">
-                        <el-input v-model="ruleForm.telStr"></el-input>
+                    <el-form-item label="" prop="telStr">
+                        <el-input v-model="ruleForm.telStr" placeholder="请输入联系电话"></el-input>
                     </el-form-item>
-                    <el-form-item label="公司网址" prop="hrefStr">
-                        <el-input v-model="ruleForm.hrefStr"></el-input>
+                    <el-form-item label="" prop="hrefStr">
+                        <el-input v-model="ruleForm.hrefStr" placeholder="请输入公司网址"></el-input>
                     </el-form-item>
                     <el-form-item label="企业营业执照">
                         <el-upload
@@ -79,7 +79,7 @@
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
-                    <el-form-item label="企业介绍" prop="infoStr">
+                    <el-form-item label="" prop="infoStr">
                         <div id="Edit"></div>
                         <!-- <el-input
                             type="textarea"
@@ -97,8 +97,8 @@
         <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
@@ -114,6 +114,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 districts:null,
                 districtLevel1: null,
                 districtLevelId1: '',

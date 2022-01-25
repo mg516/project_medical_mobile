@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>医院注册</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -14,19 +15,18 @@
     <div id="myApp" class="main" v-cloak>
         <div class="registerBody">
             <div class="registerHeader">
-                <div class="loginNavLogo" @click="toLogin"></div>
                 <div class="toLogin" @click="toLogin">返回登录</div>
             </div>
             <div class="registerBox">
-                <el-form label-position="left" label-width="12rem" :model="ruleForm" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
+                <el-form label-position="left" label-width="0" :model="ruleForm" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
                     <div class="groupTitle">创建医院账户</div>
-                    <el-form-item label="医院名称" prop="hospitalName">
-                        <el-input v-model="ruleForm.hospitalName"></el-input>
+                    <el-form-item label="" prop="hospitalName">
+                        <el-input v-model="ruleForm.hospitalName" placeholder="请输入医院名称"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机" prop="mobileStr">
-                        <el-input v-model="ruleForm.mobileStr"></el-input>
+                    <el-form-item label="" prop="mobileStr">
+                        <el-input v-model="ruleForm.mobileStr" placeholder="请输入手机"></el-input>
                     </el-form-item>
-                    <el-form-item label="验证码">
+                    <el-form-item label="">
                         <div style="display: flex;height: 40px;margin-bottom: 40px;">
                             <el-input placeholder="请输入验证码" v-model="ruleForm.code"></el-input>
                             <el-button style="margin-left: 10px;" :disabled="secondNum>0" @click="getCode">{{secondNum>0?`${secondNum}后重试`:'获取验证码'}}</el-button>
@@ -36,7 +36,7 @@
                     <!-- <el-form-item label="重点科室">
                         <el-input v-model="ruleForm.name"></el-input>
                     </el-form-item> -->
-                    <el-form-item label="医院图片" prop="mobileStr">
+                    <el-form-item label="" prop="mobileStr">
                         <el-upload
                                 class="avatar-uploader"
                                 action="http://115.159.53.197:8080/api/upload"
@@ -47,29 +47,29 @@
                                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
                     </el-form-item>
-                    <el-form-item label="医院等级">
-                        <el-select v-model="ruleForm.gradeStr">
+                    <el-form-item label="">
+                        <el-select v-model="ruleForm.gradeStr" placeholder="请选择医院等级">
                             <el-option v-for="item in levelOption" :key="item" :label="item" :value="item"></el-option>
                         </el-select>
                     </el-form-item>
                     <!-- <el-form-item label="医院类型">
                         <el-input v-model="ruleForm.name"></el-input>
                     </el-form-item> -->
-                    <el-form-item label="经营方式">
-                        <el-select v-model="ruleForm.managementStyle">
+                    <el-form-item label="">
+                        <el-select v-model="ruleForm.managementStyle" placeholder="请选择经营方式">
                             <el-option v-for="item in manageOption" :key="item" :label="item" :value="item"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="联系电话">
-                        <el-input v-model="ruleForm.telStr"></el-input>
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.telStr" placeholder="请输入联系电话"></el-input>
                     </el-form-item>
-                    <el-form-item label="所在地区">
-                        <selectaddress v-model="addressObj" :option="{level:3}"></selectaddress>
+                    <el-form-item label="">
+                        <selectaddress v-model="addressObj" :option="{level:3}" placeholder="请输入所在地区"></selectaddress>
                     </el-form-item>
-                    <el-form-item label="详细地址">
-                        <el-input v-model="ruleForm.addressStr"></el-input>
+                    <el-form-item label="">
+                        <el-input v-model="ruleForm.addressStr" placeholder="请输入详细地址"></el-input>
                     </el-form-item>
-                    <el-form-item label="简介">
+                    <el-form-item label="">
                         <div id="Edit"></div>
                         <!-- <el-input
                             type="textarea"
@@ -96,8 +96,8 @@
         <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
@@ -113,6 +113,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 levelOption:['一级','一级丙等','一级乙等','一级甲等','三级','三级丙等','三级甲等','二级','二级丙等','二级乙等','二级甲等','社区卫生服务中心'],
                 manageOption: ['综合医院','专科医院','中医医院','妇幼保健院、所','专科疾病防治院(所、中心)','特色医院','康复院','门诊部','中西医结合医院','民族医院','医学专科研究所','其他卫生事业机构','社区卫生服务中心'],
                 ruleForm: {

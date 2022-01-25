@@ -14,8 +14,14 @@
 </head>
 <body>
     <div id="myApp" class="main" v-cloak>
-        <navbar></navbar>
-        <!-- <navmenu></navmenu> -->
+        <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup>
+        <!-- <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup> -->
         <banner></banner>
         <tagbar></tagbar>
         <div class="cd_content cd1"></div>
@@ -25,21 +31,21 @@
         <div class="cd_content cd3"></div>
         <goodhospital :data="hospitalList"></goodhospital>
         <div class="cd_content cd4"></div>
-        <newdrugs :data="indexmedicinallist"></newdrugs>
-        <div class="cd_content cd5"></div>
+        <!-- <newdrugs :data="indexmedicinallist"></newdrugs> -->
         <newsconsulting :data="indexnewlist"></newsconsulting>
-        <div class="cd_content cd6"></div>
+        <div class="cd_content cd5"></div>
         <business :data="enterpriseList"></business>
+        <div class="cd_content cd6"></div>
         <div class="cd_content cd7"></div>
-        <hothospital></hothospital>
-        <recomdoctor></recomdoctor>
-        <recomproduct></recomproduct>
+        <!-- <hothospital></hothospital> -->
+        <!-- <recomdoctor></recomdoctor> -->
+        <!-- <recomproduct></recomproduct> -->
         <disclaimers></disclaimers>
-        <pagefooter></pagefooter>
+        <!-- <pagefooter></pagefooter> -->
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
 <script src="../js/vant@2.12.min.js"></script>
@@ -49,8 +55,10 @@
 <script src="../js/unit.js"></script>
 <script src="../js/cd.js"></script>
 <script src="../js/businessHandle.js"></script>
+<script src="../components/menuleft.js"></script>
 <script src="../components/navbar.js"></script>
-<script src="../components/navmenu.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../components/pagefooter.js"></script>
 <script src="../components/index/banner.js"></script>
 <script src="../components/index/tagbar.js"></script>
@@ -70,13 +78,15 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 doctorList: [],
                 enterpriseList: [],
                 hospitalList: [],
                 indexmedicinallist: [],
                 indexnewlist: [],
                 productList: [],
-                scienceList: []
+                scienceList: [],
+                showLeft: false
             }
         },
         mounted(){

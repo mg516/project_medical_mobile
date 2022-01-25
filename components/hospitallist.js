@@ -1,7 +1,7 @@
 Vue.component('hospitallist', {
 	template:
 	`<div class="hospitallistBody">
-		<div class="hospitallistLabel">共 <span class="doctorNum">{{list.count}}</span> 个医院</div>
+		<div class="hospitallistLabel" v-if="false">共 <span class="doctorNum">{{list.count}}</span> 个医院</div>
 		<div class="hospitallistBox">
 			<div class="doctorItem" @click="toHospitalHouseDetail(item)" v-for="(item,index) in hospitallist" :key="index">
 				<div class="doctorImg"><img :src="item.pictureStr|httpStr" /></div>

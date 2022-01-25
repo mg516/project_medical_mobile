@@ -1,7 +1,7 @@
 Vue.component('companylist', {
 	template:
 	`<div class="companylistBody">
-		<div class="companylistTital">企业列表</div>
+		<div class="companylistTital">全部企业</div>
 		<div class="companylistBox">
 			<div class="companyItem" v-for="(item,index) in list" :key="index">
 				<div class="companyImg">
@@ -10,10 +10,8 @@ Vue.component('companylist', {
 				<div class="companyInfo">
 					<div class="companyName" :title="item.enterpriseName">
 						<div class="companyNameText" :title="item.enterpriseName" @click="tocompanyDetail(item)">{{item.enterpriseName}}</div>
-						<div class="companyAskBar">询问</div>
 					</div>
 					<div class="companyMsg">{{item.addressStr}}</div>
-					<div class="companyProduct" @click="tocompanyDetail(item)">查看该公司的产品列表</div>
 				</div>
 			</div>
 		</div>

@@ -5,14 +5,16 @@ Vue.component('goodhospital', {
 			<div class="modelLabel">推荐的医院</div>
 			<div class="modelMore" @click="readAll">查看全部</div>
 		</div>
-		<div class="hospitalBox">
-			<div class="hospitalItem" v-for="(item,index) in hospitalList" :key="index" @click="toDetail(item)">
-				<div class="hospitalImg"><img :src="item.administrativeStr | httpStr" /></div>
-				<div class="hospitalName" :title="item.hospitalName">{{item.hospitalName}}</div>
-				<div class="hospitalAddress" :title="item.addressStr">地址：{{item.addressStr}}</div>
-				<div class="hospitalContact">
-					<div class="hospitalScore">推荐度：{{item.gradeNumber || 0}}</div>
-					<div class="hospitalContactBar">咨询</div>
+		<div class="hospitallistBox">
+			<div class="doctorItem" @click="toDetail(item)" v-for="(item,index) in hospitalList" :key="index">
+				<div class="doctorImg"><img :src="item.pictureStr|httpStr" /></div>
+				<div class="doctorInfo">
+					<div class="doctorName">
+						<div class="doctorNameText">{{item.hospitalName}}</div>
+						<div class="doctorType">{{item.gradeStr}}</div>
+					</div>
+					<div class="doctorAddress">地址：{{item.addressStr}}</div>
+					<div class="doctorScore">综合评分：{{item.searchValue || 0}}</div>
 				</div>
 			</div>
 		</div>
@@ -53,7 +55,7 @@ Vue.component('goodhospital', {
 	},
 	filters: {
 		httpStr(link) {
-			return 'https://images.weserv.nl/?url=' + link;
+			return baseUrl + link;
 		}
 	},
     mounted() {

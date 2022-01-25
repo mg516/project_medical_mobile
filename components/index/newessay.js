@@ -7,11 +7,11 @@ Vue.component('newessay', {
 		</div>
 		<div class="essayBox">
 			<div class="essayItem" v-for="(item,index) in essayList1" :key="index" @click="toEssayDetail(item)">
-				<div class="essayImg"><img :src="item.contextImg | imgStr" /></div>
 				<div class="essayInfo">
 					<div class="essayTitle">{{item.titileStr}}</div>
 					<div class="essayRemark">{{item.remark}}</div>
 				</div>
+				<div class="essayImg"><img :src="item.contextImg | imgStr" /></div>
 			</div>
 		</div>
 		<div class="essayMsgBox" v-show="false">

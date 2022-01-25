@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>前沿医学</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -13,10 +14,10 @@
 </head>
 <body>
     <div id="myApp" class="main" v-cloak>
-        <navmenu></navmenu>
-        <div class="pageBreadcrumbBox">
-            <breadcrumb :breadcrumblist="breadcrumblist"></breadcrumb>
-        </div>
+        <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup>
         <div class="pageTabsBody">
             <div class="pageTabsBox">
                 <div
@@ -35,16 +36,18 @@
         <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
+<script src="../js/vant@2.12.min.js"></script>
 <script src="../element/element-ui-2.14.1.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
 <script src="../js/request.js"></script>
 <script src="../js/unit.js"></script>
 <script src="../js/businessHandle.js"></script>
-<script src="../components/navmenu.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../components/breadcrumb.js"></script>
 <script src="../components/index/hothospital.js"></script>
 <script src="../components/index/recomdoctor.js"></script>
@@ -56,6 +59,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 breadcrumblist:[
                     {name:'测评',link:'./assessIndex.html'},
                     {name:'医学工具'},

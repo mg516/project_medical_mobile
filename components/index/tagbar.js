@@ -1,9 +1,9 @@
 Vue.component('tagbar', {
 	template:
 	`<div class="tagbarBody">
-		<div class="readAll" @click="readAllEssay" v-if="list.length>12">查看全部</div>
+		<div class="readAll" @click="readAllEssay" v-if="false">查看全部</div>
 		<div class="tagbarItem" v-for="(item,index) in tagbarList" :key="'level1-'+index">
-			<span @click="toEssayList(iitem)" :title="item.link" v-for="(iitem,iindex) in item" :key="'level2-'+iindex">{{iitem.catalogName}}</span>
+			<span @click="toEssayList(item)" :title="item.link">{{item.catalogName}}</span>
 		</div>
 	</div>`,
 	props: {
@@ -37,7 +37,7 @@ Vue.component('tagbar', {
 				if(res.data && res.data.msg === "success"){
 					let list = res.data.data
 					this.list = list
-					this.tagbarList = [list.slice(0,3),list.slice(3,6),list.slice(6,9),list.slice(9,12)]
+					this.tagbarList = list
 				}
 			})
 		}

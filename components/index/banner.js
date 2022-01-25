@@ -1,11 +1,11 @@
 Vue.component('banner', {
 	template:
 	`<div class="bannerBody">
-		<el-carousel :interval="5000" trigger="click">
-			<el-carousel-item v-for="(item,index) in bannerList" :key="index">
-				<img :src="item.imgUrl" @click="toDetail(item)" />
-			</el-carousel-item>
-		</el-carousel>
+		<van-swipe :autoplay="5000">
+			<van-swipe-item v-for="(item,index) in bannerList" :key="index" @click="toDetail(item)">
+				<img :src="item.imgUrl" />
+			</van-swipe-item>
+		</van-swipe>
 	</div>`,
 	props: {
 		// activeName: String,

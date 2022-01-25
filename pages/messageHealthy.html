@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>前沿医学</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -13,40 +14,43 @@
 </head>
 <body>
     <div id="myApp" class="main" v-cloak>
-        <navmenu></navmenu>
-        <div class="pageBreadcrumbBox">
-            <breadcrumb :breadcrumblist="breadcrumblist"></breadcrumb>
-        </div>
+        <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup>
         <div class="contentBody">
-            <div class="contentLeft">
-                <div class="contentType">
-                    <div
-                        :class="{'active':index === activeTypeIndex}"
-                        class="contentTypeItem"
-                        v-for="(item,index) in type"
-                        @click="checkType2(index)"
-                        >{{item.name}}</div>
-                </div>
-                <healthylist :list="healthylist"></healthylist>
-            </div>
-            <div class="contentRight">
-                <hothospital></hothospital>
-                <recomdoctor></recomdoctor>
-            </div>
+            <van-dropdown-menu class="fixed">
+                <van-dropdown-item title="分类" ref="dropdown">
+                    <div class="pageTypeBox">
+                        <div class="pageTypeItemBox">
+                            <div
+                                :class="{'active':index === activeTypeIndex}"
+                                class="pageTypeItem"
+                                @click="checkType2(index)"
+                                v-for="(item,index) in type"
+                                :key="index"
+                            >{{item.name}}</div>
+                        </div>
+                    </div>
+                </van-dropdown-item>
+            </van-dropdown-menu>
+            <healthylist :list="healthylist" style="padding-top: 5rem;"></healthylist>
+            <recomdoctor></recomdoctor>
         </div>
-        <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
+<script src="../js/vant@2.12.min.js"></script>
 <script src="../element/element-ui-2.14.1.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
 <script src="../js/request.js"></script>
 <script src="../js/unit.js"></script>
 <script src="../js/businessHandle.js"></script>
-<script src="../components/navmenu.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../components/breadcrumb.js"></script>
 <script src="../components/index/healthylist.js"></script>
 <script src="../components/index/hothospital.js"></script>
@@ -56,6 +60,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 breadcrumblist:[
                     {name:'资讯',link:'./messageIndex.html'},
                     // {name:'新闻中心',link:'./messageNews.html'},
@@ -81,6 +86,7 @@
             },
             checkType2(index){
                 this.activeTypeIndex = index
+                this.$refs.dropdown.toggle();
                 this.getHealthylist()
             },
             getHealthyType(){
@@ -113,21 +119,9 @@
 </script>
 </html>
 <style>
-    .contentBody{
-        margin: 6rem auto 0;
-        width: 114rem;
-        min-height: 50rem;
-        display: flex;
-        justify-content: space-between;
-    }
-    .contentLeft{
-        width: 82rem;
-        flex-shrink: 0;
-    }
-    .contentRight{
-        width: 28rem;
-        flex-shrink: 0;
-    }
+    /* .van-popup{
+        height: auto;
+    } */
     .contentType{
         margin-bottom: 5rem;
     }

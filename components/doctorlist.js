@@ -1,7 +1,7 @@
 Vue.component('doctorlist', {
 	template:
 	`<div class="doctorlistBody">
-		<div class="doctorlistLabel">共 <span class="doctorNum">{{list.count}}</span> 个医生</div>
+		<div class="doctorlistLabel" v-if="false">共 <span class="doctorNum">{{list.count}}</span> 个医生</div>
 		<div class="doctorlistBox">
 			<template v-if="doctorlist.length>0">
 				<div class="doctorItem" @click="toDoctorHouseDetail(item)" v-for="(item,index) in doctorlist" :key="index">

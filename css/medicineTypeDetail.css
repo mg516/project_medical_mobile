@@ -1,16 +1,5 @@
-.pageBreadcrumbBox {
-  margin: 6rem auto 0;
-  width: 114rem;
-}
 .pageBreadcrumbBox .breadcrumbBody {
   margin: 0;
-}
-.contentBody {
-  margin: 4rem auto;
-  width: 114rem;
-  min-height: 50rem;
-  display: flex;
-  justify-content: space-between;
 }
 .contentBody .contentLeft {
   width: 82rem;
@@ -30,5 +19,5 @@
   cursor: pointer;
 }
 .medicinelistBox {
-  margin-top: 6rem;
+  margin-top: 3rem;
 }

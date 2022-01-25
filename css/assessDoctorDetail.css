@@ -1,17 +1,6 @@
-.contentBody {
-  margin: 6rem auto 10rem;
-  width: 114rem;
-  display: flex;
-  justify-content: space-between;
-}
-.contentBody .contentLeft {
-  width: 82rem;
-  flex-shrink: 0;
-}
-.contentBody .contentRight {
-  width: 28rem;
-  flex-shrink: 0;
-}
+/* .contentBody {
+  padding: 3rem 2.4rem;
+} */
 .pageBreadcrumbBox {
   margin: 6rem auto 0;
   width: 114rem;
@@ -20,13 +9,15 @@
   margin: 0;
 }
 .doctorInfoBox .doctorMsgBox {
+  padding: 2.4rem;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .doctorInfoBox .doctorMsgBox .doctorImg {
-  width: 15.6rem;
-  height: 15.6rem;
-  border-radius: 1rem;
+  width: 7.8rem;
+  height: 7.8rem;
+  border-radius: 50%;
   overflow: hidden;
 }
 .doctorInfoBox .doctorMsgBox .doctorImg img {
@@ -34,7 +25,7 @@
   height: 100%;
 }
 .doctorInfoBox .doctorMsgBox .doctorMsg {
-  width: calc(100% - 20rem - 20rem);
+  width: calc(100% - 10rem) !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,26 +34,28 @@
   display: flex;
   align-items: center;
   height: 3rem;
+  margin-bottom: 1rem;
+  color: #198CFF;
 }
 .doctorInfoBox .doctorMsgBox .doctorMsg .doctorName .doctorNameText {
   font-size: 2.2rem;
   color: #000000;
 }
-.doctorInfoBox .doctorMsgBox .doctorMsg .doctorName .doctorLevel {
+.doctorInfoBox .doctorMsgBox .doctorMsg .doctorLevel {
+  color: #8C8E90;
   font-size: 1.4rem;
-  color: #198CFF;
-  margin-left: 3rem;
 }
 .doctorInfoBox .doctorMsgBox .doctorMsg .doctorHospital {
   margin-top: 1.2rem;
-  display: flex;
   font-size: 1.4rem;
   color: #747474;
+  line-height: 2rem;
 }
 .doctorInfoBox .doctorMsgBox .doctorMsg .doctorHospital .doctorDept {
-  margin-left: 2rem;
+  margin-top: 1rem;
 }
-.doctorInfoBox .doctorMsgBox .doctorMsg .doctorInfo {
+.doctorInfoBox .doctorMsgBox .doctorInfo {
+  width: 100%;
   margin-top: 1rem;
   font-size: 1.4rem;
   color: #747474;
@@ -107,7 +100,7 @@
   box-sizing: border-box;
 }
 .doctorInfoBox .doctorIntroBox {
-  margin-top: 6rem;
+  padding: 2.4rem;
 }
 .doctorInfoBox .doctorIntroBox .doctorIntroLabel {
   font-weight: bold;
@@ -123,7 +116,7 @@
   color: #333333;
 }
 .doctorInfoBox .doctorEssayBox {
-  margin-top: 6rem;
+  padding: 2.4rem;
 }
 .doctorInfoBox .doctorEssayBox .doctorEssayLabel {
   font-weight: bold;
@@ -144,7 +137,6 @@
 }
 .doctorInfoBox .doctorEssayBox .doctorEssayList .doctorEssayItem .doctorEssayName {
   color: #000000;
-  font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

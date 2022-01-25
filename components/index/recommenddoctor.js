@@ -7,14 +7,17 @@ Vue.component('recommenddoctor', {
 		</div>
 		<div class="recommendDoctorBox">
 			<div class="recommendDoctorItem" v-for="(item,index) in data" :key="index" @click="toDoctorDetail(item)">
-				<div class="recommendDoctorImg"><img :src="item.pictureStr | imgStr" /></div>
-				<div class="recommendDoctorName">{{item.doctorName}}</div>
-				<div class="recommendDoctorType">{{item.positionStr}}</div>
-				<div class="recommendDoctorDept">{{item.hospitalName}} {{item.officeStr}}</div>
-				<div class="recommendDoctorInfo">{{item.goodStr}}</div>
-				<div class="recommendDoctorContact">
-					<div class="recommendDoctorScore">推荐度：{{item.gradeNumber || 0}}</div>
-					<div class="recommendDoctorContactBar">咨询</div>
+				<div class="recommendDoctorImg"><img :src="item.pictureStr|imgStr" /></div>
+				<div class="recommendDoctorInfo">
+					<div class="recommendDoctorName">
+						<div class="recommendDoctorNameText">{{item.doctorName}}</div>
+						<div class="recommendDoctorType">{{item.positionStr}}</div>
+					</div>
+					<div class="recommendDoctorHospital">
+						<div class="recommendDoctorhospitalText">{{item.hospitalName}}</div>
+						<div class="recommendDoctorDept">{{item.officeStr}}</div>
+					</div>
+					<div class="recommendDoctorRemark" :title="item.goodStr">{{item.goodStr}}</div>
 				</div>
 			</div>
 		</div>

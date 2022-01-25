@@ -7,7 +7,7 @@ Vue.component('essaydetail', {
 			<div class="essayAuthor">{{data.createBy}}</div>
 		</div>
 		<div class="essayvideoContent" v-if="data.contextVidio">
-			<video :src="data.contextVidio|httpStr" controls="controls" :poster="data.contextImg | httpStr">
+			<video x5-video-player-type="h5" :src="data.contextVidio|httpStr" controls="controls" :poster="data.contextImg | httpStr">
 				your browser does not support the video tag
 			</video>
 		</div>

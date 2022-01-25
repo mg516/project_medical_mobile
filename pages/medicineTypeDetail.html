@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>前沿医学</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -13,49 +14,39 @@
 </head>
 <body>
     <div id="myApp" class="main" v-cloak>
-        <navmenu></navmenu>
-        <div class="pageBreadcrumbBox">
-            <breadcrumb :breadcrumblist="breadcrumblist"></breadcrumb>
-        </div>
+        <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup>
         <div class="contentBody">
-            <div class="contentLeft">
-                <!-- <div class="medicineLabel">
-                    <div
-                        :class="{'active':paramArr[0]===item}"
-                        class="medicineLabelItem"
-                        v-for="(item,index) in medicineLabel"
-                        :key="index"
-                        @click="activeParam(item)"
-                    >{{item}}</div>
-                </div> -->
-                <div class="pageTypeGroupBody">
-                    <div class="pageTypeBox">
-                        <div class="pageTypeItemBox">
-                            <div class="pageTypeItem" :class="{'active':paramArr[0]===item}" v-for="(item,index) in medicineLabel" :key="index" @click="activeParam(item,1)">{{item}}</div>
-                        </div>
+            <div class="pageTypeGroupBody">
+                <div class="pageTypeBox">
+                    <div class="pageTypeItemBox">
+                        <div class="pageTypeItem" :class="{'active':paramArr[0]===item}" v-for="(item,index) in medicineLabel" :key="index" @click="activeParam(item,1)">· {{item}}</div>
                     </div>
                 </div>
-                <div class="medicinelistBox">
-                    <medicinelist :list="medicinelist"></medicinelist>
-                </div>
             </div>
-            <div class="contentRight">
-                <newdrugside title="药品推荐"></newdrugside>
+            <div class="medicinelistBox">
+                <medicinelist :list="medicinelist"></medicinelist>
             </div>
         </div>
         <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
+<script src="../js/vant@2.12.min.js"></script>
 <script src="../element/element-ui-2.14.1.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
 <script src="../js/request.js"></script>
 <script src="../js/unit.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../js/businessHandle.js"></script>
-<script src="../components/navmenu.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../components/breadcrumb.js"></script>
 <script src="../components/index/newdrugside.js"></script>
 <script src="../components/medicinecompany.js"></script>
@@ -65,6 +56,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 breadcrumblist:[
                     {name:'医药',link:'./medicineHouse.html'},
                     {name:'产品库',link:'./medicineHouse.html'},
@@ -73,7 +65,8 @@
                 activeIndex: 0,
                 medicineLabel:['神经和肌肉、骨骼系统药','维生素、矿物质与氨基酸','神经和肌肉、骨骼系统药','维生素、矿物质与氨基酸','神经和肌肉、骨骼系统药','维生素、矿物质与氨基酸'],
                 paramArr: [''],
-                medicinelist: []
+                medicinelist: [],
+                showLeft: false
             }
         },
         methods:{
@@ -118,14 +111,15 @@
 </script>
 <style>
 .pageTypeGroupBody{
+    padding: 1.7rem 2.4rem;
     margin-top: 0;
     background-color: #F9F9FA00;
-    padding: 0;
 }
 .pageTypeItem{
     margin-left: 0!important;
-    margin-right: 2rem;
-    margin-bottom: 1.5rem;
+    margin-right: 1.2rem;
+    margin-bottom: .5rem;
+    font-size: 1.4rem;
 }
 </style>
 </html>

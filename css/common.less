@@ -15,6 +15,13 @@
         z-index: 1;
     }
 }
+.van-overlay{
+    z-index: 10002!important;
+}
+.van-popup{
+    height: 100%;
+    z-index: 10003!important;
+}
 .main{
     width: 100%;
     overflow: hidden;
@@ -30,6 +37,7 @@
             font-size: 2.4rem;
             color: #000000;
             line-height: 3.2rem;
+
         }
         .newsInfo{
             display: flex;
@@ -95,17 +103,6 @@
         background-color: #e6e6e6;
         bottom: 0;
     }
-    .navLogo{
-        // width: 6rem;
-        // height: 6rem;
-        width: 13rem;
-        height: 5rem;
-        font-size: 1rem;
-        cursor: pointer;
-        // background-image: url('../img/index/logo.png');
-        background-image: url('../img/index/logo_footer_bg.png');
-        background-size: 100% 100%;
-    }
     .menuBody{
         .el-menu{
             &.el-menu--horizontal{
@@ -151,34 +148,54 @@
         }
     }
 }
+.navbarBody{
+    .van-nav-bar{
+        z-index: 3;
+    }
+    .navLogo{
+        // width: 6rem;
+        // height: 6rem;
+        width: 8rem;
+        height: 3rem;
+        font-size: 1rem;
+        cursor: pointer;
+        // background-image: url('../img/index/logo.png');
+        background-image: url('../img/index/logo_footer_bg.png');
+        background-size: 100% 100%;
+    }
+}
 .bannerBody{
-    width: 114rem;
-    height: 31.4rem;
-    margin: 0 auto;
-    .el-carousel{
+    width: 32.7rem;
+    height: 12rem;
+    margin: 1.6rem auto 0;
+    .van-swipe{
         width: 100%;
         height: 100%;
-        .el-carousel__container{
+        border-radius: 1rem;
+        overflow: hidden;
+        .van-swipe-item{
             width: 100%;
             height: 100%;
-        }
-        img{
-            width: 100%;
-            max-width: 100%;
-            max-height: 100%;
-            cursor: pointer;
+            img{
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }
 .tagbarBody{
-    width: 114rem;
+    width: 36rem;
     height: 5rem;
-    background-color: #198CFF;
-    margin: 4rem auto 0;
+    margin: 2.6rem auto 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     position: relative;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        width: 0 !important
+    }
     .readAll{
         position: absolute;
         top: -2rem;
@@ -188,20 +205,97 @@
         cursor: pointer;
     }
     .tagbarItem{
-        font-size: 1.4rem;
+        background-color: #198CFF;
+        font-size: 1.6rem;
+        line-height: 3rem;
         color: #fff;
         flex: 1;
         display: flex;
         justify-content: space-around;
-        padding: 0 2rem;
-        border-right: 1px solid #fff;
-        line-height: 2rem;
-        height: 2rem;
+        padding: 0 1.2rem;
+        margin-right: 1rem;
+        word-break: keep-all;
+        border-radius: 4px;
         span{
             cursor: pointer;
         }
         &:nth-last-child(1){
             border-right: 0;
+        }
+    }
+}
+.tagbarbackBody{
+    width: 37.5rem;
+    height: 6.6rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: #198CFF;
+    .tagbarbackList{
+        display: flex;
+        align-items: center;
+        width: calc(100% - 4rem);
+        overflow-x: auto;
+        &::-webkit-scrollbar { 
+            width: 0 !important;
+            height: 0 !important;
+        }
+        .tagbarbackItem{
+            font-size: 1.6rem;
+            line-height: 3rem;
+            color: #D3D3D4;
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 1.2rem;
+            margin-right: 1rem;
+            word-break: keep-all;
+            border-radius: 4px;
+            span{
+                cursor: pointer;
+            }
+            &:nth-last-child(1){
+                border-right: 0;
+            }
+            &.active{
+                color: #F6F6F7;
+            }
+        }
+    }
+}
+.menuIcon{
+    width: 4rem;
+    background-color: #198CFF;
+    text-align: center;
+    font-size: 2rem;
+    &.light{
+        background-color: transparent;
+    }
+}
+.allTypePopup{
+    padding: 2rem;
+    .allTypeLabel{
+        font-size: 1.8rem;
+        color: #000000;
+    }
+    .typeList{
+        margin-top: 2.5rem;
+        font-size: 1.5rem;
+        color: #616367;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .typeItem{
+            width: 30%;
+            background-color: #F9F9FA;
+            border-radius: 8px;
+            height: 4rem;
+            line-height: 4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
     }
 }
@@ -242,9 +336,14 @@
     }
 }
 .newessayBody{
-    margin-bottom: 2rem;
+    // margin-bottom: 3.9rem;
+    padding: 0 2.4rem;
+    .modelLabel{
+        font-size: 1.8rem;
+    }
     .modelMore{
-        font-size: 1.4rem;
+        color: #198CFF;
+        font-size: 1.2rem;
         cursor: pointer;
     }
     .essayBox{
@@ -253,21 +352,12 @@
         justify-content: space-between;
         width: 100%;
         .essayItem{
-            width: 39rem;
-            height: 11rem;
+            margin-bottom: 3rem;
             display: flex;
-            .essayImg{
-                width: 12.8rem;
-                height: 8.4rem;
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
-            }
+            width: 100%;
             .essayInfo{
                 height: 100%;
                 flex: 1;
-                margin-left: .4rem;
                 .essayTitle{
                     font-size: 1.6rem;
                     color: #212429;
@@ -280,42 +370,50 @@
                     overflow: hidden;
                 }
                 .essayRemark{
-                    font-size: 1.4rem;
+                    font-size: 1rem;
                     color: #8C8E90;
                     line-height: 2rem;
                     height: 2rem;
-                    margin-top: 2rem;
+                    margin-top: .9rem;
     
                     overflow: hidden;
                     text-overflow:ellipsis;
                     white-space: nowrap;
                 }
             }
+            .essayImg{
+                width: 9.8rem;
+                height: 6.4rem;
+                margin-left: 1.6rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
         .essayItem2{
             width: 100%;
-            height: 16rem;
-            margin-bottom: 5rem;
+            margin-top: 3rem;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
             .essayImg{
-                width: 25rem;
-                height: 16rem;
+                width: 9.8rem;
+                height: 6.4rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .essayInfo{
-                width: calc(100% - 25rem - 3rem);
+                width: calc(100% - 9.8rem - 1rem);
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 .essayTitle{
-                    font-size: 2.2rem;
+                    font-size: 1.6rem;
                     color: #212429;
-                    line-height: 3rem;
+                    line-height: 2rem;
     
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
@@ -333,7 +431,7 @@
                     overflow: hidden;
                 }
                 .essayAuthor{
-                    margin-top: 2rem;
+                    margin-top: .5rem;
                     font-size: 1.4rem;
                     color: #8C8E90;
                     line-height: 2.2rem;
@@ -358,7 +456,7 @@
         justify-content: space-between;
         width: 100%;
         .essayMsgItem{
-            width: 39rem;
+            width: 100%;
             height: 2rem;
             line-height: 2rem;
             position: relative;
@@ -373,9 +471,10 @@
                 display: inline-block;
                 position: absolute;
                 top: .9rem;
+                left: 0;
             }
             .essayMsg{
-                font-size: 1.6rem;
+                font-size: 1.4rem;
                 color: #212429;
 
                 overflow: hidden;
@@ -386,18 +485,31 @@
     }
 }
 .businessBody{
-    margin-bottom: 2rem;
+    margin-bottom: 3.9rem;
+    padding: 0 2.4rem;
+    .modelLabel{
+        font-size: 1.8rem;
+    }
+    .modelMore{
+        color: #198CFF;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
     .businessBox{
         width: 100%;
         display: flex;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            width: 0 !important
+        }
         // justify-content: space-between;
         .businessItem{
-            width: 13.6rem;
+            width: 8rem;
             cursor: pointer;
             margin-right: 2rem;
             .businessImg{
-                width: 13.6rem;
-                height: 13.6rem;
+                width: 8rem;
+                height: 8rem;
                 img{
                     width: 100%;
                     height: 100%;
@@ -405,7 +517,7 @@
             }
             .businessInfo{
                 text-align: center;
-                font-size: 1.4rem;
+                font-size: 1rem;
                 color: #212429;
                 margin-top: 1rem;
                 line-height: 2rem;
@@ -414,238 +526,199 @@
     }
 }
 .doctorBody{
-    margin-bottom: 2rem;
-    .doctorBox{
-        display: flex;
-        flex-wrap: wrap;
+    margin-bottom: 3.9rem;
+    padding: 0 2.4rem;
+    .modelLabel{
+        font-size: 1.8rem;
+    }
+    .modelMore{
+        color: #198CFF;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    .doctorlistBox{
+        margin-top: 3rem;
         .doctorItem{
-            width: 19.4rem;
-            height: 27.3rem;
-            background-color: #F9F9FA;
-            margin-right: 1.4rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            position: relative;
-            &:nth-of-type(4n){
-                margin-right: 0;
-            }
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
             .doctorImg{
-                width: 8rem;
-                height: 8rem;
-                margin: 2.5rem auto 0;
-                border-radius: 50%;
+                width: 5rem;
+                height: 5rem;
                 overflow: hidden;
+                border-radius: 50%;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
-            .doctorName{
-                color: #198CFF;
-                font-size: 1.6rem;
-                font-weight: 500;
-                margin-top: 2rem;
-            }
-            .doctorType{
-                font-size: 1.3rem;
-                color: #8C8E90;
-                margin-top: 1rem;
-            }
-            .doctorDept{
-                font-size: 1.3rem;
-                font-weight: 400;
-                color: #212429;
-                margin-top: 1.5rem;
-            }
-            .doctorContact{
-                position: absolute;
-                bottom: 0;
+            .doctorInfo{
+                width: calc(100% - 2.2rem - 5rem);
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                height: 5.6rem;
-                background: #F0F0F0;
-                padding: 0 2rem;
-                box-sizing: border-box;
-                .doctorScore{
-                    font-size: 1.3rem;
-                    color: #212429;
+                .doctorName{
+                    display: flex;
+                    align-items: center;
+                    .doctorNameText{
+                        font-size: 1.8rem;
+                        line-height: 3rem;
+                        color: #198CFF;
+                    }
+                    .doctorType{
+                        font-size: 1.2rem;
+                        line-height: 2rem;
+                        color: #8C8E90;
+                        margin-left: 1rem;
+                    }
                 }
-                .doctorContactBar{
-                    width: 6.4rem;
-                    height: 3.2rem;
-                    background: #198CFF;
-                    border-radius: 1.6rem;
-                    line-height: 3.2rem;
-                    color: #fff;
-                    font-size: 1.3rem;
-                    cursor: pointer;
+                .doctorHospital{
+                    font-size: 1.4rem;
+                    color: #747474;
+                    line-height: 2rem;
+                    display: flex;
+                    .doctorDept{
+                        font-size: 1.3rem;
+                        color: #212429;
+                    }
+                }
+                .doctorRemark{
+                    margin-top: 1rem;
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    color: #616367;
+
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
                 }
             }
+        }
+        .noData{
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.4rem;
+            color: #999;
         }
     }
 }
 .recommendDoctorBody{
     margin-bottom: 2rem;
+    padding: 2.4rem;
     .recommendDoctorBox{
-        display: flex;
-        flex-wrap: wrap;
+        // display: flex;
+        // flex-wrap: wrap;
         .recommendDoctorItem{
-            cursor: pointer;
-            width: 26.2rem;
-            // height: 36rem;
-            background-color: #F9F9FA;
-            margin-right: 3rem;
             margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            &:nth-of-type(4n){
-                margin-right: 0;
-            }
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #F9FCFF 0%, #E9F4FF 100%);
+            border-radius: 16px;
             .recommendDoctorImg{
                 width: 10rem;
                 height: 10rem;
-                margin: 2.5rem auto 0;
-                border-radius: 50%;
                 overflow: hidden;
+                border-radius: 50%;
+                margin-top: 4.2rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .recommendDoctorName{
+                // margin-top: 1.8rem;
+                font-size: 1.8rem;
                 color: #198CFF;
-                font-size: 1.6rem;
-                font-weight: 500;
-                margin-top: 2rem;
+                line-height: 2.5rem;
             }
             .recommendDoctorType{
                 font-size: 1.3rem;
-                color: #8C8E90;
-                margin-top: 1rem;
+                line-height: 2rem;
+                color: #747474;
+                margin-left: 1rem;
             }
             .recommendDoctorDept{
                 font-size: 1.3rem;
-                font-weight: 400;
                 color: #212429;
-                margin-top: 1.5rem;
+                line-height: 2rem;
+                display: flex;
+                justify-content: center;
             }
             .recommendDoctorInfo{
-                margin-top: 2rem;
-                margin-bottom: 2rem;
+                width: calc(100% - 2.2rem - 5rem);
+                margin-top: 2.1rem;
                 font-size: 1.3rem;
+                line-height: 2rem;
                 color: #8C8E90;
-                line-height: 1.8rem;
-                padding: 0 2.6rem;
-
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                overflow: hidden;
-            }
-            .recommendDoctorContact{
-                margin-top: 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                height: 5.6rem;
-                background: #F0F0F0;
-                padding: 0 2rem;
-                box-sizing: border-box;
-                .recommendDoctorScore{
-                    font-size: 1.3rem;
-                    color: #212429;
-                }
-                .recommendDoctorContactBar{
-                    width: 6.4rem;
-                    height: 3.2rem;
-                    background: #198CFF;
-                    border-radius: 1.6rem;
-                    line-height: 3.2rem;
-                    color: #fff;
-                    font-size: 1.3rem;
-                    cursor: pointer;
-                }
+                margin-bottom: 4rem;
+                text-align: center;
             }
         }
     }
 }
 .hospitalBody{
-    margin-bottom: 2rem;
-    .hospitalBox{
-        display: flex;
-        flex-wrap: wrap;
-        .hospitalItem{
-            width: 26.4rem;
-            height: 32.9rem;
-            background-color: #F9F9FA;
-            margin-right: 1.4rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            position: relative;
-            &:nth-of-type(3n){
-                margin-right: 0;
-            }
-            .hospitalImg{
-                width: 26.4rem;
-                height: 15.5rem;
+    margin-bottom: 3.9rem;
+    padding: 0 2.4rem;
+    .modelLabel{
+        font-size: 1.8rem;
+    }
+    .modelMore{
+        color: #198CFF;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    .hospitallistBox{
+        margin-top: 3rem;
+        .doctorItem{
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            .doctorImg{
+                width: 10rem;
+                height: 7rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
-            .hospitalName{
-                color: #198CFF;
-                font-size: 1.8rem;
-                font-weight: 500;
-                margin: 2rem auto 0;
-                width: calc(100% - 4rem);
-                text-align: left;
-
-                overflow: hidden;
-                text-overflow:ellipsis;
-                white-space: nowrap;
-            }
-            .hospitalAddress{
-                font-size: 1.3rem;
-                font-weight: 400;
-                color: #212429;
-                margin: 2rem auto 0;
-                width: calc(100% - 4rem);
-                text-align: left;
-                line-height: 2rem;
-
-                display: -webkit-box;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 2;
-                overflow: hidden;
-            }
-            .hospitalContact{
-                position: absolute;
-                bottom: 0;
+            .doctorInfo{
+                width: calc(100% - 7rem - 4rem);
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                height: 5.6rem;
-                background: #F0F0F0;
-                padding: 0 2rem;
-                box-sizing: border-box;
-                .hospitalScore{
-                    font-size: 1.3rem;
-                    color: #212429;
+                .doctorName{
+                    display: flex;
+                    align-items: center;
+                    .doctorNameText{
+                        font-size: 1.5rem;
+                        line-height: 2rem;
+                        color: #000000;
+                    }
+                    .doctorType{
+                        font-size: 1.4rem;
+                        line-height: 2rem;
+                        color: #FF5533;
+                        margin-left: 2rem;
+                    }
                 }
-                .hospitalContactBar{
-                    width: 6.4rem;
-                    height: 3.2rem;
-                    background: #198CFF;
-                    border-radius: 1.6rem;
-                    line-height: 3.2rem;
-                    color: #fff;
-                    font-size: 1.3rem;
-                    cursor: pointer;
+                .doctorAddress{
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    color: #8C8E90;
+
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                    white-space: nowrap;
+                }
+                .doctorScore{
+                    font-size: 1.2rem;
+                    color: #198CFF;
+                    line-height: 2rem;
+                    display: flex;
                 }
             }
         }
@@ -956,7 +1029,7 @@
     margin: 1rem auto;
 }
 .recomDoctorBody{
-    padding-bottom: 5rem;
+    padding: 2.4rem;
     .recomDoctorBox{
         padding-bottom: 2rem;
         .recomDoctorItem{
@@ -1009,6 +1082,7 @@
     }
 }
 .recomProductBody,.newdrugsideBody{
+    padding: 2.4rem;
     .recomProductBox{
         padding-bottom: 2rem;
         .recomProductItem{
@@ -1050,12 +1124,17 @@
     }
 }
 .disclaimersBody{
+    margin-bottom: 3.9rem;
+    padding: 0 2.4rem;
+    .modelLabel{
+        font-size: 1.8rem;
+    }
     .disclaimersBox{
-        width: 26rem;
-        margin: 1rem auto 0;
+        // width: 26rem;
+        // margin: 1rem auto 0;
         .disclaimersText{
             text-indent: 2.8rem;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #616367;
             line-height: 2.4rem;
         }
@@ -1063,16 +1142,24 @@
 }
 .centerSidenav{
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2.4rem;
     .navItem{
-        height: 5.6rem;
-        text-indent: 4rem;
-        line-height: 5.6rem;
+        text-align: center;
+        height: 4rem;
+        padding: 0 1.5rem;
+        line-height: 4rem;
         color: #616367;
         font-size: 1.6rem;
         cursor: pointer;
+        border-radius: 8px;
+        background-color: #F9F9FA;
+        color: #616367;
+        margin-right: 4rem;
         &.active{
-            background-color: #F9F9FA;
-            color: #212429;
+            background-color: #198CFF;
+            color: #ffffff;
             font-weight: bold;
         }
     }
@@ -1226,7 +1313,7 @@
     }
     .centerItemContent{
         width: 100%;
-        margin-bottom: 6rem;
+        margin-bottom: 3rem;
         .centerItemContHeader{
             display: flex;
             justify-content: space-between;
@@ -1327,6 +1414,7 @@
         }
     }
     .centerInfoBox{
+        padding: 0 2.4rem;
         .centerInfoTitle{
             display: flex;
             justify-content: space-between;
@@ -1343,8 +1431,8 @@
             }
         }
         .formItem{
-            display: flex;
-            margin-top: 2.4rem;
+            // display: flex;
+            margin-top: 1.4rem;
             .formLabel{
                 width: 10rem;
                 flex-shrink: 0;
@@ -1355,7 +1443,8 @@
             .formValue{
                 flex: 1;
                 .el-select{
-                    margin-left: 1.5rem;
+                    // margin-left: 1.5rem;
+                    width: 100%;
                     &:nth-of-type(1){
                         margin-left: 0;
                     }
@@ -1370,7 +1459,7 @@
                         text-align: center;
                     }
                     .avatar {
-                        height: 10rem;
+                        height: 15rem;
                         width: 15rem;
                         display: block;
                     }
@@ -1391,6 +1480,17 @@
             margin-top: 2rem;
             display: flex;
             justify-content: center;
+        }
+        .formItemHandleItem{
+            margin: 2rem auto;
+            border-radius: 4px;
+            background: #198CFF;
+            width: 31.4rem;
+            height: 5rem;
+            line-height: 5rem;
+            font-size: 1.6rem;
+            color: #fff;
+            text-align: center;
         }
     }
     .centerBar1{
@@ -1643,16 +1743,15 @@
     }
 }
 .searchPageBody{
-    width: 114.4rem;
-    margin: 4rem auto 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: calc(100vh - 9.3rem);
     .searchInputBox{
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: 6rem;
+        margin-bottom: 3rem;
         .searchInput{
             width: 102.4rem;
             height: 5rem;
@@ -1673,13 +1772,14 @@
     }
     .searchResultBox{
         width: 82rem;
+        height: 100%;
         .searchResultTop{
             display: flex;
             justify-content: space-between;
-            padding-bottom: 1.5rem;
+            padding: 1rem 1rem;
             border-bottom: 1px solid #D3D3D4;
             .searchResultLabel{
-                font-size: 1.8rem;
+                font-size: 1.4rem;
                 color: #000000;
             }
             .searchResultNumBox{
@@ -1691,14 +1791,15 @@
             }
         }
         .searchResultCont{
-            margin-top: 4rem;
+            padding: 2rem 1rem;
+            height: calc(100% - 4rem);
+            overflow: auto;
             .searchResultItem{
                 cursor: pointer;
                 display: flex;
                 justify-content: space-between;
-                height: 7.5rem;
+                // height: 7.5rem;
                 padding-bottom: 2.5rem;
-                margin-bottom: 2.5rem;
                 border-bottom: 1px solid #F6F6F7;
                 .sriImg{
                     width: 13.3rem;
@@ -1734,6 +1835,182 @@
                     }
                 }
             }
+            .doctorItem{
+                margin-bottom: 3rem;
+                display: flex;
+                justify-content: space-between;
+                cursor: pointer;
+                .doctorImg{
+                    width: 7rem;
+                    height: 7rem;
+                    overflow: hidden;
+                    border-radius: 4px;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .doctorInfo{
+                    width: calc(100% - 7rem - 2.3rem);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .doctorName{
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        .doctorNameText{
+                            font-size: 2.2rem;
+                            line-height: 3rem;
+                            color: #000000;
+                            word-break: keep-all;
+                            margin-right: 1rem;
+                        }
+                        .doctorType{
+                            font-size: 1.4rem;
+                            line-height: 2rem;
+                            color: #198CFF;
+                            word-break: keep-all;
+                        }
+                    }
+                    .doctorHospital{
+                        font-size: 1.4rem;
+                        color: #747474;
+                        line-height: 2rem;
+                        display: flex;
+                        flex-wrap: wrap;
+                        .doctorhospitalText{
+                            margin-right: 1rem;
+                        }
+                    }
+                    .doctorRemark{
+                        font-size: 1.4rem;
+                        line-height: 2rem;
+                        color: #747474;
+    
+                        overflow: hidden;
+                        text-overflow:ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+            .hospitalItem{
+                display: flex;
+                margin-bottom: 1rem;
+                cursor: pointer;
+                .hospitalImg{
+                    width: 6.8rem;
+                    height: 4.8rem;
+                    border-radius: .4rem;
+                    overflow: hidden;
+                    flex-shrink: 0;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .hospitalInfo{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    margin-left: 1rem;
+                    .hospitalName{
+                        color: #2170BF;
+                        font-size: 1.6rem;
+    
+                        // overflow: hidden;
+                        // text-overflow:ellipsis;
+                        // white-space: nowrap;
+                        .hospitalType{
+                            line-height: 2.6rem;
+                        }
+                    }
+                    .hospitalTel{
+                        line-height: 1.6rem;
+                    }
+                    .hospitalAddress{
+                        font-size: 1.4rem;
+                        color: #616367;
+                    }
+                }
+            }
+            .medicineItem{
+                border-bottom: 1px solid #F6F6F7;
+                display: flex;
+                justify-content: space-between;
+                .medicineImg{
+                    width: 7rem;
+                    height: 7rem;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .medicineInfo{
+                    width: calc(100% - 7rem - 2.3rem);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    .medicineName{
+                        display: flex;
+                        justify-content: space-between;
+                        .medicineNameText{
+                            font-size: 1.8rem;
+                            line-height: 2.5rem;
+                            color: #198CFF;
+                            cursor: pointer;
+                        }
+                        .medicineAskBar{
+                            padding: .6rem 1.8rem;
+                            color: #212429;
+                            font-size: 1.4rem;
+                            background-color: #FFE14D;
+                            border-radius: 1.6rem;
+                            line-height: 2rem;
+                            font-weight: bold;
+                        }
+                    }
+                    .medicineMsg{
+                        margin-top: 1rem;
+                        color: #747474;
+                        font-size: 1.4rem;
+                        line-height: 2rem;
+                        .medicinemItem{
+                            margin-right: 2rem;
+                        }
+                    }
+                    .medicineCompany{
+                        display: flex;
+                        .medicineCompanyName{
+                            font-size: 1.4rem;
+                            line-height: 2rem;
+                            color: #212429;
+                        }
+                        .companyList{
+                            margin-left: 2rem;
+                            color: #FF5533;
+                            font-size: 1.4rem;
+                            line-height: 2rem;
+                        }
+                    }
+                }
+            }
+            .messageItem{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+    
+                font-size: 1.4rem;
+                line-height: 2rem;
+                cursor: pointer;
+                .messageTitle{
+                    color: #333333;
+                }
+                .messageTime{
+                    white-space: nowrap;
+                    margin-left: 2rem;
+                }
+            }
         }
     }
     .searchHotWordBox{
@@ -1762,90 +2039,75 @@
     }
 }
 .loginPageBody{
-    width: 114rem;
-    margin: 0 auto;
     border-top: 1px solid transparent;
+    height: 100vh;
+    background-color: #fff;
+    box-sizing: border-box;
     .loginNavBody{
-        width: 114rem;
         height: 8rem;
         margin: 4rem 0 6rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        .loginNavLogo{
-            width: 17.5rem;
-            height: 7rem;
-            font-size: 1rem;
-            cursor: pointer;
-            background-image: url(../img/index/logo_footer.png);
-            background-size: 100% 100%;
-        }
         .loginNavBox{
             display: flex;
+            flex-wrap: wrap;
             .loginNavItem{
-                font-size: 1.6rem;
-                color: #198CFF;
-                margin-left: 5rem;
+                padding: 1rem 1.6rem;
+                color: #333333;
+                line-height: 2rem;
+                font-size: 1.4rem;
+                margin-left: 2rem;
+                margin-bottom: 2rem;
                 cursor: pointer;
+                background: #F6F6F7;
+                border-radius: 8px;
             }
         }
     }
-    .loginCont{
-        display: flex;
-        justify-content: space-between;
-        .loginImg{
-            width: 69rem;
-            height: 45rem;
-            background-image: url('../img/loginBg.png');
+    .loginForm{
+        padding: 2.4rem;
+        position: relative;
+        box-sizing: border-box;
+        .lfLabel{
+            color: #212429;
+            line-height: 3.3rem;
+            font-size: 2.4rem;
+            margin-bottom: 3rem;
         }
-        .loginForm{
-            width: 43rem;
-            height: 45rem;
-            background-color: #fff;
-            padding: 5rem 6rem 3rem;
-            position: relative;
-            box-sizing: border-box;
-            .lfLabel{
-                color: #212429;
-                line-height: 3.3rem;
-                font-size: 2.4rem;
-                margin-bottom: 8rem;
-            }
-            .toRegister{
-                position: absolute;
-                top: 6rem;
-                right: 6rem;
-                font-size: 1.6rem;
-                color: #198CFF;
-                cursor: pointer;
-            }
-            .el-input{
-                margin-bottom: 3.5rem;
-            }
-            .loginBar{
-                width: 100%;
-                height: 5rem;
-                line-height: 5rem;
-                background-color: #198CFF;
-                text-align: center;
-                border-radius: 27px;
-                font-size: 1.6rem;
-                color: #fff;
-                cursor: pointer;
-            }
+        .toRegister{
+            position: absolute;
+            top: 6rem;
+            right: 6rem;
+            font-size: 1.6rem;
+            color: #198CFF;
+            cursor: pointer;
+        }
+        .el-input{
+            margin-bottom: 3.5rem;
+        }
+        .loginBar{
+            line-height: 5rem;
+            background-color: #198CFF;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.6rem;
+            color: #fff;
+            width: 32.7rem;
+            height: 5rem;
+            background: #198CFF;
+            border-radius: 4px;
         }
     }
 }
 .registerBody{
     position: relative;
     border-top: 1px solid transparent;
-    background-color: #F9F9FA;
+    background-color: #fff;
     .registerHeader{
         width: calc(100% - 30rem);
-        max-width: 114rem;
-        height: 8rem;
-        margin: 4rem auto 6rem;
+        margin: 4rem auto 2rem;
         display: flex;
         justify-content: space-between;
         .loginNavLogo{
@@ -1864,10 +2126,9 @@
         }
     }
     .registerBox{
-        width: 90rem;
         margin: 0 auto;
         background-color: #fff;
-        padding: 5rem;
+        padding: 2.4rem;
         box-sizing: border-box;
         .groupTitle{
             font-size: 1.8rem;
@@ -1876,6 +2137,12 @@
             margin-bottom: 2rem;
         }
         .el-form-item{
+            // .el-form-item__label{
+                // display: none;
+            // }
+            .el-form-item__content{
+                margin-left: 0;
+            }
             .avatar-uploader{
                 .avatar-uploader-icon {
                     font-size: 2.8rem;
@@ -1926,9 +2193,11 @@
 .essaylistBody{
     margin-bottom: 2rem;
     .modelLabelBox{
+        font-size: 1.4rem;
         border-bottom: 1px solid #D3D3D4;
-        padding-bottom: 2rem;
-        margin-bottom: 5rem;
+        padding-bottom: 1rem;
+        margin-bottom: 2.4rem;
+        margin-top: 1rem;
     }
     .essayItemBox{
         display: flex;
@@ -1937,13 +2206,13 @@
         width: 100%;
         .essayItem{
             width: 100%;
-            height: 16.4rem;
+            // height: 16.4rem;
             display: flex;
-            margin-bottom: 5rem;
+            margin-bottom: 3rem;
             .essayItemImg{
-                width: 25rem;
-                height: 16.4rem;
-                margin-right: 3rem;
+                width: 9.8rem;
+                height: 6.4rem;
+                margin-right: 1.6rem;
                 img{
                     width: 100%;
                     height: 100%;
@@ -1957,10 +2226,10 @@
                 justify-content: space-between;
                 .essayItemTitle{
                     cursor: pointer;
-                    font-size: 2.2rem;
+                    font-size: 1.6rem;
                     color: #212429;
-                    line-height: 3rem;
-                    height: 6rem;
+                    line-height: 2rem;
+                    // height: 6rem;
     
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
@@ -1968,7 +2237,7 @@
                     overflow: hidden;
                 }
                 .essayItemRemark{
-                    font-size: 1.4rem;
+                    font-size: 1rem;
                     color: #8C8E90;
                     line-height: 2rem;
                     height: 4rem;
@@ -1980,12 +2249,9 @@
                 }
                 .essayItemBottom{
                     display: flex;
-                    font-size: 1.6rem;
-                    color: #747474;
-                    line-height: 2.2rem;
-                    .essayItemTime{
-
-                    }
+                    font-size: 1rem;
+                    color: #8C8E90;
+                    margin-top: .9rem;
                     .essayItemAuthor{
                         margin-left: 3rem;
                     }
@@ -2005,12 +2271,14 @@
     }
 }
 .essaydetailBody{
+    padding: 2.4rem;
     position: relative;
     overflow: hidden;
     .essayTitle{
-        font-size: 2.4rem;
+        font-size: 2rem;
         line-height: 3.2rem;
         font-weight: bold;
+        color: #212429;
 
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -2019,10 +2287,10 @@
     }
     .essayRemark{
         display: flex;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         line-height: 1.8rem;
-        color: #747474;
-        margin-top: 2rem;
+        color: #8C8E90;
+        margin-top: 1.6rem;
         .essayAuthor{
             margin-left: 2.4rem;
         }
@@ -2038,7 +2306,7 @@
         }
     }
     .essayContent{
-        margin-top: 4rem;
+        margin-top: 3rem;
         font-size: 1.5rem;
         line-height: 2.6rem;
         &.nopayed{
@@ -2048,7 +2316,7 @@
         }
     }
     .essayLabels{
-        margin-top: 8rem;
+        margin-top: 3rem;
         display: flex;
         .essayLabelItem{
             margin-right: 1rem;
@@ -2109,6 +2377,7 @@
     }
 }
 .essayRelatedBody{
+    padding: 2.4rem;
     .essayRelatedBox{
         padding-bottom: 2rem;
         .essayRelatedItem{
@@ -2223,44 +2492,56 @@
 }
 // 评测主页-医院
 .assesshospitalBody{
-    width: 82rem;
+    width: 100%;
     .assesshospitalTabs{
-        position: relative;
-        width: 100%;
         display: flex;
-        padding-bottom: 2.2rem;
+        align-items: center;
         border-bottom: 1px solid #D3D3D4;
-        .ahTabItem{
-            font-size: 1.6rem;
-            color: #616367;
-            cursor: pointer;
-            margin-right: 4rem;
-            line-height: 2.2rem;
-            &.active{
-                color: #000000;
-                font-weight: bold;
+        .ahTabList{
+            position: relative;
+            width: calc(100% - 4rem);
+            display: flex;
+            padding: 2rem 0;
+            overflow: auto;
+            &::-webkit-scrollbar { 
+                width: 0 !important;
+                height: 0 !important;
+            }
+            .ahTabItem{
+                padding: 0 2rem;
+                font-size: 1.6rem;
+                color: #616367;
+                cursor: pointer;
+                margin-right: 2rem;
+                line-height: 2.2rem;
+                word-break: keep-all;
+                &.active{
+                    color: #000000;
+                    font-weight: bold;
+                }
             }
         }
     }
     .assesshospitalBox{
         width: 100%;
-        margin-top: 4rem;
+        margin-top: 2rem;
         .assesshospitalItem{
+            padding: 0 2.4rem;
             display: flex;
             cursor: pointer;
             justify-content: space-between;
-            height: 16.4rem;
-            margin-bottom: 5rem;
+            height: 8.4rem;
+            margin-bottom: 3rem;
             .assesshospitalImg{
-                width: 21rem;
-                height: 100%;
+                width: 7rem;
+                max-height: 100%;
                 img{
                     width: 100%;
-                    height: 100%;
+                    // height: 100%;
                 }
             }
             .assesshospitalInfo{
-                width: 58rem;
+                width: calc(100% - 2.4rem - 7rem);
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -2268,7 +2549,7 @@
                     display: flex;
                     align-items: center;
                     .assesshospitalNameText{
-                        font-size: 2.2rem;
+                        font-size: 1.5rem;
                         color: #000000;
                         font-weight: bold;
 
@@ -2279,17 +2560,17 @@
                     .assesshospitalLevel{
                         // width: 8rem;
                         flex-shrink: 0;
-                        font-size: 1.4rem;
+                        font-size: 1.2rem;
                         color: #198CFF;
                         padding-left: 2rem;
                     }
                 }
                 .assesshospitalContact{
-                    font-size: 1.4rem;
+                    font-size: 1.2rem;
                     color: #747474;
-                    line-height: 2.3rem;
-                    height: 7rem;
-                    margin-top: 2rem;
+                    line-height: 1.6rem;
+                    // height: 7rem;
+                    margin-top: .4rem;
 
                     display: -webkit-box;
                     -webkit-box-orient: vertical;
@@ -2297,10 +2578,10 @@
                     overflow: hidden;
                 }
                 .assesshospitalAddress{
-                    line-height: 2rem;
-                    font-size: 1.4rem;
+                    line-height: 1.6rem;
+                    font-size: 1.2rem;
                     color: #000000;
-                    margin-top: 2.5rem;
+                    margin-top: .4rem;
 
                     overflow: hidden;
                     text-overflow:ellipsis;
@@ -2312,7 +2593,7 @@
 }
 .readMoreText{
     position: absolute;
-    top: calc(50% - 2rem);
+    top: calc(50% - 1rem);
     right: 0;
     color: #616367;
     font-size: 1.6rem;
@@ -2321,16 +2602,18 @@
     cursor: pointer;
 }
 .newsdrugwarnBody{
-    width: 100%;
+    // width: 100%;
     background-color: #F9F9FA;
-    padding: 4rem 7rem 4rem 5rem;
+    padding: 1.8rem;
+    margin: 2.4rem;
     box-sizing: border-box;
     .newsdrugwarnLabelBox{
         position: relative;
         width: 100%;
         border-bottom: 1px solid #D3D3D4;
         padding-bottom: 1.5rem;
-        font-size: 2rem;
+        font-size: 1.8rem;
+        text-align: center;
         color: #000000;
         .readMoreText{
             top: 0;
@@ -2340,17 +2623,22 @@
         margin-top: 1.8rem;
         .newsdrugwarnItem{
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             margin-top: 1.6rem;
             cursor: pointer;
+            text-indent: .5rem;
+            &::before{
+                content: '·';
+            }
             .newsdrugwarnTitle{
-                width: calc(100% - 16rem);
+                // width: calc(100% - 16rem);
                 font-size: 1.4rem;
-                color: #333333;
+                line-height: 2rem;
+                color: #000;
 
-                overflow: hidden;
-                text-overflow:ellipsis;
-                white-space: nowrap;
+                // overflow: hidden;
+                // text-overflow:ellipsis;
+                // white-space: nowrap;
             }
             .newsdrugwarnTime{
                 font-size: 1.4rem;
@@ -2576,211 +2864,116 @@
 }
 .drugIntroduceBody{
     width: 100%;
+    padding: 2.4rem;
+    box-sizing: border-box;
     .drugIntroduceHeader{
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #D3D3D4;
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
         .drugIHLabel{
             font-size: 2rem;
             color: #000000;
         }
-        .drugLabelBox{
-            display: flex;
-            .drugLabelItem{
-                color: #333333;
-                font-size: 1.6rem;
-                display: flex;
-                cursor: pointer;
-                .drugLabelLine{
-                    padding: 0 .3rem;
-                }
-            }
-            .drugLabelMore{
-                color: #198CFF;
-                font-size: 1.6rem;
-                margin-left: 2.5rem;
-                cursor: pointer;
-            }
+        .drugIHMore{
+            font-size: 1.2rem;
+            color: #198CFF;
+            line-height: 1.7rem;
         }
     }
     .drugIntroduceContent{
-        display: flex;
-        justify-content: space-between;
         margin-top: 3rem;
-        .drugICLeft{
-            width: 38rem;
-            background-color: #EEEEEE;
-            padding: 2.5rem 2rem;
+        .drugICLHospital{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background: #F9F9FA;
+            border-radius: 4px;
+            padding: 1.6rem;
             box-sizing: border-box;
-            .drugICLHospital{
-                width: 100%;
+            .drugICLHospitalImg{
+                width: 7rem;
+                height: 7rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .drugICLHospitalInfo{
+                // height: 8rem;
+                width: calc(100% - 10rem);
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
-                padding-bottom: 2.5rem;
-                border-bottom: 1px solid #ccc;
-                .drugICLHospitalImg{
-                    width: 8rem;
-                    height: 8rem;
+                .drugICLHospitalName{
+                    color: #198CFF;
+                    font-size: 1.5rem;
+                    line-height: 2rem;
+                }
+                .drugICLHospitalText{
+                    line-height: 2rem;
+                    font-size: 1.4rem;
+                    color: #5B5B5B;
+                }
+            }
+        }
+        .drugICRShowDrug{
+            margin-top: 3rem;
+            .drugICRShowDrugItem{
+                margin-top: 1.6rem;
+                display: flex;
+                .drugICRShowDrugImg{
+                    width: 7rem;
+                    height: 7rem;
                     img{
                         width: 100%;
                         height: 100%;
                     }
                 }
-                .drugICLHospitalInfo{
-                    height: 8rem;
-                    width: calc(100% - 10rem);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    .drugICLHospitalName{
-                        color: #198CFF;
-                        font-size: 1.6rem;
-                    }
-                    .drugICLHospitalText{
-                        line-height: 2rem;
-                        font-size: 1.4rem;
-                        color: #5B5B5B;
-                    }
-                }
-            }
-            .drugICLDrug{
-                margin-top: 2.5rem;
-                .drugICLDrugItem{
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 1.4rem;
+                .drugICRShowDrugName{
+                    font-size: 1.5rem;
                     line-height: 2rem;
-                    margin-bottom: 1rem;
-                    &:nth-last-of-type(1){
-                        margin-bottom: 0;
-                    }
-                    .drugICLDrugName{
-                        color: #198CFF;
-                        cursor: pointer;
-                    }
-                    .drugICLDrugAsk{
-                        color: #FF5533;
-                        cursor: pointer;
-                    }
+                    margin-top: 1rem;
+                    margin-left: 2.3rem;
+                    color: #198CFF;
                 }
             }
         }
-        .drugICRight{
-            width: calc(100% - 38rem - 3rem);
-            .drugICRAddress{
-                display: flex;
-                font-size: 1.4rem;
-                align-items: center;
-                color: #5B5B5B;
-                padding-bottom: 1.5rem;
-                border-bottom: 1px solid #ccc;
-                .drugICRAddressItem{
-                    display: flex;
-                    align-items: center;
-                    .drugICRAddressItemText{
-                        cursor: pointer;
-                    }
-                    .drugICRAddressItemLine{
-                        padding: .3rem;
-                    }
-                }
-                .drugICRAddressMore{
-                    margin-left: 2.5rem;
-                    cursor: pointer;
-                }
-            }
-            .drugICRShowDrug{
-                display: flex;
-                margin-top: 3rem;
-                .drugICRShowDrugItem{
-                    width: 10rem;
-                    margin-left: 2rem;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    cursor: pointer;
-                    .drugICRShowDrugImg{
-                        width: 8rem;
-                        height: 8rem;
-                        img{
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    .drugICRShowDrugName{
-                        font-size: 1.4rem;
-                        color: #5B5B5B;
-                        line-height: 2rem;
-                        margin-top: 1rem;
-                    }
-                }
-            }
-            .drugICRDrugData{
-                display: flex;
-                flex-wrap: wrap;
-                margin-top: 2.5rem;
-                .drugICRDrugDataItem{
-                    margin-bottom: 1rem;
-                    width: calc((100% - 6rem) / 4);
-                    margin-right: 2rem;
-                    font-size: 1.4rem;
-                    line-height: 2rem;
-                    cursor: pointer;
-                    &:nth-of-type(4n){
-                        margin-right: 0;
-                    }
-                    .drugICRDrugDataName{
-                        color: #198CFF;
-                        max-width: 12rem;
-                        overflow: hidden;
-                        display: inline-block;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        vertical-align: middle;
-                    }
-                    .drugICRDrugDataNum{
-                        color: #747474;
-                    }
-                }
-            }
+        .drugLabelMore{
+            width: 33rem;
+            height: 4rem;
+            line-height: 4rem;
+            font-size: 1.4rem;
+            margin: 1rem auto;
+            background: #F6F6F7;
+            border-radius: 4px;
+            text-align: center;
         }
     }
 }
 .companytroduceBody{
     width: 100%;
+    padding: 2.4rem;
+    box-sizing: border-box; 
     .companytroduceHeader{
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #D3D3D4;
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
         .companyHLabel{
             font-size: 2rem;
             color: #000000;
         }
-        .companyLabelBox{
-            display: flex;
-            .companyLabelItem{
-                color: #333333;
-                font-size: 1.6rem;
-                display: flex;
-                cursor: pointer;
-                .companyLabelLine{
-                    padding: 0 .3rem;
-                }
-            }
-            .companyLabelMore{
-                color: #198CFF;
-                font-size: 1.6rem;
-                margin-left: 2.5rem;
-                cursor: pointer;
-            }
+        .companyHMore{
+            font-size: 1.2rem;
+            color: #198CFF;
+            line-height: 1.7rem;
         }
     }
     .companytroduceContent{
-        margin-top: 3rem;
+        margin-top: 1rem;
         .companyAddress{
             display: flex;
             font-size: 1.4rem;
@@ -2804,26 +2997,49 @@
             }
         }
         .companyData{
-            margin-top: 2.5rem;
             .companyDataItem{
-                margin-bottom: 1rem;
-                margin-right: 2rem;
-                font-size: 1.4rem;
-                line-height: 2rem;
-                cursor: pointer;
-                &:nth-of-type(4n){
+                margin-bottom: 2.4rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                &:nth-of-type(5n){
                     margin-right: 0;
                 }
-                .companyDataName{
-                    color: #198CFF;
+                .companyImg{
+                    width: 7rem;
+                    height: 7rem;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
                 }
-                .companyDataContent{
-                    padding-left: 2rem;
-                }
-                .companyDataNum{
-                    color: #747474;
+                .companyMsg{
+                    min-height: 7rem;
+                    width: calc(100% - 7rem - 2.3rem);
+                    .companyName{
+                        font-size: 1.4rem;
+                        color: #198CFF;
+                        line-height: 2rem;
+                        margin-top: 1rem;
+                    }
+                    .companyTel{
+                        font-size: 1.4rem;
+                        color: #212429;
+                        margin-top: .5rem;
+                        line-height: 2rem;
+                    }
                 }
             }
+        }
+        .companyMore{
+            width: 33rem;
+            height: 4rem;
+            line-height: 4rem;
+            font-size: 1.4rem;
+            margin: 1rem auto;
+            background: #F6F6F7;
+            border-radius: 4px;
+            text-align: center;
         }
         .noData{
             width: 100%;
@@ -2877,50 +3093,51 @@
         color: #000000;
         line-height: 2.2rem;
         padding-bottom: 2.2rem;
-        border-bottom: 1px solid #D3D3D4;
+        font-weight: bold;
     }
     .medicinecompanyBox{
-        display: flex;
-        flex-wrap: wrap;
         .companyItem{
-            margin-top: 4.8rem;
-            width: calc((100% - 3rem * 4) / 5);
-            margin-right: 3rem;
+            margin-bottom: 2.4rem;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             &:nth-of-type(5n){
                 margin-right: 0;
             }
             .companyImg{
-                width: 13.5rem;
-                height: 13.5rem;
+                width: 7rem;
+                height: 7rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
-            .companyName{
-                font-size: 1.4rem;
-                color: #198CFF;
-                margin-top: 2.4rem;
-                line-height: 2rem;
-            }
-            .companyTel{
-                font-size: 1.4rem;
-                color: #212429;
-                margin-top: .5rem;
-                line-height: 2rem;
+            .companyMsg{
+                min-height: 7rem;
+                width: calc(100% - 7rem - 2.3rem);
+                .companyName{
+                    font-size: 1.4rem;
+                    color: #198CFF;
+                    line-height: 2rem;
+                    margin-top: 1rem;
+                }
+                .companyTel{
+                    font-size: 1.4rem;
+                    color: #212429;
+                    margin-top: .5rem;
+                    line-height: 2rem;
+                }
             }
         }
     }
 }
 .medicinelistBody{
+    padding: 0 2.4rem;
     .medicinelistTital{
         font-size: 1.6rem;
         color: #000000;
         line-height: 2.2rem;
-        padding-bottom: 2.2rem;
+        padding-bottom: 1.2rem;
         border-bottom: 1px solid #D3D3D4;
     }
     .medicineListBox{
@@ -2931,18 +3148,18 @@
             display: flex;
             justify-content: space-between;
             .medicineImg{
-                width: 11rem;
-                height: 11rem;
+                width: 7rem;
+                height: 7rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .medicineInfo{
-                width: calc(100% - 11rem - 3rem);
+                width: calc(100% - 7rem - 2.3rem);
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: flex-start;
                 .medicineName{
                     display: flex;
                     justify-content: space-between;
@@ -2963,6 +3180,7 @@
                     }
                 }
                 .medicineMsg{
+                    margin-top: 1rem;
                     color: #747474;
                     font-size: 1.4rem;
                     line-height: 2rem;
@@ -2989,12 +3207,15 @@
     }
 }
 .companymedicinelistBody{
+    padding: 2.4rem;
     .companymedicinelistTital{
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         color: #000000;
+        font-weight: bold;
         line-height: 2.2rem;
-        padding-bottom: 2.2rem;
+        padding-bottom: 1.2rem;
         border-bottom: 1px solid #D3D3D4;
+        margin-bottom: 2rem;
     }
     .companymedicinelistBox{
         .companymeItem{
@@ -3003,31 +3224,31 @@
             display: flex;
             justify-content: space-between;
             .companymeImg{
-                width: 11rem;
-                height: 11rem;
+                width: 7rem;
+                height: 7rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .companymeInfo{
-                width: calc(100% - 11rem - 3rem);
+                width: calc(100% - 7rem - 3rem);
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: space-around;
                 .companymeName{
                     display: flex;
                     justify-content: space-between;
                     .companymeNameText{
-                        font-size: 1.8rem;
-                        line-height: 2.5rem;
+                        font-size: 1.5rem;
+                        line-height: 2rem;
                         color: #198CFF;
                         cursor: pointer;
                     }
                     .companymeAskBar{
                         padding: .6rem 1.8rem;
                         color: #212429;
-                        font-size: 1.4rem;
+                        font-size: 1.3rem;
                         background-color: #FFE14D;
                         border-radius: 1.6rem;
                         line-height: 2rem;
@@ -3036,7 +3257,7 @@
                 }
                 .companymeMsg{
                     color: #747474;
-                    font-size: 1.4rem;
+                    font-size: 1.3rem;
                     line-height: 2rem;
                     display: flex;
                     .companymemItem{
@@ -3064,11 +3285,12 @@
     }
 }
 .companylistBody{
+    padding: 0 2.4rem;
     .companylistTital{
         font-size: 1.6rem;
         color: #000000;
         line-height: 2.2rem;
-        padding-bottom: 2.2rem;
+        padding-bottom: 1.2rem;
         border-bottom: 1px solid #D3D3D4;
     }
     .companylistBox{
@@ -3079,18 +3301,18 @@
             display: flex;
             justify-content: space-between;
             .companyImg{
-                width: 11rem;
-                height: 11rem;
+                width: 7rem;
+                height: 7rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .companyInfo{
-                width: calc(100% - 11rem - 3rem);
+                width: calc(100% - 7rem - 2.3rem);
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: flex-start;
                 .companyName{
                     display: flex;
                     justify-content: space-between;
@@ -3108,7 +3330,6 @@
                         border-radius: 1.6rem;
                         line-height: 2rem;
                         font-weight: bold;
-                        cursor: pointer;
                     }
                 }
                 .companyMsg{
@@ -3134,30 +3355,32 @@
         display: flex;
         justify-content: space-between;
         padding-bottom: 4rem;
-        border-bottom: 1px solid #D3D3D4;
+        background-color: #198CFF;
+        padding: 3rem 2.4rem;
         .medicineInfoImg{
-            width: 11rem;
-            height: 11rem;
+            width: 8rem;
+            height: 8rem;
             img{
                 width: 100%;
                 height: 100%;
             }
         }
         .medicineInfoCont{
-            width: calc(100% - 11rem - 3rem);
+            width: calc(100% - 8rem - 2.3rem);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            min-height: 8rem;
+            color: #fff;
             .medicineName{
-                color: #198CFF;
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             .medicineMsg{
-                color: #747474;
                 font-size: 1.4rem;
                 display: flex;
                 .medicineMsgItem{
-                    margin-right: 1rem;
+                    margin-top: 1.5rem;
+                    opacity: .5;
                 }
             }
             .medicineLabel{
@@ -3174,10 +3397,7 @@
         }
     }
     .medicineInfoParam{
-        display: flex;
-        flex-wrap: wrap;
-        padding-top: 4rem;
-        padding-bottom: 2.5rem;
+        padding: 2.9rem 2.4rem 0;
         .medicineInfoPItem{
             display: flex;
             font-size: 1.4rem;
@@ -3201,7 +3421,7 @@
         }
     }
     .medicineInfoExplain{
-        margin-top: 2rem;
+        padding: 2.4rem;
         .medicineInfoETitle{
             font-size: 1.6rem;
             color: #000000;
@@ -3219,27 +3439,34 @@
     }
 }
 .companyInfoBody{
+    padding: 2.4rem 2.4rem 0;
+    .companyInfoTitle{
+        font-size: 2.2rem;
+        color: #000000;
+        line-height: 2.2rem;
+        font-weight: bold;
+    }
     .companyInfoHeader{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
         padding-bottom: 4rem;
+        margin-top: 3rem;
         .companyName{
             color: #198CFF;
-            font-size: 2.4rem;
+            font-size: 2rem;
             width: 100%;
             margin-bottom: 3rem;
+            margin-top: 2.4rem;
+            font-weight: bold;
+            color: #000000;
         }
         .companyInfoImg{
-            width: 13rem;
-            height: 13rem;
+            width: 32.8rem;
+            height: 17.4rem;
             img{
                 width: 100%;
                 height: 100%;
             }
         }
         .companyInfoCont{
-            width: calc(100% - 13rem - 2.5rem);
             color: #333333;
             font-size: 1.4rem;
             line-height: 2.6rem;
@@ -3271,12 +3498,11 @@
         }
     }
     .companyInfoExplain{
-        margin-top: 2rem;
-        margin-bottom: 5rem;
+        margin-top: 1rem;
         .companyInfoETitle{
             font-size: 1.6rem;
             color: #000000;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid #D3D3D4;
             font-weight: bold;
@@ -3298,30 +3524,38 @@
             margin-bottom: 1.5rem;
         }
         .companyInfoEProdBox{
-            display: flex;
             .companyInfoEProdItem{
-                margin-right: 3rem;
-                width: 10rem;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
+                margin-bottom: 1rem;
+                justify-content: space-between;
                 img{
                     width: 8rem;
                     height: 8rem;
-                    margin-bottom: 1rem;
                 }
-                .companyInfoEProdName{
-                    cursor: pointer;
-                    text-align: center;
-                    font-size: 1.4rem;
-                    line-height: 2rem;
-                    color: #198CFF;
+                .companyInfoEProdMsg{
+                    width: calc(100% - 8rem - 2.3rem);
+                    text-align: left;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .companyInfoEProdName{
+                        font-size: 1.4rem;
+                        line-height: 2rem;
+                        color: #198CFF;
+                    }
+                    .companyInfoEProdText{
+                        font-size: 1.3rem;
+                        line-height: 1.8rem;
+                        color: #747474;
+                        margin-top: 2rem;
+                    }
                 }
             }
         }
     }
 }
 .companylicenseBody{
+    padding: 0 2.4rem;
     .companylicenseExplain{
         margin-top: 2rem;
         margin-bottom: 5rem;
@@ -3340,11 +3574,16 @@
             .companylicenseEITitle{
                 font-size: 1.6rem;
                 color: #000000;
-                line-height: 2.2rem;
+                margin-bottom: 1.5rem;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid #D3D3D4;
                 font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
             .companylicenseEIImg{
-                width: 76rem;
+                width: 32.7rem;
                 margin-top: 1rem;
                 img{
                     max-width: 100%;
@@ -3416,8 +3655,8 @@
         }
         .mapInput{
             input{
-                width: 24rem;
-                height: 18px;
+                width: 20rem;
+                height: 2rem;
             }
         }
     }
@@ -3428,10 +3667,39 @@
         font-family: "微软雅黑";
     }
 }
+.pageTypeBox{
+    display: flex;
+    &:nth-last-of-type(1){
+        margin-bottom: 0;
+    }
+    .pageTypeLabel{
+        font-size: 1.4rem;
+        color: #747474;
+        line-height: 2rem;
+        width: 10rem;
+        flex-shrink: 0;
+    }
+    .pageTypeItemBox{
+        display: flex;
+        font-size: 1.4rem;
+        color: #198CFF;
+        line-height: 2rem;
+        flex-wrap: wrap;
+        padding: 1rem;
+        .pageTypeItem{
+            white-space: nowrap;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            &.active{
+                background-color: #198CFF;
+                color: #fff;
+            }
+        }
+    }
+}
 .pageTypeGroupBody{
-    margin: 6rem auto 0;
     background-color: #F9F9FA;
-    padding: 2rem;
     box-sizing: border-box;
     .pageTypeBox{
         display: flex;
@@ -3467,6 +3735,8 @@
     }
 }
 .doctorlistBody{
+    padding: 2.4rem;
+    box-sizing: border-box;
     .doctorlistLabel{
         font-size: 1.6rem;
         line-height: 2.2rem;
@@ -3478,41 +3748,43 @@
         }
     }
     .doctorlistBox{
-        margin-top: 3rem;
+        // margin-top: 3rem;
         .doctorItem{
-            margin-bottom: 5.5rem;
+            margin-bottom: 3rem;
             display: flex;
             justify-content: space-between;
             cursor: pointer;
             .doctorImg{
-                width: 12rem;
-                height: 12rem;
+                width: 7rem;
+                height: 7rem;
                 overflow: hidden;
-                border-radius: 50%;
+                border-radius: 4px;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .doctorInfo{
-                width: calc(100% - 12rem - 3rem);
+                width: calc(100% - 7rem - 2.3rem);
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                padding: 1rem 0;
                 .doctorName{
                     display: flex;
                     align-items: center;
+                    flex-wrap: wrap;
                     .doctorNameText{
                         font-size: 2.2rem;
                         line-height: 3rem;
                         color: #000000;
+                        word-break: keep-all;
+                        margin-right: 1rem;
                     }
                     .doctorType{
                         font-size: 1.4rem;
                         line-height: 2rem;
                         color: #198CFF;
-                        margin-left: 1rem;
+                        word-break: keep-all;
                     }
                 }
                 .doctorHospital{
@@ -3520,8 +3792,9 @@
                     color: #747474;
                     line-height: 2rem;
                     display: flex;
-                    .doctorDept{
-                        margin-left: 2rem;
+                    flex-wrap: wrap;
+                    .doctorhospitalText{
+                        margin-right: 1rem;
                     }
                 }
                 .doctorRemark{
@@ -3545,6 +3818,7 @@
     }
 }
 .hospitallistBody{
+    padding: 2.4rem;
     .hospitallistLabel{
         font-size: 1.6rem;
         line-height: 2.2rem;
@@ -3556,38 +3830,37 @@
         }
     }
     .hospitallistBox{
-        margin-top: 3rem;
         .doctorItem{
-            margin-bottom: 5.5rem;
+            margin-bottom: 3rem;
             display: flex;
             justify-content: space-between;
             .doctorImg{
-                width: 22.6rem;
-                height: 15.6rem;
+                width: 7rem;
+                height: 5.5rem;
                 img{
                     width: 100%;
                     height: 100%;
                 }
             }
             .doctorInfo{
-                width: calc(100% - 22.6rem - 3rem);
+                width: calc(100% - 7rem - 2.3rem);
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                padding: 1rem 0;
                 .doctorName{
                     display: flex;
                     align-items: center;
+                    flex-wrap: wrap;
                     .doctorNameText{
                         font-size: 2.2rem;
                         line-height: 3rem;
                         color: #198CFF;
+                        margin-right: 1rem;
                     }
                     .doctorType{
                         font-size: 1.4rem;
                         line-height: 2rem;
                         color: #FF5533;
-                        margin-left: 2rem;
                     }
                 }
                 .doctorTel{
@@ -3622,23 +3895,16 @@
     }
 }
 .messageListBody{
-    margin-bottom: 6rem;
+    padding: 2.4rem;
     .messageLabel{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 1.4rem;
-        border-bottom: 1px solid #D3D3D4;
+        width: 35.1rem;
+        height: 4.4rem;
+        background: linear-gradient(270deg, #FFFFFF 0%, #198CFF 100%);
         .messageLabelText{
-            font-size: 1.8rem;
-            line-height: 2.5rem;
-            color: #000000;
-        }
-        .messageMore{
-            font-size: 1.4rem;
-            line-height: 2rem;
-            color: #747474;
-            cursor: pointer;
+            padding-left: 1rem;
+            font-size: 1.6rem;
+            line-height: 4.4rem;
+            color: #FFFFFF;
         }
     }
     .messageBox{
@@ -3655,9 +3921,6 @@
             .messageTitle{
                 color: #333333;
             }
-            .messageTime{
-                color: #747474;
-            }
         }
         .noData{
             width: 100%;
@@ -3667,9 +3930,19 @@
             color: #999;
         }
     }
+    .messageMore{
+        height: 5rem;
+        background: #F9F9FA;
+        border-radius: 4px;
+        font-size: 1.6rem;
+        color: #333333;
+        line-height: 5rem;
+        text-align: center;
+    }
 }
 .meetingListBody{
-    margin-bottom: 6rem;
+    padding: 2.4rem;
+    margin-bottom: 3rem;
     .meetingLabel{
         display: flex;
         align-items: center;
@@ -3700,23 +3973,26 @@
             font-size: 1.4rem;
             line-height: 2rem;
             margin-bottom: 1.6rem;
-            &:nth-of-type(5n){
-                margin-bottom: 6rem;
+            .meetingImg{
+                width: 9.8rem;
+                height: 6.4rem;
+                border-radius: 2px;
             }
-            .meetingTitle{
-                flex: 7;
-                color: #333333;
+            .meetingImg{
+                width: 9.8rem;
+                height: 6.4rem;
+                border-radius: 2px;
             }
-            .meetingCountry{
-                flex: 2;
-                color: #333333;
-                text-align: center;
-                margin-right: 1rem;
-            }
-            .meetingTime{
-                flex: 1;
-                color: #8C8E90;
-                white-space: nowrap;
+            .meetingMsg{
+                width: calc(100% - 11rem);
+                .meetingTitle{
+                    color: #212429;
+                    font-size: 1.6rem;
+                }
+                .meetingTime{
+                    font-size: 1rem;
+                    color: #8C8E90;
+                }
             }
         }
     }
@@ -3738,6 +4014,7 @@
     }
 }
 .nearmeetingBody{
+    padding: 2.4rem;
     .nearmeetingBox{
         margin-top: 3rem;
         .nearmeetingItem{
@@ -3803,7 +4080,7 @@
         .courselistItem2{
             width: 100%;
             height: 11.8rem;
-            margin-bottom: 6rem;
+            margin-bottom: 3rem;
             display: flex;
             justify-content: space-between;
             .courselistImg{
@@ -3955,7 +4232,7 @@
 .topicBody{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     .topicLeft{
         width: 4.5rem;
         .topicUserImg{
@@ -4155,7 +4432,7 @@
     }
 }
 .replyBody{
-    margin-top: 10rem;
+    padding: 2.4rem;
     .replyHandleBtn{
         margin-bottom: 2rem;
         cursor: pointer;
@@ -4200,11 +4477,11 @@
     .replyBox{
         .replyItemBox{
             display: flex;
-            justify-content: space-between;
-            margin-top: 6rem;
+            justify-content: flex-start;
+            margin-top: 3rem;
             .replyAvatar{
-                width: 5rem;
-                height: 5rem;
+                width: 3.2rem;
+                height: 3.2rem;
                 border-radius: 50%;
                 overflow: hidden;
                 img{
@@ -4213,23 +4490,24 @@
                 }
             }
             .replyContent{
-                width: calc(100% - 7rem);
+                margin-left: 1.6rem;
+                width: calc(100% - 3.2rem - 1.6rem);
                 position: relative;
                 .userName{
                     color: #212429;
-                    font-size: 1.8rem;
-                    line-height: 3rem;
+                    font-size: 1.4rem;
+                    line-height: 2rem;
                     font-weight: bold;
                 }
                 .replyTime{
                     color: #8C8E90;
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     line-height: 1.8rem;
                 }
                 .replyText{
-                    margin-top: 1rem;
+                    margin-top: .8rem;
                     color: #212429;
-                    font-size: 1.6rem;
+                    font-size: 1.4rem;
                     line-height: 2.2rem;
                 }
                 .replyHandleBox{
@@ -4252,7 +4530,7 @@
                 }
                 .replyHandleLike{
                     position: absolute;
-                    top: 1rem;
+                    top: .1rem;
                     right: 1rem;
                     color: #616367;
                     font-size: 1rem;
@@ -4269,8 +4547,8 @@
                 .curReply{
                     background-color: #F9F9FA;
                     border-radius: .2rem;
-                    margin-top: 2rem;
-                    padding: 3rem;
+                    margin-top: 1rem;
+                    padding: 1.5rem;
                     box-sizing: border-box;
                     .curReplyItem{
                         margin-bottom: 1rem;
@@ -4288,4 +4566,91 @@
             }
         }
     }
+}
+.menuleftBox{
+    height: 100vh;
+    position: relative;
+    .menuBox{
+        .menuItem{
+            border-bottom: 1px solid #ebeef5;
+            .menuLabel{
+                padding: 1rem;
+                font-size: 1.4rem;
+                line-height: 2rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .menuIcon{
+                    width: 2rem;
+                    height: 2rem;
+                    background-size: 100% 100%;
+                    background-image: url(../img/listClose.png);
+                    background-color: transparent;
+                    &.open{
+                        background-image: url(../img/listOpen.png);
+                    }
+                }
+            }
+            .menuSub{
+                margin-left: 1rem;
+                padding: 1rem;
+                font-size: 1.4rerm;
+                display: flex;
+                justify-content: space-between;
+                border-top: 1px solid #ebeef5;
+                .menuSubName{
+                    font-size: 1.4rem;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .userCenter{
+        padding: 3rem 2.4rem 1.7rem;
+        position: absolute;
+        bottom: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+        box-sizing: border-box;
+        border-top: 1px solid #F6F6F7;
+        .ucText{
+            font-size: 1.5rem;
+            color: #000000;
+            font-weight: bold;
+        }
+        .usImg{
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+}
+.selectaddressBody{
+    .el-select{
+        margin-bottom: 1rem;
+    }
+}
+.van-dropdown-menu{
+    &.fixed{
+        position: fixed;
+        width: 100%;
+        .van-popup{
+            height: auto;
+        }
+    }
+}
+.contactinfoBar{
+    margin: 0 auto;
+    background-color: #198CFF;
+    width: 32.7rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: 4px;
+    margin-top: 2.5rem;
+    cursor: pointer;
 }

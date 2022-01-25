@@ -5,13 +5,13 @@ const initRem = (clientSize=1080) => {
     var docEl = doc.documentElement,
         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = function () {
-            debugger
             var clientWidth = docEl.clientWidth;
             if (!clientWidth) return;
             if (clientWidth >= clientSize) {
-                docEl.style.fontSize = '3.29px';
+                // docEl.style.fontSize = '10px';
+                docEl.style.fontSize = 10 * (clientWidth / clientSize) + 'px';
             } else {
-                docEl.style.fontSize = 3.29 * (clientWidth / clientSize) + 'px';
+                docEl.style.fontSize = 10 * (clientWidth / clientSize) + 'px';
             }
             console.log(docEl.style.fontSize);
         };

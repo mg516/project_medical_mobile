@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>用户注册</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -14,25 +15,24 @@
     <div id="myApp" class="main" v-cloak>
         <div class="registerBody">
             <div class="registerHeader">
-                <div class="loginNavLogo" @click="toLogin"></div>
                 <div class="toLogin" @click="toLogin">返回登录</div>
             </div>
             <div class="registerBox">
-                <el-form label-position="left" label-width="12rem" :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
+                <el-form label-position="left" label-width="0" :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
                     <div class="groupTitle">创建个人账户</div>
-                    <el-form-item label="昵称" prop="nickStr">
-                        <el-input v-model="form.nickStr"></el-input>
+                    <el-form-item label="" prop="nickStr">
+                        <el-input v-model="form.nickStr" placeholder="请输入昵称"></el-input>
                     </el-form-item>
-                    <el-form-item label="手机" prop="mobileStr">
-                        <el-input v-model="form.mobileStr"></el-input>
+                    <el-form-item label="" prop="mobileStr">
+                        <el-input v-model="form.mobileStr" placeholder="请输入手机"></el-input>
                     </el-form-item>
-                    <el-form-item label="验证码">
+                    <el-form-item label="">
                         <div style="display: flex;height: 40px;margin-bottom: 40px;">
                             <el-input placeholder="请输入验证码" v-model="form.code"></el-input>
                             <el-button style="margin-left: 10px;" :disabled="secondNum>0" @click="getCode">{{secondNum>0?`${secondNum}后重试`:'获取验证码'}}</el-button>
                         </div>
                     </el-form-item>
-                    <el-form-item label="头像" prop="pictureStr">
+                    <el-form-item label="头像" prop="pictureStr" label-width="6rem">
                         <el-upload
                             class="avatar-uploader"
                             action="http://115.159.53.197:8080/api/upload"
@@ -43,15 +43,15 @@
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                         </el-upload>
                     </el-form-item>
-                    <el-form-item label="性别" prop="sexStr">
-                        <el-select v-model="form.sexStr">
+                    <el-form-item label="" prop="sexStr">
+                        <el-select v-model="form.sexStr" placeholder="请选择性别">
                             <el-option v-for="item in sexMenu" :key="item.value" :label="item.label" :value="item.value"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="所在地区">
+                    <el-form-item>
                         <selectaddress v-model="addressObj" :option="{level:2}"></selectaddress>
                     </el-form-item>
-                    <el-form-item label="个性签名" prop="signStr">
+                    <el-form-item prop="signStr">
                         <div id="Edit"></div>
                         <!-- <el-input v-model="form.signStr"></el-input> -->
                     </el-form-item>
@@ -64,8 +64,8 @@
         <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
@@ -83,6 +83,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 sexMenu: SexMenu,
                 form:{
                     nickStr: '',

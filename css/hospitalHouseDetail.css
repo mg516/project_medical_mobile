@@ -1,20 +1,8 @@
 .contentBody {
-  margin: 6rem auto 10rem;
-  width: 114rem;
-  display: flex;
-  justify-content: space-between;
-}
-.contentBody .contentLeft {
-  width: 82rem;
-  flex-shrink: 0;
-}
-.contentBody .contentRight {
-  width: 28rem;
-  flex-shrink: 0;
+  margin: 0 auto;
 }
 .pageBreadcrumbBox {
   margin: 6rem auto 0;
-  width: 114rem;
 }
 .pageBreadcrumbBox .breadcrumbBody {
   margin: 0;
@@ -22,12 +10,21 @@
 .hospitalInfoBox .hospitalMsgBox {
   display: flex;
   justify-content: space-between;
+  background-color: #4CA6FF;
+  padding: 3rem 2.4rem;
+  flex-wrap: wrap;
+}
+.hospitalInfoBox .hospitalMsgBox .hospitalName {
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 3.3rem;
+  width: 100%;
 }
 .hospitalInfoBox .hospitalMsgBox .hospitalImg {
-  width: 10rem;
-  height: 8rem;
-  border-radius: 1rem;
+  width: 9rem;
+  height: 7rem;
   overflow: hidden;
+  margin-top: 2.4rem;
 }
 .hospitalInfoBox .hospitalMsgBox .hospitalImg img {
   width: 100%;
@@ -39,10 +36,12 @@
   flex-direction: column;
   justify-content: center;
 }
-.hospitalInfoBox .hospitalMsgBox .hospitalMsg .hospitalName {
-  color: #198CFF;
-  font-size: 2.4rem;
+.hospitalInfoBox .hospitalMsgBox .hospitalMsg .hospitalGrade {
+  color: #ffffff;
+  font-size: 1.4rem;
   line-height: 3.3rem;
+  width: 100%;
+  margin-top: 1rem;
 }
 .hospitalInfoBox .hospitalMsgBox .hospitalMsg .hospitalDept {
   display: flex;
@@ -54,10 +53,16 @@
   color: #333333;
 }
 .hospitalInfoBox .hospitalMsgBox .hospitalMsg .hospitalDept .hospitalDeptItem {
-  color: #198CFF;
+  color: #ffffff;
+}
+.hospitalInfoBox .hospitalMsgBox .hospitalMsg .hospitalAddress {
+  line-height: 3rem;
+  font-size: 1.4rem;
+  background-color: linear-gradient(270deg, #4CA6FF 0%, #369BFF 100%);
+  color: #ffffff;
 }
 .hospitalInfoBox .hospitalIntroBox {
-  margin-top: 6rem;
+  padding: 4rem 2.4rem 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -65,7 +70,7 @@
 .hospitalInfoBox .hospitalIntroBox .hospitalIntroLabel {
   width: 100%;
   font-weight: bold;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #000000;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #D3D3D4;
@@ -92,13 +97,13 @@
 }
 .contactinfoBar {
   background-color: #198CFF;
-  width: 21rem;
+  width: 32.7rem;
   height: 5rem;
   line-height: 5rem;
   text-align: center;
   color: #fff;
   font-size: 1.6rem;
-  border-radius: 2.7rem;
+  border-radius: 4px;
   margin-top: 2.5rem;
   cursor: pointer;
 }

@@ -8,8 +8,9 @@ Vue.component('meetinglist', {
 			</div>
 			<div class="meetingBox">
 				<div @click="toMessageMeetingDetail(mItem)" class="meetingItem" v-for="(mItem,mIndex) in item.meeting" :key="mIndex">
+				<img class="meetingImg" :src="mItem.contextImg | httpStr" />
+				<div class="meetingMsg">
 					<div class="meetingTitle">{{mItem.titileStr}}</div>
-					<div class="meetingCountry">中国</div>
 					<div class="meetingTime">{{mItem.updateTime}}</div>
 				</div>
 			</div>
@@ -19,6 +20,11 @@ Vue.component('meetinglist', {
 		meetingdata: {
 			type: Array,
 			default: () => []
+		}
+	},
+	filters: {
+		httpStr(link) {
+			return baseUrl + link;
 		}
 	},
 	data() {

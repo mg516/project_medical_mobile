@@ -13,6 +13,13 @@
 .el-form-item .el-form-item__content {
   z-index: 1;
 }
+.van-overlay {
+  z-index: 10002!important;
+}
+.van-popup {
+  height: 100%;
+  z-index: 10003!important;
+}
 .main {
   width: 100%;
   overflow: hidden;
@@ -91,14 +98,6 @@
   background-color: #e6e6e6;
   bottom: 0;
 }
-.navmenuBody .navLogo {
-  width: 13rem;
-  height: 5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  background-image: url('../img/index/logo_footer_bg.png');
-  background-size: 100% 100%;
-}
 .navmenuBody .menuBody .el-menu.el-menu--horizontal {
   border-bottom: 0;
 }
@@ -137,34 +136,49 @@
 .navmenuBody .loginBody .noLogin .loginBar {
   cursor: pointer;
 }
-.bannerBody {
-  width: 114rem;
-  height: 31.4rem;
-  margin: 0 auto;
+.navbarBody .van-nav-bar {
+  z-index: 3;
 }
-.bannerBody .el-carousel {
-  width: 100%;
-  height: 100%;
-}
-.bannerBody .el-carousel .el-carousel__container {
-  width: 100%;
-  height: 100%;
-}
-.bannerBody .el-carousel img {
-  width: 100%;
-  max-width: 100%;
-  max-height: 100%;
+.navbarBody .navLogo {
+  width: 8rem;
+  height: 3rem;
+  font-size: 1rem;
   cursor: pointer;
+  background-image: url('../img/index/logo_footer_bg.png');
+  background-size: 100% 100%;
+}
+.bannerBody {
+  width: 32.7rem;
+  height: 12rem;
+  margin: 1.6rem auto 0;
+}
+.bannerBody .van-swipe {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.bannerBody .van-swipe .van-swipe-item {
+  width: 100%;
+  height: 100%;
+}
+.bannerBody .van-swipe .van-swipe-item img {
+  width: 100%;
+  height: 100%;
 }
 .tagbarBody {
-  width: 114rem;
+  width: 36rem;
   height: 5rem;
-  background-color: #198CFF;
-  margin: 4rem auto 0;
+  margin: 2.6rem auto 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   position: relative;
+  overflow-x: auto;
+}
+.tagbarBody::-webkit-scrollbar {
+  width: 0 !important;
 }
 .tagbarBody .readAll {
   position: absolute;
@@ -175,21 +189,98 @@
   cursor: pointer;
 }
 .tagbarBody .tagbarItem {
-  font-size: 1.4rem;
+  background-color: #198CFF;
+  font-size: 1.6rem;
+  line-height: 3rem;
   color: #fff;
   flex: 1;
   display: flex;
   justify-content: space-around;
-  padding: 0 2rem;
-  border-right: 1px solid #fff;
-  line-height: 2rem;
-  height: 2rem;
+  padding: 0 1.2rem;
+  margin-right: 1rem;
+  word-break: keep-all;
+  border-radius: 4px;
 }
 .tagbarBody .tagbarItem span {
   cursor: pointer;
 }
 .tagbarBody .tagbarItem:nth-last-child(1) {
   border-right: 0;
+}
+.tagbarbackBody {
+  width: 37.5rem;
+  height: 6.6rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #198CFF;
+}
+.tagbarbackBody .tagbarbackList {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 4rem);
+  overflow-x: auto;
+}
+.tagbarbackBody .tagbarbackList::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+.tagbarbackBody .tagbarbackList .tagbarbackItem {
+  font-size: 1.6rem;
+  line-height: 3rem;
+  color: #D3D3D4;
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 1.2rem;
+  margin-right: 1rem;
+  word-break: keep-all;
+  border-radius: 4px;
+}
+.tagbarbackBody .tagbarbackList .tagbarbackItem span {
+  cursor: pointer;
+}
+.tagbarbackBody .tagbarbackList .tagbarbackItem:nth-last-child(1) {
+  border-right: 0;
+}
+.tagbarbackBody .tagbarbackList .tagbarbackItem.active {
+  color: #F6F6F7;
+}
+.menuIcon {
+  width: 4rem;
+  background-color: #198CFF;
+  text-align: center;
+  font-size: 2rem;
+}
+.menuIcon.light {
+  background-color: transparent;
+}
+.allTypePopup {
+  padding: 2rem;
+}
+.allTypePopup .allTypeLabel {
+  font-size: 1.8rem;
+  color: #000000;
+}
+.allTypePopup .typeList {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  color: #616367;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.allTypePopup .typeList .typeItem {
+  width: 30%;
+  background-color: #F9F9FA;
+  border-radius: 8px;
+  height: 4rem;
+  line-height: 4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 .modelLabelBox {
   width: 100%;
@@ -228,10 +319,14 @@
   line-height: 3.2rem;
 }
 .newessayBody {
-  margin-bottom: 2rem;
+  padding: 0 2.4rem;
+}
+.newessayBody .modelLabel {
+  font-size: 1.8rem;
 }
 .newessayBody .modelMore {
-  font-size: 1.4rem;
+  color: #198CFF;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 .newessayBody .essayBox {
@@ -241,22 +336,13 @@
   width: 100%;
 }
 .newessayBody .essayBox .essayItem {
-  width: 39rem;
-  height: 11rem;
+  margin-bottom: 3rem;
   display: flex;
-}
-.newessayBody .essayBox .essayItem .essayImg {
-  width: 12.8rem;
-  height: 8.4rem;
-}
-.newessayBody .essayBox .essayItem .essayImg img {
   width: 100%;
-  height: 100%;
 }
 .newessayBody .essayBox .essayItem .essayInfo {
   height: 100%;
   flex: 1;
-  margin-left: 0.4rem;
 }
 .newessayBody .essayBox .essayItem .essayInfo .essayTitle {
   font-size: 1.6rem;
@@ -269,41 +355,49 @@
   overflow: hidden;
 }
 .newessayBody .essayBox .essayItem .essayInfo .essayRemark {
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #8C8E90;
   line-height: 2rem;
   height: 2rem;
-  margin-top: 2rem;
+  margin-top: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.newessayBody .essayBox .essayItem .essayImg {
+  width: 9.8rem;
+  height: 6.4rem;
+  margin-left: 1.6rem;
+}
+.newessayBody .essayBox .essayItem .essayImg img {
+  width: 100%;
+  height: 100%;
+}
 .newessayBody .essayBox .essayItem2 {
   width: 100%;
-  height: 16rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
 }
 .newessayBody .essayBox .essayItem2 .essayImg {
-  width: 25rem;
-  height: 16rem;
+  width: 9.8rem;
+  height: 6.4rem;
 }
 .newessayBody .essayBox .essayItem2 .essayImg img {
   width: 100%;
   height: 100%;
 }
 .newessayBody .essayBox .essayItem2 .essayInfo {
-  width: calc(100% - 25rem - 3rem);
+  width: calc(100% - 9.8rem - 1rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .newessayBody .essayBox .essayItem2 .essayInfo .essayTitle {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   color: #212429;
-  line-height: 3rem;
+  line-height: 2rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -319,7 +413,7 @@
   overflow: hidden;
 }
 .newessayBody .essayBox .essayItem2 .essayInfo .essayAuthor {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   font-size: 1.4rem;
   color: #8C8E90;
   line-height: 2.2rem;
@@ -342,7 +436,7 @@
   width: 100%;
 }
 .newessayBody .essayMsgBox .essayMsgItem {
-  width: 39rem;
+  width: 100%;
   height: 2rem;
   line-height: 2rem;
   position: relative;
@@ -358,29 +452,43 @@
   display: inline-block;
   position: absolute;
   top: 0.9rem;
+  left: 0;
 }
 .newessayBody .essayMsgBox .essayMsgItem .essayMsg {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #212429;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .businessBody {
-  margin-bottom: 2rem;
+  margin-bottom: 3.9rem;
+  padding: 0 2.4rem;
+}
+.businessBody .modelLabel {
+  font-size: 1.8rem;
+}
+.businessBody .modelMore {
+  color: #198CFF;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 .businessBody .businessBox {
   width: 100%;
   display: flex;
+  overflow-x: auto;
+}
+.businessBody .businessBox::-webkit-scrollbar {
+  width: 0 !important;
 }
 .businessBody .businessBox .businessItem {
-  width: 13.6rem;
+  width: 8rem;
   cursor: pointer;
   margin-right: 2rem;
 }
 .businessBody .businessBox .businessItem .businessImg {
-  width: 13.6rem;
-  height: 13.6rem;
+  width: 8rem;
+  height: 8rem;
 }
 .businessBody .businessBox .businessItem .businessImg img {
   width: 100%;
@@ -388,244 +496,202 @@
 }
 .businessBody .businessBox .businessItem .businessInfo {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #212429;
   margin-top: 1rem;
   line-height: 2rem;
 }
 .doctorBody {
-  margin-bottom: 2rem;
+  margin-bottom: 3.9rem;
+  padding: 0 2.4rem;
 }
-.doctorBody .doctorBox {
+.doctorBody .modelLabel {
+  font-size: 1.8rem;
+}
+.doctorBody .modelMore {
+  color: #198CFF;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.doctorBody .doctorlistBox {
+  margin-top: 3rem;
+}
+.doctorBody .doctorlistBox .doctorItem {
+  margin-bottom: 3rem;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  cursor: pointer;
 }
-.doctorBody .doctorBox .doctorItem {
-  width: 19.4rem;
-  height: 27.3rem;
-  background-color: #F9F9FA;
-  margin-right: 1.4rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  position: relative;
-}
-.doctorBody .doctorBox .doctorItem:nth-of-type(4n) {
-  margin-right: 0;
-}
-.doctorBody .doctorBox .doctorItem .doctorImg {
-  width: 8rem;
-  height: 8rem;
-  margin: 2.5rem auto 0;
-  border-radius: 50%;
+.doctorBody .doctorlistBox .doctorItem .doctorImg {
+  width: 5rem;
+  height: 5rem;
   overflow: hidden;
+  border-radius: 50%;
 }
-.doctorBody .doctorBox .doctorItem .doctorImg img {
+.doctorBody .doctorlistBox .doctorItem .doctorImg img {
   width: 100%;
   height: 100%;
 }
-.doctorBody .doctorBox .doctorItem .doctorName {
-  color: #198CFF;
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-top: 2rem;
-}
-.doctorBody .doctorBox .doctorItem .doctorType {
-  font-size: 1.3rem;
-  color: #8C8E90;
-  margin-top: 1rem;
-}
-.doctorBody .doctorBox .doctorItem .doctorDept {
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: #212429;
-  margin-top: 1.5rem;
-}
-.doctorBody .doctorBox .doctorItem .doctorContact {
-  position: absolute;
-  bottom: 0;
+.doctorBody .doctorlistBox .doctorItem .doctorInfo {
+  width: calc(100% - 2.2rem - 5rem);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 5.6rem;
-  background: #F0F0F0;
-  padding: 0 2rem;
-  box-sizing: border-box;
 }
-.doctorBody .doctorBox .doctorItem .doctorContact .doctorScore {
+.doctorBody .doctorlistBox .doctorItem .doctorInfo .doctorName {
+  display: flex;
+  align-items: center;
+}
+.doctorBody .doctorlistBox .doctorItem .doctorInfo .doctorName .doctorNameText {
+  font-size: 1.8rem;
+  line-height: 3rem;
+  color: #198CFF;
+}
+.doctorBody .doctorlistBox .doctorItem .doctorInfo .doctorName .doctorType {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #8C8E90;
+  margin-left: 1rem;
+}
+.doctorBody .doctorlistBox .doctorItem .doctorInfo .doctorHospital {
+  font-size: 1.4rem;
+  color: #747474;
+  line-height: 2rem;
+  display: flex;
+}
+.doctorBody .doctorlistBox .doctorItem .doctorInfo .doctorHospital .doctorDept {
   font-size: 1.3rem;
   color: #212429;
 }
-.doctorBody .doctorBox .doctorItem .doctorContact .doctorContactBar {
-  width: 6.4rem;
-  height: 3.2rem;
-  background: #198CFF;
-  border-radius: 1.6rem;
-  line-height: 3.2rem;
-  color: #fff;
-  font-size: 1.3rem;
-  cursor: pointer;
+.doctorBody .doctorlistBox .doctorItem .doctorInfo .doctorRemark {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #616367;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.doctorBody .doctorlistBox .noData {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.4rem;
+  color: #999;
 }
 .recommendDoctorBody {
   margin-bottom: 2rem;
-}
-.recommendDoctorBody .recommendDoctorBox {
-  display: flex;
-  flex-wrap: wrap;
+  padding: 2.4rem;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem {
-  cursor: pointer;
-  width: 26.2rem;
-  background-color: #F9F9FA;
-  margin-right: 3rem;
   margin-bottom: 3rem;
-  text-align: center;
-  position: relative;
-}
-.recommendDoctorBody .recommendDoctorBox .recommendDoctorItem:nth-of-type(4n) {
-  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #F9FCFF 0%, #E9F4FF 100%);
+  border-radius: 16px;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorImg {
   width: 10rem;
   height: 10rem;
-  margin: 2.5rem auto 0;
-  border-radius: 50%;
   overflow: hidden;
+  border-radius: 50%;
+  margin-top: 4.2rem;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorImg img {
   width: 100%;
   height: 100%;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorName {
+  font-size: 1.8rem;
   color: #198CFF;
-  font-size: 1.6rem;
-  font-weight: 500;
-  margin-top: 2rem;
+  line-height: 2.5rem;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorType {
   font-size: 1.3rem;
-  color: #8C8E90;
-  margin-top: 1rem;
+  line-height: 2rem;
+  color: #747474;
+  margin-left: 1rem;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorDept {
   font-size: 1.3rem;
-  font-weight: 400;
   color: #212429;
-  margin-top: 1.5rem;
+  line-height: 2rem;
+  display: flex;
+  justify-content: center;
 }
 .recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorInfo {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  width: calc(100% - 2.2rem - 5rem);
+  margin-top: 2.1rem;
   font-size: 1.3rem;
+  line-height: 2rem;
   color: #8C8E90;
-  line-height: 1.8rem;
-  padding: 0 2.6rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-.recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorContact {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 5.6rem;
-  background: #F0F0F0;
-  padding: 0 2rem;
-  box-sizing: border-box;
-}
-.recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorContact .recommendDoctorScore {
-  font-size: 1.3rem;
-  color: #212429;
-}
-.recommendDoctorBody .recommendDoctorBox .recommendDoctorItem .recommendDoctorContact .recommendDoctorContactBar {
-  width: 6.4rem;
-  height: 3.2rem;
-  background: #198CFF;
-  border-radius: 1.6rem;
-  line-height: 3.2rem;
-  color: #fff;
-  font-size: 1.3rem;
-  cursor: pointer;
+  margin-bottom: 4rem;
+  text-align: center;
 }
 .hospitalBody {
-  margin-bottom: 2rem;
+  margin-bottom: 3.9rem;
+  padding: 0 2.4rem;
 }
-.hospitalBody .hospitalBox {
+.hospitalBody .modelLabel {
+  font-size: 1.8rem;
+}
+.hospitalBody .modelMore {
+  color: #198CFF;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.hospitalBody .hospitallistBox {
+  margin-top: 3rem;
+}
+.hospitalBody .hospitallistBox .doctorItem {
+  margin-bottom: 3rem;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.hospitalBody .hospitalBox .hospitalItem {
-  width: 26.4rem;
-  height: 32.9rem;
-  background-color: #F9F9FA;
-  margin-right: 1.4rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  position: relative;
+.hospitalBody .hospitallistBox .doctorItem .doctorImg {
+  width: 10rem;
+  height: 7rem;
 }
-.hospitalBody .hospitalBox .hospitalItem:nth-of-type(3n) {
-  margin-right: 0;
-}
-.hospitalBody .hospitalBox .hospitalItem .hospitalImg {
-  width: 26.4rem;
-  height: 15.5rem;
-}
-.hospitalBody .hospitalBox .hospitalItem .hospitalImg img {
+.hospitalBody .hospitallistBox .doctorItem .doctorImg img {
   width: 100%;
   height: 100%;
 }
-.hospitalBody .hospitalBox .hospitalItem .hospitalName {
-  color: #198CFF;
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin: 2rem auto 0;
-  width: calc(100% - 4rem);
-  text-align: left;
+.hospitalBody .hospitallistBox .doctorItem .doctorInfo {
+  width: calc(100% - 7rem - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hospitalBody .hospitallistBox .doctorItem .doctorInfo .doctorName {
+  display: flex;
+  align-items: center;
+}
+.hospitalBody .hospitallistBox .doctorItem .doctorInfo .doctorName .doctorNameText {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #000000;
+}
+.hospitalBody .hospitallistBox .doctorItem .doctorInfo .doctorName .doctorType {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #FF5533;
+  margin-left: 2rem;
+}
+.hospitalBody .hospitallistBox .doctorItem .doctorInfo .doctorAddress {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: #8C8E90;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.hospitalBody .hospitalBox .hospitalItem .hospitalAddress {
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: #212429;
-  margin: 2rem auto 0;
-  width: calc(100% - 4rem);
-  text-align: left;
+.hospitalBody .hospitallistBox .doctorItem .doctorInfo .doctorScore {
+  font-size: 1.2rem;
+  color: #198CFF;
   line-height: 2rem;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-.hospitalBody .hospitalBox .hospitalItem .hospitalContact {
-  position: absolute;
-  bottom: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 5.6rem;
-  background: #F0F0F0;
-  padding: 0 2rem;
-  box-sizing: border-box;
-}
-.hospitalBody .hospitalBox .hospitalItem .hospitalContact .hospitalScore {
-  font-size: 1.3rem;
-  color: #212429;
-}
-.hospitalBody .hospitalBox .hospitalItem .hospitalContact .hospitalContactBar {
-  width: 6.4rem;
-  height: 3.2rem;
-  background: #198CFF;
-  border-radius: 1.6rem;
-  line-height: 3.2rem;
-  color: #fff;
-  font-size: 1.3rem;
-  cursor: pointer;
 }
 .forumBody {
   margin-bottom: 2rem;
@@ -922,7 +988,7 @@
   margin: 1rem auto;
 }
 .recomDoctorBody {
-  padding-bottom: 5rem;
+  padding: 2.4rem;
 }
 .recomDoctorBody .recomDoctorBox {
   padding-bottom: 2rem;
@@ -974,6 +1040,10 @@
   font-size: 1.4rem;
   color: #212429;
 }
+.recomProductBody,
+.newdrugsideBody {
+  padding: 2.4rem;
+}
 .recomProductBody .recomProductBox,
 .newdrugsideBody .recomProductBox {
   padding-bottom: 2rem;
@@ -1018,30 +1088,40 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.disclaimersBody .disclaimersBox {
-  width: 26rem;
-  margin: 1rem auto 0;
+.disclaimersBody {
+  margin-bottom: 3.9rem;
+  padding: 0 2.4rem;
+}
+.disclaimersBody .modelLabel {
+  font-size: 1.8rem;
 }
 .disclaimersBody .disclaimersBox .disclaimersText {
   text-indent: 2.8rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #616367;
   line-height: 2.4rem;
 }
 .centerSidenav {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2.4rem;
 }
 .centerSidenav .navItem {
-  height: 5.6rem;
-  text-indent: 4rem;
-  line-height: 5.6rem;
-  color: #616367;
+  text-align: center;
+  height: 4rem;
+  padding: 0 1.5rem;
+  line-height: 4rem;
   font-size: 1.6rem;
   cursor: pointer;
+  border-radius: 8px;
+  background-color: #F9F9FA;
+  color: #616367;
+  margin-right: 4rem;
 }
 .centerSidenav .navItem.active {
-  background-color: #F9F9FA;
-  color: #212429;
+  background-color: #198CFF;
+  color: #ffffff;
   font-weight: bold;
 }
 .pageBody {
@@ -1194,7 +1274,7 @@
 }
 .pageBody .centerItemContent {
   width: 100%;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 .pageBody .centerItemContent .centerItemContHeader {
   display: flex;
@@ -1292,6 +1372,9 @@
 .pageBody .centerInfoBody .el-breadcrumb {
   width: 100%;
 }
+.pageBody .centerInfoBox {
+  padding: 0 2.4rem;
+}
 .pageBody .centerInfoBox .centerInfoTitle {
   display: flex;
   justify-content: space-between;
@@ -1308,8 +1391,7 @@
   margin-left: 1rem;
 }
 .pageBody .centerInfoBox .formItem {
-  display: flex;
-  margin-top: 2.4rem;
+  margin-top: 1.4rem;
 }
 .pageBody .centerInfoBox .formItem .formLabel {
   width: 10rem;
@@ -1322,7 +1404,7 @@
   flex: 1;
 }
 .pageBody .centerInfoBox .formItem .formValue .el-select {
-  margin-left: 1.5rem;
+  width: 100%;
 }
 .pageBody .centerInfoBox .formItem .formValue .el-select:nth-of-type(1) {
   margin-left: 0;
@@ -1336,7 +1418,7 @@
   text-align: center;
 }
 .pageBody .centerInfoBox .formItem .formValue .avatar-uploader .avatar {
-  height: 10rem;
+  height: 15rem;
   width: 15rem;
   display: block;
 }
@@ -1354,6 +1436,17 @@
   margin-top: 2rem;
   display: flex;
   justify-content: center;
+}
+.pageBody .centerInfoBox .formItemHandleItem {
+  margin: 2rem auto;
+  border-radius: 4px;
+  background: #198CFF;
+  width: 31.4rem;
+  height: 5rem;
+  line-height: 5rem;
+  font-size: 1.6rem;
+  color: #fff;
+  text-align: center;
 }
 .pageBody .centerBar1 {
   background-color: #FFE14D;
@@ -1601,17 +1694,16 @@
   cursor: pointer;
 }
 .searchPageBody {
-  width: 114.4rem;
-  margin: 4rem auto 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: calc(100vh - 9.3rem);
 }
 .searchPageBody .searchInputBox {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 .searchPageBody .searchInputBox .searchInput {
   width: 102.4rem;
@@ -1632,15 +1724,16 @@
 }
 .searchPageBody .searchResultBox {
   width: 82rem;
+  height: 100%;
 }
 .searchPageBody .searchResultBox .searchResultTop {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1.5rem;
+  padding: 1rem 1rem;
   border-bottom: 1px solid #D3D3D4;
 }
 .searchPageBody .searchResultBox .searchResultTop .searchResultLabel {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: #000000;
 }
 .searchPageBody .searchResultBox .searchResultTop .searchResultNumBox {
@@ -1651,15 +1744,15 @@
   color: #FF5533;
 }
 .searchPageBody .searchResultBox .searchResultCont {
-  margin-top: 4rem;
+  padding: 2rem 1rem;
+  height: calc(100% - 4rem);
+  overflow: auto;
 }
 .searchPageBody .searchResultBox .searchResultCont .searchResultItem {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  height: 7.5rem;
   padding-bottom: 2.5rem;
-  margin-bottom: 2.5rem;
   border-bottom: 1px solid #F6F6F7;
 }
 .searchPageBody .searchResultBox .searchResultCont .searchResultItem .sriImg {
@@ -1693,6 +1786,176 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+.searchPageBody .searchResultBox .searchResultCont .doctorItem {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorImg {
+  width: 7rem;
+  height: 7rem;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorImg img {
+  width: 100%;
+  height: 100%;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo {
+  width: calc(100% - 7rem - 2.3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo .doctorName {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo .doctorName .doctorNameText {
+  font-size: 2.2rem;
+  line-height: 3rem;
+  color: #000000;
+  word-break: keep-all;
+  margin-right: 1rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo .doctorName .doctorType {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #198CFF;
+  word-break: keep-all;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo .doctorHospital {
+  font-size: 1.4rem;
+  color: #747474;
+  line-height: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo .doctorHospital .doctorhospitalText {
+  margin-right: 1rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .doctorItem .doctorInfo .doctorRemark {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #747474;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem {
+  display: flex;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalImg {
+  width: 6.8rem;
+  height: 4.8rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalImg img {
+  width: 100%;
+  height: 100%;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 1rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalInfo .hospitalName {
+  color: #2170BF;
+  font-size: 1.6rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalInfo .hospitalName .hospitalType {
+  line-height: 2.6rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalInfo .hospitalTel {
+  line-height: 1.6rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .hospitalItem .hospitalInfo .hospitalAddress {
+  font-size: 1.4rem;
+  color: #616367;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem {
+  border-bottom: 1px solid #F6F6F7;
+  display: flex;
+  justify-content: space-between;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineImg {
+  width: 7rem;
+  height: 7rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineImg img {
+  width: 100%;
+  height: 100%;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo {
+  width: calc(100% - 7rem - 2.3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineName {
+  display: flex;
+  justify-content: space-between;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineName .medicineNameText {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  color: #198CFF;
+  cursor: pointer;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineName .medicineAskBar {
+  padding: 0.6rem 1.8rem;
+  color: #212429;
+  font-size: 1.4rem;
+  background-color: #FFE14D;
+  border-radius: 1.6rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineMsg {
+  margin-top: 1rem;
+  color: #747474;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineMsg .medicinemItem {
+  margin-right: 2rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineCompany {
+  display: flex;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineCompany .medicineCompanyName {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #212429;
+}
+.searchPageBody .searchResultBox .searchResultCont .medicineItem .medicineInfo .medicineCompany .companyList {
+  margin-left: 2rem;
+  color: #FF5533;
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+.searchPageBody .searchResultBox .searchResultCont .messageItem {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  cursor: pointer;
+}
+.searchPageBody .searchResultBox .searchResultCont .messageItem .messageTitle {
+  color: #333333;
+}
+.searchPageBody .searchResultBox .searchResultCont .messageItem .messageTime {
+  white-space: nowrap;
+  margin-left: 2rem;
+}
 .searchPageBody .searchHotWordBox {
   width: 26rem;
 }
@@ -1716,12 +1979,12 @@
   cursor: pointer;
 }
 .loginPageBody {
-  width: 114rem;
-  margin: 0 auto;
   border-top: 1px solid transparent;
+  height: 100vh;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 .loginPageBody .loginNavBody {
-  width: 114rem;
   height: 8rem;
   margin: 4rem 0 6rem;
   display: flex;
@@ -1729,47 +1992,33 @@
   justify-content: space-between;
   align-items: center;
 }
-.loginPageBody .loginNavBody .loginNavLogo {
-  width: 17.5rem;
-  height: 7rem;
-  font-size: 1rem;
-  cursor: pointer;
-  background-image: url(../img/index/logo_footer.png);
-  background-size: 100% 100%;
-}
 .loginPageBody .loginNavBody .loginNavBox {
   display: flex;
+  flex-wrap: wrap;
 }
 .loginPageBody .loginNavBody .loginNavBox .loginNavItem {
-  font-size: 1.6rem;
-  color: #198CFF;
-  margin-left: 5rem;
+  padding: 1rem 1.6rem;
+  color: #333333;
+  line-height: 2rem;
+  font-size: 1.4rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
   cursor: pointer;
+  background: #F6F6F7;
+  border-radius: 8px;
 }
-.loginPageBody .loginCont {
-  display: flex;
-  justify-content: space-between;
-}
-.loginPageBody .loginCont .loginImg {
-  width: 69rem;
-  height: 45rem;
-  background-image: url('../img/loginBg.png');
-}
-.loginPageBody .loginCont .loginForm {
-  width: 43rem;
-  height: 45rem;
-  background-color: #fff;
-  padding: 5rem 6rem 3rem;
+.loginPageBody .loginForm {
+  padding: 2.4rem;
   position: relative;
   box-sizing: border-box;
 }
-.loginPageBody .loginCont .loginForm .lfLabel {
+.loginPageBody .loginForm .lfLabel {
   color: #212429;
   line-height: 3.3rem;
   font-size: 2.4rem;
-  margin-bottom: 8rem;
+  margin-bottom: 3rem;
 }
-.loginPageBody .loginCont .loginForm .toRegister {
+.loginPageBody .loginForm .toRegister {
   position: absolute;
   top: 6rem;
   right: 6rem;
@@ -1777,30 +2026,29 @@
   color: #198CFF;
   cursor: pointer;
 }
-.loginPageBody .loginCont .loginForm .el-input {
+.loginPageBody .loginForm .el-input {
   margin-bottom: 3.5rem;
 }
-.loginPageBody .loginCont .loginForm .loginBar {
-  width: 100%;
-  height: 5rem;
+.loginPageBody .loginForm .loginBar {
   line-height: 5rem;
   background-color: #198CFF;
+  margin: 0 auto;
   text-align: center;
-  border-radius: 27px;
   font-size: 1.6rem;
   color: #fff;
-  cursor: pointer;
+  width: 32.7rem;
+  height: 5rem;
+  background: #198CFF;
+  border-radius: 4px;
 }
 .registerBody {
   position: relative;
   border-top: 1px solid transparent;
-  background-color: #F9F9FA;
+  background-color: #fff;
 }
 .registerBody .registerHeader {
   width: calc(100% - 30rem);
-  max-width: 114rem;
-  height: 8rem;
-  margin: 4rem auto 6rem;
+  margin: 4rem auto 2rem;
   display: flex;
   justify-content: space-between;
 }
@@ -1819,10 +2067,9 @@
   cursor: pointer;
 }
 .registerBody .registerBox {
-  width: 90rem;
   margin: 0 auto;
   background-color: #fff;
-  padding: 5rem;
+  padding: 2.4rem;
   box-sizing: border-box;
 }
 .registerBody .registerBox .groupTitle {
@@ -1830,6 +2077,9 @@
   color: #212429;
   font-weight: bold;
   margin-bottom: 2rem;
+}
+.registerBody .registerBox .el-form-item .el-form-item__content {
+  margin-left: 0;
 }
 .registerBody .registerBox .el-form-item .avatar-uploader .avatar-uploader-icon {
   font-size: 2.8rem;
@@ -1873,9 +2123,11 @@
   margin-bottom: 2rem;
 }
 .essaylistBody .modelLabelBox {
+  font-size: 1.4rem;
   border-bottom: 1px solid #D3D3D4;
-  padding-bottom: 2rem;
-  margin-bottom: 5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2.4rem;
+  margin-top: 1rem;
 }
 .essaylistBody .essayItemBox {
   display: flex;
@@ -1885,14 +2137,13 @@
 }
 .essaylistBody .essayItemBox .essayItem {
   width: 100%;
-  height: 16.4rem;
   display: flex;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
 }
 .essaylistBody .essayItemBox .essayItem .essayItemImg {
-  width: 25rem;
-  height: 16.4rem;
-  margin-right: 3rem;
+  width: 9.8rem;
+  height: 6.4rem;
+  margin-right: 1.6rem;
 }
 .essaylistBody .essayItemBox .essayItem .essayItemImg img {
   width: 100%;
@@ -1907,17 +2158,16 @@
 }
 .essaylistBody .essayItemBox .essayItem .essayItemInfo .essayItemTitle {
   cursor: pointer;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   color: #212429;
-  line-height: 3rem;
-  height: 6rem;
+  line-height: 2rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
 .essaylistBody .essayItemBox .essayItem .essayItemInfo .essayItemRemark {
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #8C8E90;
   line-height: 2rem;
   height: 4rem;
@@ -1928,9 +2178,9 @@
 }
 .essaylistBody .essayItemBox .essayItem .essayItemInfo .essayItemBottom {
   display: flex;
-  font-size: 1.6rem;
-  color: #747474;
-  line-height: 2.2rem;
+  font-size: 1rem;
+  color: #8C8E90;
+  margin-top: 0.9rem;
 }
 .essaylistBody .essayItemBox .essayItem .essayItemInfo .essayItemBottom .essayItemAuthor {
   margin-left: 3rem;
@@ -1946,13 +2196,15 @@
   color: #999;
 }
 .essaydetailBody {
+  padding: 2.4rem;
   position: relative;
   overflow: hidden;
 }
 .essaydetailBody .essayTitle {
-  font-size: 2.4rem;
+  font-size: 2rem;
   line-height: 3.2rem;
   font-weight: bold;
+  color: #212429;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -1960,10 +2212,10 @@
 }
 .essaydetailBody .essayRemark {
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   line-height: 1.8rem;
-  color: #747474;
-  margin-top: 2rem;
+  color: #8C8E90;
+  margin-top: 1.6rem;
 }
 .essaydetailBody .essayRemark .essayAuthor {
   margin-left: 2.4rem;
@@ -1978,7 +2230,7 @@
   border: 0;
 }
 .essaydetailBody .essayContent {
-  margin-top: 4rem;
+  margin-top: 3rem;
   font-size: 1.5rem;
   line-height: 2.6rem;
 }
@@ -1988,7 +2240,7 @@
   margin-bottom: 15rem;
 }
 .essaydetailBody .essayLabels {
-  margin-top: 8rem;
+  margin-top: 3rem;
   display: flex;
 }
 .essaydetailBody .essayLabels .essayLabelItem {
@@ -2046,6 +2298,9 @@
 .essaydetailBody .meetingInfo .meetingInfoItem:nth-last-child(1),
 .essaydetailBody .meetingInfo .meetingInfoItem:nth-last-child(2) {
   margin-bottom: 0;
+}
+.essayRelatedBody {
+  padding: 2.4rem;
 }
 .essayRelatedBody .essayRelatedBox {
   padding-bottom: 2rem;
@@ -2151,47 +2406,58 @@
   overflow: hidden;
 }
 .assesshospitalBody {
-  width: 82rem;
+  width: 100%;
 }
 .assesshospitalBody .assesshospitalTabs {
-  position: relative;
-  width: 100%;
   display: flex;
-  padding-bottom: 2.2rem;
+  align-items: center;
   border-bottom: 1px solid #D3D3D4;
 }
-.assesshospitalBody .assesshospitalTabs .ahTabItem {
+.assesshospitalBody .assesshospitalTabs .ahTabList {
+  position: relative;
+  width: calc(100% - 4rem);
+  display: flex;
+  padding: 2rem 0;
+  overflow: auto;
+}
+.assesshospitalBody .assesshospitalTabs .ahTabList::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+.assesshospitalBody .assesshospitalTabs .ahTabList .ahTabItem {
+  padding: 0 2rem;
   font-size: 1.6rem;
   color: #616367;
   cursor: pointer;
-  margin-right: 4rem;
+  margin-right: 2rem;
   line-height: 2.2rem;
+  word-break: keep-all;
 }
-.assesshospitalBody .assesshospitalTabs .ahTabItem.active {
+.assesshospitalBody .assesshospitalTabs .ahTabList .ahTabItem.active {
   color: #000000;
   font-weight: bold;
 }
 .assesshospitalBody .assesshospitalBox {
   width: 100%;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem {
+  padding: 0 2.4rem;
   display: flex;
   cursor: pointer;
   justify-content: space-between;
-  height: 16.4rem;
-  margin-bottom: 5rem;
+  height: 8.4rem;
+  margin-bottom: 3rem;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalImg {
-  width: 21rem;
-  height: 100%;
+  width: 7rem;
+  max-height: 100%;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalImg img {
   width: 100%;
-  height: 100%;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalInfo {
-  width: 58rem;
+  width: calc(100% - 2.4rem - 7rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2201,7 +2467,7 @@
   align-items: center;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalInfo .assesshospitalName .assesshospitalNameText {
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   color: #000000;
   font-weight: bold;
   overflow: hidden;
@@ -2210,33 +2476,32 @@
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalInfo .assesshospitalName .assesshospitalLevel {
   flex-shrink: 0;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #198CFF;
   padding-left: 2rem;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalInfo .assesshospitalContact {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #747474;
-  line-height: 2.3rem;
-  height: 7rem;
-  margin-top: 2rem;
+  line-height: 1.6rem;
+  margin-top: 0.4rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
 .assesshospitalBody .assesshospitalBox .assesshospitalItem .assesshospitalInfo .assesshospitalAddress {
-  line-height: 2rem;
-  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-size: 1.2rem;
   color: #000000;
-  margin-top: 2.5rem;
+  margin-top: 0.4rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .readMoreText {
   position: absolute;
-  top: calc(50% - 2rem);
+  top: calc(50% - 1rem);
   right: 0;
   color: #616367;
   font-size: 1.6rem;
@@ -2245,9 +2510,9 @@
   cursor: pointer;
 }
 .newsdrugwarnBody {
-  width: 100%;
   background-color: #F9F9FA;
-  padding: 4rem 7rem 4rem 5rem;
+  padding: 1.8rem;
+  margin: 2.4rem;
   box-sizing: border-box;
 }
 .newsdrugwarnBody .newsdrugwarnLabelBox {
@@ -2255,7 +2520,8 @@
   width: 100%;
   border-bottom: 1px solid #D3D3D4;
   padding-bottom: 1.5rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
   color: #000000;
 }
 .newsdrugwarnBody .newsdrugwarnLabelBox .readMoreText {
@@ -2266,17 +2532,18 @@
 }
 .newsdrugwarnBody .newsdrugwarnBox .newsdrugwarnItem {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 1.6rem;
   cursor: pointer;
+  text-indent: 0.5rem;
+}
+.newsdrugwarnBody .newsdrugwarnBox .newsdrugwarnItem::before {
+  content: '·';
 }
 .newsdrugwarnBody .newsdrugwarnBox .newsdrugwarnItem .newsdrugwarnTitle {
-  width: calc(100% - 16rem);
   font-size: 1.4rem;
-  color: #333333;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 2rem;
+  color: #000;
 }
 .newsdrugwarnBody .newsdrugwarnBox .newsdrugwarnItem .newsdrugwarnTime {
   font-size: 1.4rem;
@@ -2492,212 +2759,116 @@
 }
 .drugIntroduceBody {
   width: 100%;
+  padding: 2.4rem;
+  box-sizing: border-box;
 }
 .drugIntroduceBody .drugIntroduceHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #D3D3D4;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 .drugIntroduceBody .drugIntroduceHeader .drugIHLabel {
   font-size: 2rem;
   color: #000000;
 }
-.drugIntroduceBody .drugIntroduceHeader .drugLabelBox {
-  display: flex;
-}
-.drugIntroduceBody .drugIntroduceHeader .drugLabelBox .drugLabelItem {
-  color: #333333;
-  font-size: 1.6rem;
-  display: flex;
-  cursor: pointer;
-}
-.drugIntroduceBody .drugIntroduceHeader .drugLabelBox .drugLabelItem .drugLabelLine {
-  padding: 0 0.3rem;
-}
-.drugIntroduceBody .drugIntroduceHeader .drugLabelBox .drugLabelMore {
+.drugIntroduceBody .drugIntroduceHeader .drugIHMore {
+  font-size: 1.2rem;
   color: #198CFF;
-  font-size: 1.6rem;
-  margin-left: 2.5rem;
-  cursor: pointer;
+  line-height: 1.7rem;
 }
 .drugIntroduceBody .drugIntroduceContent {
-  display: flex;
-  justify-content: space-between;
   margin-top: 3rem;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft {
-  width: 38rem;
-  background-color: #EEEEEE;
-  padding: 2.5rem 2rem;
-  box-sizing: border-box;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLHospital {
+.drugIntroduceBody .drugIntroduceContent .drugICLHospital {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid #ccc;
+  background: #F9F9FA;
+  border-radius: 4px;
+  padding: 1.6rem;
+  box-sizing: border-box;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLHospital .drugICLHospitalImg {
-  width: 8rem;
-  height: 8rem;
+.drugIntroduceBody .drugIntroduceContent .drugICLHospital .drugICLHospitalImg {
+  width: 7rem;
+  height: 7rem;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLHospital .drugICLHospitalImg img {
+.drugIntroduceBody .drugIntroduceContent .drugICLHospital .drugICLHospitalImg img {
   width: 100%;
   height: 100%;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLHospital .drugICLHospitalInfo {
-  height: 8rem;
+.drugIntroduceBody .drugIntroduceContent .drugICLHospital .drugICLHospitalInfo {
   width: calc(100% - 10rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLHospital .drugICLHospitalInfo .drugICLHospitalName {
+.drugIntroduceBody .drugIntroduceContent .drugICLHospital .drugICLHospitalInfo .drugICLHospitalName {
   color: #198CFF;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLHospital .drugICLHospitalInfo .drugICLHospitalText {
+.drugIntroduceBody .drugIntroduceContent .drugICLHospital .drugICLHospitalInfo .drugICLHospitalText {
   line-height: 2rem;
   font-size: 1.4rem;
   color: #5B5B5B;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLDrug {
-  margin-top: 2.5rem;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLDrug .drugICLDrugItem {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  margin-bottom: 1rem;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLDrug .drugICLDrugItem:nth-last-of-type(1) {
-  margin-bottom: 0;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLDrug .drugICLDrugItem .drugICLDrugName {
-  color: #198CFF;
-  cursor: pointer;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICLeft .drugICLDrug .drugICLDrugItem .drugICLDrugAsk {
-  color: #FF5533;
-  cursor: pointer;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight {
-  width: calc(100% - 38rem - 3rem);
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRAddress {
-  display: flex;
-  font-size: 1.4rem;
-  align-items: center;
-  color: #5B5B5B;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #ccc;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRAddress .drugICRAddressItem {
-  display: flex;
-  align-items: center;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRAddress .drugICRAddressItem .drugICRAddressItemText {
-  cursor: pointer;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRAddress .drugICRAddressItem .drugICRAddressItemLine {
-  padding: 0.3rem;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRAddress .drugICRAddressMore {
-  margin-left: 2.5rem;
-  cursor: pointer;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRShowDrug {
-  display: flex;
+.drugIntroduceBody .drugIntroduceContent .drugICRShowDrug {
   margin-top: 3rem;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRShowDrug .drugICRShowDrugItem {
-  width: 10rem;
-  margin-left: 2rem;
+.drugIntroduceBody .drugIntroduceContent .drugICRShowDrug .drugICRShowDrugItem {
+  margin-top: 1.6rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRShowDrug .drugICRShowDrugItem .drugICRShowDrugImg {
-  width: 8rem;
-  height: 8rem;
+.drugIntroduceBody .drugIntroduceContent .drugICRShowDrug .drugICRShowDrugItem .drugICRShowDrugImg {
+  width: 7rem;
+  height: 7rem;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRShowDrug .drugICRShowDrugItem .drugICRShowDrugImg img {
+.drugIntroduceBody .drugIntroduceContent .drugICRShowDrug .drugICRShowDrugItem .drugICRShowDrugImg img {
   width: 100%;
   height: 100%;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRShowDrug .drugICRShowDrugItem .drugICRShowDrugName {
-  font-size: 1.4rem;
-  color: #5B5B5B;
+.drugIntroduceBody .drugIntroduceContent .drugICRShowDrug .drugICRShowDrugItem .drugICRShowDrugName {
+  font-size: 1.5rem;
   line-height: 2rem;
   margin-top: 1rem;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRDrugData {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 2.5rem;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRDrugData .drugICRDrugDataItem {
-  margin-bottom: 1rem;
-  width: calc((100% - 6rem) / 4);
-  margin-right: 2rem;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  cursor: pointer;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRDrugData .drugICRDrugDataItem:nth-of-type(4n) {
-  margin-right: 0;
-}
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRDrugData .drugICRDrugDataItem .drugICRDrugDataName {
+  margin-left: 2.3rem;
   color: #198CFF;
-  max-width: 12rem;
-  overflow: hidden;
-  display: inline-block;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: middle;
 }
-.drugIntroduceBody .drugIntroduceContent .drugICRight .drugICRDrugData .drugICRDrugDataItem .drugICRDrugDataNum {
-  color: #747474;
+.drugIntroduceBody .drugIntroduceContent .drugLabelMore {
+  width: 33rem;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 1.4rem;
+  margin: 1rem auto;
+  background: #F6F6F7;
+  border-radius: 4px;
+  text-align: center;
 }
 .companytroduceBody {
   width: 100%;
+  padding: 2.4rem;
+  box-sizing: border-box;
 }
 .companytroduceBody .companytroduceHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #D3D3D4;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 .companytroduceBody .companytroduceHeader .companyHLabel {
   font-size: 2rem;
   color: #000000;
 }
-.companytroduceBody .companytroduceHeader .companyLabelBox {
-  display: flex;
-}
-.companytroduceBody .companytroduceHeader .companyLabelBox .companyLabelItem {
-  color: #333333;
-  font-size: 1.6rem;
-  display: flex;
-  cursor: pointer;
-}
-.companytroduceBody .companytroduceHeader .companyLabelBox .companyLabelItem .companyLabelLine {
-  padding: 0 0.3rem;
-}
-.companytroduceBody .companytroduceHeader .companyLabelBox .companyLabelMore {
+.companytroduceBody .companytroduceHeader .companyHMore {
+  font-size: 1.2rem;
   color: #198CFF;
-  font-size: 1.6rem;
-  margin-left: 2.5rem;
-  cursor: pointer;
+  line-height: 1.7rem;
 }
 .companytroduceBody .companytroduceContent {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 .companytroduceBody .companytroduceContent .companyAddress {
   display: flex;
@@ -2721,27 +2892,48 @@
   margin-left: 2.5rem;
   cursor: pointer;
 }
-.companytroduceBody .companytroduceContent .companyData {
-  margin-top: 2.5rem;
-}
 .companytroduceBody .companytroduceContent .companyData .companyDataItem {
-  margin-bottom: 1rem;
-  margin-right: 2rem;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  cursor: pointer;
+  margin-bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.companytroduceBody .companytroduceContent .companyData .companyDataItem:nth-of-type(4n) {
+.companytroduceBody .companytroduceContent .companyData .companyDataItem:nth-of-type(5n) {
   margin-right: 0;
 }
-.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyDataName {
+.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyImg {
+  width: 7rem;
+  height: 7rem;
+}
+.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyImg img {
+  width: 100%;
+  height: 100%;
+}
+.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyMsg {
+  min-height: 7rem;
+  width: calc(100% - 7rem - 2.3rem);
+}
+.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyMsg .companyName {
+  font-size: 1.4rem;
   color: #198CFF;
+  line-height: 2rem;
+  margin-top: 1rem;
 }
-.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyDataContent {
-  padding-left: 2rem;
+.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyMsg .companyTel {
+  font-size: 1.4rem;
+  color: #212429;
+  margin-top: 0.5rem;
+  line-height: 2rem;
 }
-.companytroduceBody .companytroduceContent .companyData .companyDataItem .companyDataNum {
-  color: #747474;
+.companytroduceBody .companytroduceContent .companyMore {
+  width: 33rem;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 1.4rem;
+  margin: 1rem auto;
+  background: #F6F6F7;
+  border-radius: 4px;
+  text-align: center;
 }
 .companytroduceBody .companytroduceContent .noData {
   width: 100%;
@@ -2794,48 +2986,49 @@
   color: #000000;
   line-height: 2.2rem;
   padding-bottom: 2.2rem;
-  border-bottom: 1px solid #D3D3D4;
-}
-.medicinecompanyBody .medicinecompanyBox {
-  display: flex;
-  flex-wrap: wrap;
+  font-weight: bold;
 }
 .medicinecompanyBody .medicinecompanyBox .companyItem {
-  margin-top: 4.8rem;
-  width: calc((100% - 3rem * 4) / 5);
-  margin-right: 3rem;
+  margin-bottom: 2.4rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 .medicinecompanyBody .medicinecompanyBox .companyItem:nth-of-type(5n) {
   margin-right: 0;
 }
 .medicinecompanyBody .medicinecompanyBox .companyItem .companyImg {
-  width: 13.5rem;
-  height: 13.5rem;
+  width: 7rem;
+  height: 7rem;
 }
 .medicinecompanyBody .medicinecompanyBox .companyItem .companyImg img {
   width: 100%;
   height: 100%;
 }
-.medicinecompanyBody .medicinecompanyBox .companyItem .companyName {
+.medicinecompanyBody .medicinecompanyBox .companyItem .companyMsg {
+  min-height: 7rem;
+  width: calc(100% - 7rem - 2.3rem);
+}
+.medicinecompanyBody .medicinecompanyBox .companyItem .companyMsg .companyName {
   font-size: 1.4rem;
   color: #198CFF;
-  margin-top: 2.4rem;
   line-height: 2rem;
+  margin-top: 1rem;
 }
-.medicinecompanyBody .medicinecompanyBox .companyItem .companyTel {
+.medicinecompanyBody .medicinecompanyBox .companyItem .companyMsg .companyTel {
   font-size: 1.4rem;
   color: #212429;
   margin-top: 0.5rem;
   line-height: 2rem;
 }
+.medicinelistBody {
+  padding: 0 2.4rem;
+}
 .medicinelistBody .medicinelistTital {
   font-size: 1.6rem;
   color: #000000;
   line-height: 2.2rem;
-  padding-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid #D3D3D4;
 }
 .medicinelistBody .medicineListBox .medicineItem {
@@ -2846,18 +3039,18 @@
   justify-content: space-between;
 }
 .medicinelistBody .medicineListBox .medicineItem .medicineImg {
-  width: 11rem;
-  height: 11rem;
+  width: 7rem;
+  height: 7rem;
 }
 .medicinelistBody .medicineListBox .medicineItem .medicineImg img {
   width: 100%;
   height: 100%;
 }
 .medicinelistBody .medicineListBox .medicineItem .medicineInfo {
-  width: calc(100% - 11rem - 3rem);
+  width: calc(100% - 7rem - 2.3rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .medicinelistBody .medicineListBox .medicineItem .medicineInfo .medicineName {
   display: flex;
@@ -2879,6 +3072,7 @@
   font-weight: bold;
 }
 .medicinelistBody .medicineListBox .medicineItem .medicineInfo .medicineMsg {
+  margin-top: 1rem;
   color: #747474;
   font-size: 1.4rem;
   line-height: 2rem;
@@ -2900,12 +3094,17 @@
   font-size: 1.4rem;
   line-height: 2rem;
 }
+.companymedicinelistBody {
+  padding: 2.4rem;
+}
 .companymedicinelistBody .companymedicinelistTital {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #000000;
+  font-weight: bold;
   line-height: 2.2rem;
-  padding-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid #D3D3D4;
+  margin-bottom: 2rem;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem {
   padding-bottom: 6rem;
@@ -2914,33 +3113,33 @@
   justify-content: space-between;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeImg {
-  width: 11rem;
-  height: 11rem;
+  width: 7rem;
+  height: 7rem;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeImg img {
   width: 100%;
   height: 100%;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeInfo {
-  width: calc(100% - 11rem - 3rem);
+  width: calc(100% - 7rem - 3rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeInfo .companymeName {
   display: flex;
   justify-content: space-between;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeInfo .companymeName .companymeNameText {
-  font-size: 1.8rem;
-  line-height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   color: #198CFF;
   cursor: pointer;
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeInfo .companymeName .companymeAskBar {
   padding: 0.6rem 1.8rem;
   color: #212429;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   background-color: #FFE14D;
   border-radius: 1.6rem;
   line-height: 2rem;
@@ -2948,7 +3147,7 @@
 }
 .companymedicinelistBody .companymedicinelistBox .companymeItem .companymeInfo .companymeMsg {
   color: #747474;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 2rem;
   display: flex;
 }
@@ -2971,11 +3170,14 @@
   background-color: #F6F6F7;
   margin-right: 1rem;
 }
+.companylistBody {
+  padding: 0 2.4rem;
+}
 .companylistBody .companylistTital {
   font-size: 1.6rem;
   color: #000000;
   line-height: 2.2rem;
-  padding-bottom: 2.2rem;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid #D3D3D4;
 }
 .companylistBody .companylistBox .companyItem {
@@ -2986,18 +3188,18 @@
   justify-content: space-between;
 }
 .companylistBody .companylistBox .companyItem .companyImg {
-  width: 11rem;
-  height: 11rem;
+  width: 7rem;
+  height: 7rem;
 }
 .companylistBody .companylistBox .companyItem .companyImg img {
   width: 100%;
   height: 100%;
 }
 .companylistBody .companylistBox .companyItem .companyInfo {
-  width: calc(100% - 11rem - 3rem);
+  width: calc(100% - 7rem - 2.3rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .companylistBody .companylistBox .companyItem .companyInfo .companyName {
   display: flex;
@@ -3017,7 +3219,6 @@
   border-radius: 1.6rem;
   line-height: 2rem;
   font-weight: bold;
-  cursor: pointer;
 }
 .companylistBody .companylistBox .companyItem .companyInfo .companyMsg {
   color: #747474;
@@ -3037,33 +3238,35 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 4rem;
-  border-bottom: 1px solid #D3D3D4;
+  background-color: #198CFF;
+  padding: 3rem 2.4rem;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoImg {
-  width: 11rem;
-  height: 11rem;
+  width: 8rem;
+  height: 8rem;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoImg img {
   width: 100%;
   height: 100%;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoCont {
-  width: calc(100% - 11rem - 3rem);
+  width: calc(100% - 8rem - 2.3rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  min-height: 8rem;
+  color: #fff;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoCont .medicineName {
-  color: #198CFF;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoCont .medicineMsg {
-  color: #747474;
   font-size: 1.4rem;
   display: flex;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoCont .medicineMsg .medicineMsgItem {
-  margin-right: 1rem;
+  margin-top: 1.5rem;
+  opacity: 0.5;
 }
 .medicineInfoBody .medicineInfoHeader .medicineInfoCont .medicineLabel {
   color: #212429;
@@ -3077,10 +3280,7 @@
   background-color: #F6F6F7;
 }
 .medicineInfoBody .medicineInfoParam {
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 4rem;
-  padding-bottom: 2.5rem;
+  padding: 2.9rem 2.4rem 0;
 }
 .medicineInfoBody .medicineInfoParam .medicineInfoPItem {
   display: flex;
@@ -3104,7 +3304,7 @@
   width: 100%;
 }
 .medicineInfoBody .medicineInfoExplain {
-  margin-top: 2rem;
+  padding: 2.4rem;
 }
 .medicineInfoBody .medicineInfoExplain .medicineInfoETitle {
   font-size: 1.6rem;
@@ -3120,28 +3320,37 @@
   line-height: 3rem;
   margin-bottom: 2rem;
 }
+.companyInfoBody {
+  padding: 2.4rem 2.4rem 0;
+}
+.companyInfoBody .companyInfoTitle {
+  font-size: 2.2rem;
+  color: #000000;
+  line-height: 2.2rem;
+  font-weight: bold;
+}
 .companyInfoBody .companyInfoHeader {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   padding-bottom: 4rem;
+  margin-top: 3rem;
 }
 .companyInfoBody .companyInfoHeader .companyName {
   color: #198CFF;
-  font-size: 2.4rem;
+  font-size: 2rem;
   width: 100%;
   margin-bottom: 3rem;
+  margin-top: 2.4rem;
+  font-weight: bold;
+  color: #000000;
 }
 .companyInfoBody .companyInfoHeader .companyInfoImg {
-  width: 13rem;
-  height: 13rem;
+  width: 32.8rem;
+  height: 17.4rem;
 }
 .companyInfoBody .companyInfoHeader .companyInfoImg img {
   width: 100%;
   height: 100%;
 }
 .companyInfoBody .companyInfoHeader .companyInfoCont {
-  width: calc(100% - 13rem - 2.5rem);
   color: #333333;
   font-size: 1.4rem;
   line-height: 2.6rem;
@@ -3172,13 +3381,12 @@
   width: 100%;
 }
 .companyInfoBody .companyInfoExplain {
-  margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin-top: 1rem;
 }
 .companyInfoBody .companyInfoExplain .companyInfoETitle {
   font-size: 1.6rem;
   color: #000000;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #D3D3D4;
   font-weight: bold;
@@ -3199,27 +3407,35 @@
   line-height: 2.6rem;
   margin-bottom: 1.5rem;
 }
-.companyInfoBody .companyInfoExplain .companyInfoEProdBox {
-  display: flex;
-}
 .companyInfoBody .companyInfoExplain .companyInfoEProdBox .companyInfoEProdItem {
-  margin-right: 3rem;
-  width: 10rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: space-between;
 }
 .companyInfoBody .companyInfoExplain .companyInfoEProdBox .companyInfoEProdItem img {
   width: 8rem;
   height: 8rem;
-  margin-bottom: 1rem;
 }
-.companyInfoBody .companyInfoExplain .companyInfoEProdBox .companyInfoEProdItem .companyInfoEProdName {
-  cursor: pointer;
-  text-align: center;
+.companyInfoBody .companyInfoExplain .companyInfoEProdBox .companyInfoEProdItem .companyInfoEProdMsg {
+  width: calc(100% - 8rem - 2.3rem);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.companyInfoBody .companyInfoExplain .companyInfoEProdBox .companyInfoEProdItem .companyInfoEProdMsg .companyInfoEProdName {
   font-size: 1.4rem;
   line-height: 2rem;
   color: #198CFF;
+}
+.companyInfoBody .companyInfoExplain .companyInfoEProdBox .companyInfoEProdItem .companyInfoEProdMsg .companyInfoEProdText {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  color: #747474;
+  margin-top: 2rem;
+}
+.companylicenseBody {
+  padding: 0 2.4rem;
 }
 .companylicenseBody .companylicenseExplain {
   margin-top: 2rem;
@@ -3239,11 +3455,16 @@
 .companylicenseBody .companylicenseExplain .companylicenseEItem .companylicenseEITitle {
   font-size: 1.6rem;
   color: #000000;
-  line-height: 2.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #D3D3D4;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .companylicenseBody .companylicenseExplain .companylicenseEItem .companylicenseEIImg {
-  width: 76rem;
+  width: 32.7rem;
   margin-top: 1rem;
 }
 .companylicenseBody .companylicenseExplain .companylicenseEItem .companylicenseEIImg img {
@@ -3313,8 +3534,8 @@
   background-color: white;
 }
 .drugstoremapBody .drugstoremapHandle .mapInput input {
-  width: 24rem;
-  height: 18px;
+  width: 20rem;
+  height: 2rem;
 }
 .drugstoremapBody .drugstoremapBox {
   overflow: hidden;
@@ -3322,10 +3543,39 @@
   height: 41rem;
   font-family: "微软雅黑";
 }
+.pageTypeBox {
+  display: flex;
+}
+.pageTypeBox:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+.pageTypeBox .pageTypeLabel {
+  font-size: 1.4rem;
+  color: #747474;
+  line-height: 2rem;
+  width: 10rem;
+  flex-shrink: 0;
+}
+.pageTypeBox .pageTypeItemBox {
+  display: flex;
+  font-size: 1.4rem;
+  color: #198CFF;
+  line-height: 2rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+.pageTypeBox .pageTypeItemBox .pageTypeItem {
+  white-space: nowrap;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.pageTypeBox .pageTypeItemBox .pageTypeItem.active {
+  background-color: #198CFF;
+  color: #fff;
+}
 .pageTypeGroupBody {
-  margin: 6rem auto 0;
   background-color: #F9F9FA;
-  padding: 2rem;
   box-sizing: border-box;
 }
 .pageTypeGroupBody .pageTypeBox {
@@ -3360,6 +3610,10 @@
   background-color: #198CFF;
   color: #fff;
 }
+.doctorlistBody {
+  padding: 2.4rem;
+  box-sizing: border-box;
+}
 .doctorlistBody .doctorlistLabel {
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -3370,55 +3624,55 @@
 .doctorlistBody .doctorlistLabel .doctorNum {
   color: #FF5533;
 }
-.doctorlistBody .doctorlistBox {
-  margin-top: 3rem;
-}
 .doctorlistBody .doctorlistBox .doctorItem {
-  margin-bottom: 5.5rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorImg {
-  width: 12rem;
-  height: 12rem;
+  width: 7rem;
+  height: 7rem;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 4px;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorImg img {
   width: 100%;
   height: 100%;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorInfo {
-  width: calc(100% - 12rem - 3rem);
+  width: calc(100% - 7rem - 2.3rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 0;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorName {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorName .doctorNameText {
   font-size: 2.2rem;
   line-height: 3rem;
   color: #000000;
+  word-break: keep-all;
+  margin-right: 1rem;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorName .doctorType {
   font-size: 1.4rem;
   line-height: 2rem;
   color: #198CFF;
-  margin-left: 1rem;
+  word-break: keep-all;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorHospital {
   font-size: 1.4rem;
   color: #747474;
   line-height: 2rem;
   display: flex;
+  flex-wrap: wrap;
 }
-.doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorHospital .doctorDept {
-  margin-left: 2rem;
+.doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorHospital .doctorhospitalText {
+  margin-right: 1rem;
 }
 .doctorlistBody .doctorlistBox .doctorItem .doctorInfo .doctorRemark {
   font-size: 1.4rem;
@@ -3435,6 +3689,9 @@
   font-size: 1.4rem;
   color: #999;
 }
+.hospitallistBody {
+  padding: 2.4rem;
+}
 .hospitallistBody .hospitallistLabel {
   font-size: 1.6rem;
   line-height: 2.2rem;
@@ -3445,43 +3702,40 @@
 .hospitallistBody .hospitallistLabel .doctorNum {
   color: #FF5533;
 }
-.hospitallistBody .hospitallistBox {
-  margin-top: 3rem;
-}
 .hospitallistBody .hospitallistBox .doctorItem {
-  margin-bottom: 5.5rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: space-between;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorImg {
-  width: 22.6rem;
-  height: 15.6rem;
+  width: 7rem;
+  height: 5.5rem;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorImg img {
   width: 100%;
   height: 100%;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorInfo {
-  width: calc(100% - 22.6rem - 3rem);
+  width: calc(100% - 7rem - 2.3rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 0;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorInfo .doctorName {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorInfo .doctorName .doctorNameText {
   font-size: 2.2rem;
   line-height: 3rem;
   color: #198CFF;
+  margin-right: 1rem;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorInfo .doctorName .doctorType {
   font-size: 1.4rem;
   line-height: 2rem;
   color: #FF5533;
-  margin-left: 2rem;
 }
 .hospitallistBody .hospitallistBox .doctorItem .doctorInfo .doctorTel {
   font-size: 1.4rem;
@@ -3510,25 +3764,18 @@
   line-height: 2.8rem;
 }
 .messageListBody {
-  margin-bottom: 6rem;
+  padding: 2.4rem;
 }
 .messageListBody .messageLabel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 1.4rem;
-  border-bottom: 1px solid #D3D3D4;
+  width: 35.1rem;
+  height: 4.4rem;
+  background: linear-gradient(270deg, #FFFFFF 0%, #198CFF 100%);
 }
 .messageListBody .messageLabel .messageLabelText {
-  font-size: 1.8rem;
-  line-height: 2.5rem;
-  color: #000000;
-}
-.messageListBody .messageLabel .messageMore {
-  font-size: 1.4rem;
-  line-height: 2rem;
-  color: #747474;
-  cursor: pointer;
+  padding-left: 1rem;
+  font-size: 1.6rem;
+  line-height: 4.4rem;
+  color: #FFFFFF;
 }
 .messageListBody .messageBox {
   margin-top: 2.8rem;
@@ -3545,9 +3792,6 @@
 .messageListBody .messageBox .messageItem .messageTitle {
   color: #333333;
 }
-.messageListBody .messageBox .messageItem .messageTime {
-  color: #747474;
-}
 .messageListBody .messageBox .noData {
   width: 100%;
   text-align: center;
@@ -3555,8 +3799,18 @@
   font-size: 1.4rem;
   color: #999;
 }
+.messageListBody .messageMore {
+  height: 5rem;
+  background: #F9F9FA;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  color: #333333;
+  line-height: 5rem;
+  text-align: center;
+}
 .meetingListBody {
-  margin-bottom: 6rem;
+  padding: 2.4rem;
+  margin-bottom: 3rem;
 }
 .meetingListBody .meetingLabel {
   display: flex;
@@ -3589,23 +3843,26 @@
   line-height: 2rem;
   margin-bottom: 1.6rem;
 }
-.meetingListBody .meetingBox .meetingItem:nth-of-type(5n) {
-  margin-bottom: 6rem;
+.meetingListBody .meetingBox .meetingItem .meetingImg {
+  width: 9.8rem;
+  height: 6.4rem;
+  border-radius: 2px;
 }
-.meetingListBody .meetingBox .meetingItem .meetingTitle {
-  flex: 7;
-  color: #333333;
+.meetingListBody .meetingBox .meetingItem .meetingImg {
+  width: 9.8rem;
+  height: 6.4rem;
+  border-radius: 2px;
 }
-.meetingListBody .meetingBox .meetingItem .meetingCountry {
-  flex: 2;
-  color: #333333;
-  text-align: center;
-  margin-right: 1rem;
+.meetingListBody .meetingBox .meetingItem .meetingMsg {
+  width: calc(100% - 11rem);
 }
-.meetingListBody .meetingBox .meetingItem .meetingTime {
-  flex: 1;
+.meetingListBody .meetingBox .meetingItem .meetingMsg .meetingTitle {
+  color: #212429;
+  font-size: 1.6rem;
+}
+.meetingListBody .meetingBox .meetingItem .meetingMsg .meetingTime {
+  font-size: 1rem;
   color: #8C8E90;
-  white-space: nowrap;
 }
 .contentType {
   display: flex;
@@ -3622,6 +3879,9 @@
 .contentType .contentTypeItem.active {
   color: #000000;
   font-weight: bold;
+}
+.nearmeetingBody {
+  padding: 2.4rem;
 }
 .nearmeetingBody .nearmeetingBox {
   margin-top: 3rem;
@@ -3686,7 +3946,7 @@
 .courselistBody .courselistBox .courselistItem2 {
   width: 100%;
   height: 11.8rem;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   display: flex;
   justify-content: space-between;
 }
@@ -3832,7 +4092,7 @@
 .topicBody {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
 }
 .topicBody .topicLeft {
   width: 4.5rem;
@@ -4028,7 +4288,7 @@
   cursor: pointer;
 }
 .replyBody {
-  margin-top: 10rem;
+  padding: 2.4rem;
 }
 .replyBody .replyHandleBtn {
   margin-bottom: 2rem;
@@ -4073,12 +4333,12 @@
 }
 .replyBody .replyBox .replyItemBox {
   display: flex;
-  justify-content: space-between;
-  margin-top: 6rem;
+  justify-content: flex-start;
+  margin-top: 3rem;
 }
 .replyBody .replyBox .replyItemBox .replyAvatar {
-  width: 5rem;
-  height: 5rem;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -4087,24 +4347,25 @@
   height: 100%;
 }
 .replyBody .replyBox .replyItemBox .replyContent {
-  width: calc(100% - 7rem);
+  margin-left: 1.6rem;
+  width: calc(100% - 3.2rem - 1.6rem);
   position: relative;
 }
 .replyBody .replyBox .replyItemBox .replyContent .userName {
   color: #212429;
-  font-size: 1.8rem;
-  line-height: 3rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
   font-weight: bold;
 }
 .replyBody .replyBox .replyItemBox .replyContent .replyTime {
   color: #8C8E90;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.8rem;
 }
 .replyBody .replyBox .replyItemBox .replyContent .replyText {
-  margin-top: 1rem;
+  margin-top: 0.8rem;
   color: #212429;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 2.2rem;
 }
 .replyBody .replyBox .replyItemBox .replyContent .replyHandleBox {
@@ -4127,7 +4388,7 @@
 }
 .replyBody .replyBox .replyItemBox .replyContent .replyHandleLike {
   position: absolute;
-  top: 1rem;
+  top: 0.1rem;
   right: 1rem;
   color: #616367;
   font-size: 1rem;
@@ -4144,8 +4405,8 @@
 .replyBody .replyBox .replyItemBox .replyContent .curReply {
   background-color: #F9F9FA;
   border-radius: 0.2rem;
-  margin-top: 2rem;
-  padding: 3rem;
+  margin-top: 1rem;
+  padding: 1.5rem;
   box-sizing: border-box;
 }
 .replyBody .replyBox .replyItemBox .replyContent .curReply .curReplyItem {
@@ -4159,4 +4420,85 @@
 }
 .replyBody .replyBox .replyItemBox .replyContent .curReply .curReplyItem .replyAvatarLevel2 {
   color: #212429;
+}
+.menuleftBox {
+  height: 100vh;
+  position: relative;
+}
+.menuleftBox .menuBox .menuItem {
+  border-bottom: 1px solid #ebeef5;
+}
+.menuleftBox .menuBox .menuItem .menuLabel {
+  padding: 1rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menuleftBox .menuBox .menuItem .menuLabel .menuIcon {
+  width: 2rem;
+  height: 2rem;
+  background-size: 100% 100%;
+  background-image: url(../img/listClose.png);
+  background-color: transparent;
+}
+.menuleftBox .menuBox .menuItem .menuLabel .menuIcon.open {
+  background-image: url(../img/listOpen.png);
+}
+.menuleftBox .menuBox .menuItem .menuSub {
+  margin-left: 1rem;
+  padding: 1rem;
+  font-size: 1.4rerm;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ebeef5;
+}
+.menuleftBox .menuBox .menuItem .menuSub .menuSubName {
+  font-size: 1.4rem;
+  width: 100%;
+}
+.menuleftBox .userCenter {
+  padding: 3rem 2.4rem 1.7rem;
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  box-sizing: border-box;
+  border-top: 1px solid #F6F6F7;
+}
+.menuleftBox .userCenter .ucText {
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: bold;
+}
+.menuleftBox .userCenter .usImg {
+  width: 4rem;
+  height: 4rem;
+}
+.selectaddressBody .el-select {
+  margin-bottom: 1rem;
+}
+.van-dropdown-menu.fixed {
+  position: fixed;
+  width: 100%;
+}
+.van-dropdown-menu.fixed .van-popup {
+  height: auto;
+}
+.contactinfoBar {
+  margin: 0 auto;
+  background-color: #198CFF;
+  width: 32.7rem;
+  height: 5rem;
+  line-height: 5rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: 4px;
+  margin-top: 2.5rem;
+  cursor: pointer;
 }

@@ -5,15 +5,19 @@ Vue.component('gooddoctor', {
 			<div class="modelLabel">专家课堂</div>
 			<div class="modelMore" @click="readAll">查看全部</div>
 		</div>
-		<div class="doctorBox">
-			<div class="doctorItem" v-for="(item,index) in doctorList" :key="index" @click="toDetail(item)">
-				<div class="doctorImg"><img :src="item.pictureStr | imgStr" /></div>
-				<div class="doctorName">{{item.doctorName}}</div>
-				<div class="doctorType">{{item.positionStr}}</div>
-				<div class="doctorDept">{{item.sexStr}} {{item.department}}</div>
-				<div class="doctorContact">
-					<div class="doctorScore">推荐度：{{item.gradeNumber || 0}}</div>
-					<div class="doctorContactBar">咨询</div>
+		<div class="doctorlistBox">
+			<div class="doctorItem" @click="toDetail(item)" v-for="(item,index) in doctorList" :key="index">
+				<div class="doctorImg"><img :src="item.pictureStr|imgStr" /></div>
+				<div class="doctorInfo">
+					<div class="doctorName">
+						<div class="doctorNameText">{{item.doctorName}}</div>
+						<div class="doctorType">{{item.positionStr}}</div>
+					</div>
+					<div class="doctorHospital">
+						<div class="doctorhospitalText">{{item.hospitalName}}</div>
+						<div class="doctorDept">{{item.officeStr}}</div>
+					</div>
+					<div class="doctorRemark" :title="item.goodStr">{{item.goodStr}}</div>
 				</div>
 			</div>
 		</div>

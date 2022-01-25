@@ -1,24 +1,18 @@
 Vue.component('medicinelist', {
 	template:
 	`<div class="medicinelistBody">
-		<div class="medicinelistTital">产品列表</div>
+		<div class="medicinelistTital">全部产品</div>
 		<div class="medicineListBox">
-			<div class="medicineItem" v-for="(item,index) in list" :key="index">
+			<div class="medicineItem" v-for="(item,index) in list" :key="index" @click="toMedicineDetail(item)">
 				<div class="medicineImg">
 					<img :src="item.pictureStr|httpStr" />
 				</div>
 				<div class="medicineInfo">
 					<div class="medicineName" :title="item.productName">
-						<div class="medicineNameText" :title="item.productName" @click="toMedicineDetail(item)">{{item.productName}}</div>
-						<div class="medicineAskBar">询问</div>
+						<div class="medicineNameText" :title="item.productName">{{item.productName}}</div>
 					</div>
 					<div class="medicineMsg">
 						<div class="medicinemItem">批准文号：{{item.approvalNumber}}</div>
-						<div class="medicinemItem">主要规格：{{item.packStr}}{{item.spectStr}}</div>
-					</div>
-					<div class="medicineCompany">
-						<div class="medicineCompanyName">公司名称：{{item.enterpriseName}}</div>
-						<div class="companyList">查看产品列表</div>
 					</div>
 				</div>
 			</div>
@@ -52,7 +46,11 @@ Vue.component('medicinelist', {
 			this.activeIndex = index
 		},
 		toMedicineDetail(data){
-			location.href = `./medicineDetail.html?id=${data.productId}&name=${data.productName}&catalogName=${decodeURI(getUrlParam('catalogName'))}`
+			if(decodeURI(getUrlParam('type')) === 'company'){
+				location.href = `./medicineCompany.html?drugName=${data.productName}&id=${data.productId}`
+			}else{
+				location.href = `./medicineDetail.html?id=${data.productId}&name=${data.productName}&catalogName=${decodeURI(getUrlParam('catalogName'))}`
+			}
 		}
 	},
     mounted() {

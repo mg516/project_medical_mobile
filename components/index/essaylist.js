@@ -9,7 +9,7 @@ Vue.component('essaylist', {
 				<div class="essayItemImg" v-if="item.contextImg"><img :src="item.contextImg | imgStr" /></div>
 				<div class="essayItemInfo">
 					<div class="essayItemTitle">{{item.titileStr}}</div>
-					<div class="essayItemRemark">{{item.remark}}</div>
+					<div class="essayItemRemark" v-if="false">{{item.remark}}</div>
 					<div class="essayItemBottom">
 						<div class="essayItemTime">{{item.createTime}}</div>
 						<div class="essayItemAuthor">{{item.catalogName}}</div>

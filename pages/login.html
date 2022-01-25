@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>登录</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -13,8 +14,17 @@
 <body>
     <div id="myApp" class="main" v-cloak>
         <div class="loginPageBody">
+            <div class="loginForm">
+                <div class="lfLabel">账号登录</div>
+                <img class="lfColse" src="../img/close.png" @click="toHome">
+                <el-input placeholder="请输入手机号" v-model="form.mobile"></el-input>
+                <div style="display: flex;height: 40px;margin-bottom: 40px;">
+                    <el-input placeholder="请输入验证码" v-model="form.code"></el-input>
+                    <el-button style="margin-left: 10px;" :disabled="secondNum>0" @click="getCode">{{secondNum>0?`${secondNum}后重试`:'获取验证码'}}</el-button>
+                </div>
+                <div class="loginBar" @click="loginFunc">登录</div>
+            </div>
             <div class="loginNavBody">
-                <div class="loginNavLogo" @click="toIndex"></div>
                 <div class="loginNavBox">
                     <div
                         class="loginNavItem"
@@ -24,30 +34,18 @@
                     >{{item.name}}</div>
                 </div>
             </div>
-            <div class="loginCont">
-                <div class="loginImg"></div>
-                <div class="loginForm">
-                    <div class="lfLabel">账号登录</div>
-                    <el-input placeholder="请输入手机号" v-model="form.mobile"></el-input>
-                    <div style="display: flex;height: 40px;margin-bottom: 40px;">
-                        <el-input placeholder="请输入验证码" v-model="form.code"></el-input>
-                        <el-button style="margin-left: 10px;" :disabled="secondNum>0" @click="getCode">{{secondNum>0?`${secondNum}后重试`:'获取验证码'}}</el-button>
-                    </div>
-                    <div class="loginBar" @click="loginFunc">登录</div>
-                </div>
-            </div>
         </div>
-        <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
 <script src="../js/config.js"></script>
 <script src="../js/unit.js"></script>
 <script src="../js/request.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
+<script src="../js/vant@2.12.min.js"></script>
 <script src="../element/element-ui-2.14.1.js"></script>
 <script src="../components/pagefooter.js"></script>
 <script>
@@ -55,6 +53,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 loginNavList: [
                     {name:'用户注册',key:'user'},
                     {name:'医生注册',key:'doctor'},
@@ -200,5 +199,11 @@
 <style>
 .main{
     background-color: #F9F9FA;
+}
+.lfColse{
+    width: 2rem;
+    position: absolute;
+    top: 2.7rem;
+    right: 3rem;
 }
 </style>

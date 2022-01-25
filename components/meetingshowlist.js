@@ -6,9 +6,11 @@ Vue.component('meetingshowlist', {
 		</div>
 		<div class="meetingBox">
 			<div class="meetingItem" v-for="(mItem,mIndex) in meetingdata" :key="mIndex" @click="toMessageDetail(mItem)">
-				<div class="meetingTitle">{{mItem.titileStr}}</div>
-				<div class="meetingCountry">中国</div>
-				<div class="meetingTime">{{mItem.updateTime}}</div>
+				<img class="meetingImg" :src="mItem.contextImg | httpStr" />
+				<div class="meetingMsg">
+					<div class="meetingTitle">{{mItem.titileStr}}</div>
+					<div class="meetingTime">{{mItem.updateTime}}</div>
+				</div>
 			</div>
 		</div>
 	</div>`,
@@ -16,6 +18,11 @@ Vue.component('meetingshowlist', {
 		meetingdata: {
 			type: Array,
 			default: () => []
+		}
+	},
+	filters: {
+		httpStr(link) {
+			return baseUrl + link;
 		}
 	},
 	data() {

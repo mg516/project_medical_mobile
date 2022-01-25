@@ -11,7 +11,7 @@ Vue.component('reply', {
 			<div class="replyItemBox" v-for="(item,index) in replyList" :key="index">
 				<div class="replyAvatar"><img :src="item.fromImg|httpStr" :alt="item.fromName"/></div>
 				<div class="replyContent">
-					<div class="userName">{{item.fromName}}</div>
+					<div class="userName">{{item.fromName||'未知姓名'}}</div>
 					<div class="replyTime">{{item.updateTime}}</div>
 					<div class="replyText">{{item.content}}</div>
 					<div class="replyHandleBox">
@@ -28,7 +28,7 @@ Vue.component('reply', {
 					</div>
 					<div class="curReply" v-if="item.reply && item.reply.length>0">
 						<div class="curReplyItem" v-for="(rItem,rIndex) in item.reply" :key="rIndex">
-							<span class="replyAvatarLevel2">{{rItem.fromName}}</span>
+							<span class="replyAvatarLevel2">{{rItem.fromName||'未知姓名'}}</span>
 							<span v-if="rItem.toName"> 回复 </span>
 							<span v-if="rItem.toName" class="replyAvatarLevel2">{{rItem.toName}}</span>
 							<span>:</span>
@@ -63,29 +63,29 @@ Vue.component('reply', {
 			replyContent: '',
 			replyedObj: '', // 被评论对象
 			replyList:[
-				{
-					id:'1',
-					username:'锐锐锐锐爷',
-					img:'../img/userImg.png',
-					time:'2021-01-12 13:25:34',
-					content: '老瓜最后一节给我看哭了！前7投1中，后7投5中。20+5+3+2+2防守大闸石锤了，爷青回啊',
-					like:10,
-					ifLike: true,
-					reply:[
-						{username:'我从未考虑湖人',replied:'夏夜的星光',content:'西卡连续两天错失绝杀西卡连续两天错失绝杀西卡连续两天错失绝杀西卡连续两天错失绝杀'},
-						{username:'我从未考虑湖人',replied:'',content:'西卡连续两天错失绝杀'},
-					]
-				},
-				{
-					id:'2',
-					username:'锐锐锐锐爷',
-					img:'../img/userImg.png',
-					time:'2021-01-12 13:25:34',
-					content: '老瓜最后一节给我看哭了！前7投1中，后7投5中。20+5+3+2+2防守大闸石锤了，爷青回啊',
-					like:10,
-					ifLike: false,
-					reply:[]
-				},
+				// {
+				// 	id:'1',
+				// 	username:'锐锐锐锐爷',
+				// 	img:'../img/userImg.png',
+				// 	time:'2021-01-12 13:25:34',
+				// 	content: '老瓜最后一节给我看哭了！前7投1中，后7投5中。20+5+3+2+2防守大闸石锤了，爷青回啊',
+				// 	like:10,
+				// 	ifLike: true,
+				// 	reply:[
+				// 		{username:'我从未考虑湖人',replied:'夏夜的星光',content:'西卡连续两天错失绝杀西卡连续两天错失绝杀西卡连续两天错失绝杀西卡连续两天错失绝杀'},
+				// 		{username:'我从未考虑湖人',replied:'',content:'西卡连续两天错失绝杀'},
+				// 	]
+				// },
+				// {
+				// 	id:'2',
+				// 	username:'锐锐锐锐爷',
+				// 	img:'../img/userImg.png',
+				// 	time:'2021-01-12 13:25:34',
+				// 	content: '老瓜最后一节给我看哭了！前7投1中，后7投5中。20+5+3+2+2防守大闸石锤了，爷青回啊',
+				// 	like:10,
+				// 	ifLike: false,
+				// 	reply:[]
+				// },
 			],
 			activeIndex: 0,
 		};

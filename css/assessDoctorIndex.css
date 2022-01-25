@@ -1,11 +1,4 @@
-.contentBody {
-  margin: 6rem auto 10rem;
-  width: 114rem;
-}
-.pageBreadcrumbBox {
-  margin: 6rem auto 0;
-  width: 114rem;
-}
+
 .pageBreadcrumbBox .breadcrumbBody {
   margin: 0;
 }
@@ -14,14 +7,16 @@
   margin-bottom: 4rem;
 }
 .assesshospitalBox .assesshospitalItem {
+  /* margin-bottom: 3rem;
   display: flex;
-  justify-content: space-between;
-  height: 16.4rem;
-  margin-bottom: 5rem;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #F9FCFF 0%, #E9F4FF 100%);
+  border-radius: 16px; */
 }
 .assesshospitalBox .assesshospitalItem .assesshospitalImg {
-  width: 25rem;
-  height: 100%;
+  width: 10rem;
+  height: 10rem;
 }
 .assesshospitalBox .assesshospitalItem .assesshospitalImg img {
   width: 100%;

@@ -1,10 +1,11 @@
 Vue.component('companyinfo', {
 	template:
 	`<div class="companyInfoBody">
+		<div class="companyInfoTitle">企业信息</div>
 		<div class="companyInfoHeader">
+			<div class="companyInfoImg"><img :src="data.pictureStr|httpStr" /></div>
 			<div class="companyName">{{data.enterpriseName}}</div>
 			<div class="companyInfoCont">{{data.infoStr}}</div>
-			<div class="companyInfoImg"><img :src="data.pictureStr|httpStr" /></div>
 		</div>
 		<div class="companyInfoExplain">
 			<div class="companyInfoETitle">
@@ -12,13 +13,16 @@ Vue.component('companyinfo', {
 				<span class="companyInfoMore" @click="toTab2">查看全部</span>
 			</div>
 			<div class="companyInfoEProdBox">
-				<div class="companyInfoEProdItem" v-for="(item,index) in productList">
+				<div class="companyInfoEProdItem" v-for="(item,index) in productList" @click="toMedicineDetail(item)">
 					<img :src="item.pictureStr|httpStr" />
-					<div class="companyInfoEProdName">{{item.productName}}</div>
+					<div class="companyInfoEProdMsg">
+						<div class="companyInfoEProdName">{{item.productName}}</div>
+						<div class="companyInfoEProdText">批准文号：{{data.approvalNumber}}</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="companyInfoExplain">
+		<div class="companyInfoExplain" style="padding-top:1rem;">
 			<div class="companyInfoETitle">联系方式</div>
 			<div class="companyInfoEItem">公司名称：{{data.enterpriseName}}</div>
 			<div class="companyInfoEItem">联 系 人：{{data.contractStr}}</div>
@@ -45,6 +49,9 @@ Vue.component('companyinfo', {
 		};
 	},
 	methods: {
+		toMedicineDetail(data){
+			location.href = `./medicineDetail.html?id=${data.productId}&name=${data.productName}`
+		},
 		getProductList(){
 			const param = {
 				enterpriseId: getUrlParam('id'),
@@ -64,7 +71,7 @@ Vue.component('companyinfo', {
 			const id = getUrlParam('id')
 			const name = getUrlParam('name')
 			const enter = getUrlParam('enter')
-			const tab = 1
+			const tab = 2
 			location.href = `${getUrl()}?id=${id}&name=${name}&enter=${enter}&tab=${tab}`
 		}
 	},

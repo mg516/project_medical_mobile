@@ -3,18 +3,28 @@ Vue.component('navbar', {
 	`<van-nav-bar
 		class="navbarBody"
 		:left-arrow="backBar"
+		fixed
+		placeholder 
 	>
 		<template #left>
-			<van-icon name="wap-nav" color="#212429" size="2.4rem" />
+			<van-icon name="wap-nav" color="#212429" size="2.4rem" @click="()=>{$emit('change',true)}" />
 		</template>
 		<template #title>
-			<div class="navLogo"></div>
+			<div class="navLogo" @click="toHome"></div>
 		</template>
 		<template #right>
-			<van-icon name="search" color="#212429" size="2.4rem" />
+			<van-icon name="search" color="#212429" size="2.4rem" @click="search" />
 		</template>
 	</van-nav-bar>`,
+	model: {
+		prop: 'showLeft',
+		event: 'change'
+	},
 	props: {
+		showLeft: {
+			type: Boolean,
+			default: false
+		},
 		backBar: {
 			type: Boolean,
 			default: false
@@ -22,13 +32,17 @@ Vue.component('navbar', {
 	},
 	data() {
 		return {
+			show: false,
 			activeLink: '1',
 			keyword: '',
 			userInfo: {name:'张三'},
-			menulist1: []
+			menulist1: [],
 		};
 	},
 	methods: {
+		search(){
+			location.href = './searchResult.html'
+		},
 		onClickLeft() {
 			Toast('返回');
 		},
@@ -60,8 +74,8 @@ Vue.component('navbar', {
 				location.href = './userCenterHospital.html'
 			}
 		},
-		toPage(path){
-			location.href = path
+		toHome(){
+			location.href = './index.html'
 		},
 		toSearchResult() {
 			if(this.keyword){

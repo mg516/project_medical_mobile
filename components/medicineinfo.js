@@ -6,23 +6,20 @@ Vue.component('medicineinfo', {
 			<div class="medicineInfoCont">
 				<div class="medicineName">{{data.productName}}</div>
 				<div class="medicineMsg">
-					<div class="medicineMsgItem">批准文号：{{data.approvalNumber}}</div>
-					<div class="medicineMsgItem">主要规格：{{data.spectStr}}</div>
-				</div>
-				<div class="medicineLabel" v-if="false">
-					产品相关：
-					<span v-for="(item,index) in data.proRelate" :key="index">{{item}}</span>
+					<div class="medicineMsgItem">{{data.catalogName}}</div>
+					<div class="medicineMsgItem" v-if="false">批准文号：{{data.approvalNumber}}</div>
+					<div class="medicineMsgItem" v-if="false">主要规格：{{data.spectStr}}</div>
 				</div>
 			</div>
 		</div>
 		<div class="medicineInfoParam">
-			<div class="medicineInfoPItem w60">产品名称：<span>{{data.productName}}</span></div>
-			<div class="medicineInfoPItem w40">批准文号：<span>{{data.approvalNumber}}</span></div>
-			<div class="medicineInfoPItem w60">产品分类：<span>{{data.catalogName}}</span></div>
-			<div class="medicineInfoPItem w40">主要规格：<span>{{data.spectStr}}</span></div>
-			<div class="medicineInfoPItem w60">英文名称：<span>无</span></div>
-			<div class="medicineInfoPItem w40">包　　装：<span>{{data.packStr}}</span></div>
-			<div class="medicineInfoPItem w100">用　　途：<span v-html="data.useesStr"></span></div>
+			<div class="medicineInfoPItem">产品名称：<span>{{data.productName}}</span></div>
+			<div class="medicineInfoPItem">批准文号：<span>{{data.approvalNumber}}</span></div>
+			<div class="medicineInfoPItem">产品分类：<span>{{data.catalogName}}</span></div>
+			<div class="medicineInfoPItem">主要规格：<span>{{data.spectStr}}</span></div>
+			<div class="medicineInfoPItem">英文名称：<span>无</span></div>
+			<div class="medicineInfoPItem">包　　装：<span>{{data.packStr}}</span></div>
+			<div class="medicineInfoPItem">用　　途：<span v-html="data.useesStr"></span></div>
 		</div>
 		<div class="medicineInfoExplain">
 			<div class="medicineInfoEItem" v-html="data.descriptionStr"></div>

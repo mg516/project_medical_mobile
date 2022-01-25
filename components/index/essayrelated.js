@@ -5,7 +5,7 @@ Vue.component('essayrelated', {
 			<div class="modelLabel">相关文章</div>
 		</div>
 		<div class="essayRelatedBox">
-			<div class="essayRelatedItem" v-for="(item,index) in essayRelatedList" :key="index">
+			<div class="essayRelatedItem" v-for="(item,index) in essayRelatedList" :key="index" @click="toEssayDetail(item)">
 				<div class="essayRelatedHead">
 					<img :src="item.contextImg|httpStr" />
 				</div>
@@ -49,6 +49,10 @@ Vue.component('essayrelated', {
 					this.essayRelatedList = essayRelatedList
 				}
 			})
+		},
+		toEssayDetail(data){
+			const titleId = data.titleId
+			location.href =  `./essayDetail.html?titleId=${titleId}`
 		}
 	},
     mounted() {

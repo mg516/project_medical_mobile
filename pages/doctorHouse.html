@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="baidu-site-verification" content="code-CVbavcK8gI" />
     <title>前沿医学</title>
+    <link rel="stylesheet" href="../css/vant@2.21_index.css"/>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../element/element-ui-2.14.1.css">
     <link rel="stylesheet" href="../css/common.css">
@@ -13,69 +14,45 @@
 </head>
 <body>
     <div id="myApp" class="main" v-cloak>
-        <navmenu></navmenu>
-        <div class="pageBreadcrumbBox">
-            <breadcrumb :breadcrumblist="breadcrumblist"></breadcrumb>
-        </div>
-        <div class="pageTabsBody">
-            <div class="pageTabsBox">
-                <div
-                    class="pageTabsItem"
-                    :class="{'active':activeIndex === index}"
-                    v-for="(item,index) in drugTypes"
-                    :key="index"
-                    @click="checkType(index)">
-                    {{item.name}}
+        <navbar v-model="showLeft"></navbar>
+        <van-popup v-model="showLeft" position="left" :style="{ width: '70%' }">
+            <menuleft></menuleft>
+        </van-popup>
+        <van-dropdown-menu class="fixed">
+            <van-dropdown-item :title="item.label" ref="dropdown" v-for="(item,index) in typeGroup" :key="index">
+                <div class="pageTypeBox">
+                    <div class="pageTypeItemBox">
+                        <div
+                            :class="{'active':paramArr[0]===tItem}"
+                            class="pageTypeItem"
+                            @click="activeParam(tItem,index)"
+                            v-for="(tItem,tIndex) in typeGroup[0].types"
+                            :key="tIndex"
+                        >{{tItem}}</div>
+                    </div>
                 </div>
-            </div>
+            </van-dropdown-item>
+        </van-dropdown-menu>
+        <div class="contentBody" style="padding-top: 5rem;">
+            <doctorlist :list="doctorlist"></doctorlist>
+            <!-- <recomdoctor></recomdoctor> -->
         </div>
-        <div class="pageTypeGroupBody">
-            <div class="pageTypeBox">
-                <div class="pageTypeLabel">{{typeGroup[0].label}}：</div>
-                <div class="pageTypeItemBox">
-                    <div
-                        :class="{'active':paramArr[0]===item}"
-                        class="pageTypeItem"
-                        @click="activeParam(item)"
-                        v-for="(item,index) in typeGroup[0].types"
-                        :key="index"
-                    >{{item}}</div>
-                </div>
-            </div>
-            <!-- <div class="pageTypeBox">
-                <div class="pageTypeLabel">{{typeGroup[1].label}}：</div>
-                <div class="pageTypeItemBox">
-                    <div class="pageTypeItem" v-for="(item,index) in typeGroup[1].types" :key="index">{{item}}</div>
-                </div>
-            </div>
-            <div class="pageTypeBox">
-                <div class="pageTypeLabel">{{typeGroup[2].label}}：</div>
-                <div class="pageTypeItemBox">
-                    <div class="pageTypeItem" v-for="(item,index) in typeGroup[2].types" :key="index">{{item}}</div>
-                </div>
-            </div> -->
-        </div>
-        <div class="contentBody">
-            <div class="contentLeft">
-                <doctorlist :list="doctorlist"></doctorlist>
-            </div>
-            <div class="contentRight">
-                <recomdoctor></recomdoctor>
-            </div>
-        </div>
-        <pagefooter></pagefooter>
     </div>
 </body>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
-<script src="http://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
+<script src="https://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script> 
+<script src="https://api.map.baidu.com/api?v=2.0&ak=exKldCvfrnSWrSFw8l6GheAyPlkRwVph"></script>
 <script src="../js/rem.js"></script>
 <script src="../js/vue-2.6.11.js"></script>
+<script src="../js/vant@2.12.min.js"></script>
 <script src="../element/element-ui-2.14.1.js"></script>
 <script src="../js/axios.min-0.21.0.js"></script>
 <script src="../js/request.js"></script>
 <script src="../js/unit.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../js/businessHandle.js"></script>
-<script src="../components/navmenu.js"></script>
+<script src="../components/menuleft.js"></script>
+<script src="../components/navbar.js"></script>
 <script src="../components/breadcrumb.js"></script>
 <script src="../components/doctorlist.js"></script>
 <script src="../components/index/recomdoctor.js"></script>
@@ -84,6 +61,7 @@
         el: '#myApp',
         data() {
             return {
+                showLeft: false,
                 breadcrumblist:[
                     {name:'医院',link:'./doctorHouse.html'},
                     {name:'医生库'},
@@ -91,10 +69,12 @@
                 drugTypes: [
                     {name:'医生库',id:'1'},
                 ],
+                typeValue: 0,
+                typeOption: [],
                 typeGroup: [
                     {label:'按科室分类',types:['妇产科','妇产科','妇产科','妇产科','妇产科']},
-                    {label:'医生职称',types:['妇产科','妇产科','妇产科','妇产科','妇产科']},
-                    {label:'开通服务',types:['妇产科','妇产科','妇产科','妇产科','妇产科']},
+                    // {label:'医生职称',types:['妇产科','妇产科','妇产科','妇产科','妇产科']},
+                    // {label:'开通服务',types:['妇产科','妇产科','妇产科','妇产科','妇产科']},
                 ],
                 paramArr: ['','',''],
                 activeIndex: 0,
@@ -105,12 +85,13 @@
             checkType(index){
                 this.activeIndex = index
             },
-            activeParam(item){
+            activeParam(item,index){
                 if(this.paramArr[0] === item){
                     this.$set(this.paramArr,0,'')
                 }else{
                     this.$set(this.paramArr,0,item)
                 }
+                this.$refs.dropdown[0].toggle();
                 this.getDoctorList()
             },
             getDoctorPcatalog(){
@@ -119,6 +100,11 @@
                         label: '按科室分类',
                         types: res.data.data.map(item=>item.catalogName)
                     })
+                    const typeOption = []
+                    this.typeGroup.forEach((item,index) => {
+                        typeOption.push({ text: item.catalogName, value: index })
+                    });
+                    this.typeOption = typeOption
                 })
             },
             getDoctorList(){
@@ -147,23 +133,8 @@
     })
 </script>
 <style>
-    .pageTypeGroupBody{
-        width: 114rem;
-    }
     .contentBody{
-        margin: 5rem auto ;
-        width: 114rem;
         min-height: 50rem;
-        display: flex;
-        justify-content: space-between;
-    }
-    .contentLeft{
-        width: 82rem;
-        flex-shrink: 0;
-    }
-    .contentRight{
-        width: 28rem;
-        flex-shrink: 0;
     }
 </style>
 </html>
